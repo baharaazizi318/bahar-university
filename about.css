@@ -1,0 +1,81 @@
+ 
+        .about-hero{min-height:520px;background:linear-gradient(90deg,rgba(20,37,54,.92),rgba(20,37,54,.55)),url("images/campus6.png") center/cover no-repeat;display:flex;align-items:center;color:#fff}
+        .about-hero-content{max-width:720px;padding:100px 0 70px}
+        .about-kicker,.about-section-heading .kicker,.about-intro-content .kicker,.mission .kicker{color:#c99a3d;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:700;margin-bottom:15px}
+        .about-hero h1{font-family:"Playfair Display",serif;font-size:clamp(48px,7vw,82px);line-height:1;margin:0 0 25px}
+        .about-hero h1 span{color:#c99a3d}
+        .about-hero p{max-width:650px;font-size:18px;line-height:1.8;color:rgba(255,255,255,.85)}
+        .about-intro,.about-values,.mission,.about-stats,.community,.about-cta{padding:100px 0}
+        .about-intro-grid,.mission-grid,.community-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+        .about-intro-image{position:relative}
+        .about-intro-image img,.community-image img{width:100%;height:520px;object-fit:cover;display:block}
+        .about-image-card{position:absolute;right:-35px;bottom:35px;background:#c99a3d;color:#fff;padding:28px 32px;min-width:190px;box-shadow:0 15px 40px rgba(0,0,0,.15)}
+        .about-image-card strong{display:block;font-family:"Playfair Display",serif;font-size:42px;line-height:1;margin-bottom:8px}
+        .about-intro-content h2,.about-section-heading h2,.community-content h2{font-family:"Playfair Display",serif;color:#142536;font-size:clamp(38px,5vw,58px);line-height:1.15;margin:0 0 25px}
+        .about-intro-content p,.about-section-heading p,.community-content p{color:#68757e;line-height:1.9}
+        .about-values,.community{background:#f7f4ed}
+        .about-section-heading{max-width:700px;margin-bottom:55px}
+        .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+        .value-card{background:#fff;padding:38px 32px;border:1px solid rgba(20,37,54,.08);transition:.3s}
+        .value-card:hover{transform:translateY(-8px);box-shadow:0 20px 45px rgba(20,37,54,.1)}
+        .value-icon{width:60px;height:60px;display:flex;align-items:center;justify-content:center;background:#142536;color:#c99a3d;font-size:25px;margin-bottom:25px}
+        .value-card h3{color:#142536;font-size:21px;margin-bottom:13px}
+        .value-card p{color:#68757e;line-height:1.8;margin:0}
+        .mission{background:#142536;color:#fff}
+        .mission-grid{grid-template-columns:1fr 1fr}
+        .mission h2{font-family:"Playfair Display",serif;font-size:clamp(40px,5vw,60px);line-height:1.1;margin:0 0 25px}
+        .mission>div>p{color:rgba(255,255,255,.72);line-height:1.9}
+        .mission-list{display:grid;gap:18px}
+        .mission-item{display:flex;gap:18px;padding:20px;border:1px solid rgba(255,255,255,.12)}
+        .mission-item i{color:#c99a3d;font-size:22px}
+        .mission-item h4{margin:0 0 5px}
+        .mission-item p{margin:0;color:rgba(255,255,255,.72);font-size:14px;line-height:1.7}
+        .about-stats{background:#fff}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+        .about-stat{padding:30px 15px;border-right:1px solid #e5e5e5}
+        .about-stat:last-child{border-right:0}
+        .about-stat strong{display:block;font-family:"Playfair Display",serif;color:#142536;font-size:48px;margin-bottom:8px}
+        .about-stat span{color:#68757e;font-size:14px}
+        .community-grid{grid-template-columns:1.1fr 1fr}
+        .community-content h2{margin-bottom:20px}
+        .community-list{list-style:none;padding:0;margin:25px 0 0}
+        .community-list li{display:flex;gap:12px;align-items:center;margin-bottom:15px;color:#34434e}
+        .community-list i{color:#c99a3d}
+        .about-cta{background:linear-gradient(120deg,#245c7c,#142536);color:#fff}
+        .about-cta-inner{display:flex;justify-content:space-between;align-items:center;gap:40px}
+        .about-cta h2{font-family:"Playfair Display",serif;font-size:clamp(35px,5vw,55px);margin:0 0 12px}
+        .about-cta p{color:rgba(255,255,255,.75);margin:0}
+        .about-cta .primary{white-space:nowrap}
+
+        html.dark-mode .about-intro,html.dark-mode .about-stats{background:#171717}
+        html.dark-mode .about-intro-content h2,html.dark-mode .about-section-heading h2,html.dark-mode .community-content h2,html.dark-mode .about-stat strong{color:#fff}
+        html.dark-mode .about-intro-content p,html.dark-mode .about-section-heading p,html.dark-mode .community-content p,html.dark-mode .community-list li,html.dark-mode .about-stat span{color:#aaa}
+        html.dark-mode .about-values,html.dark-mode .community{background:#202020}
+        html.dark-mode .value-card{background:#292929;border-color:rgba(255,255,255,.08)}
+        html.dark-mode .value-card h3{color:#fff}
+        html.dark-mode .value-card p{color:#aaa}
+        html.dark-mode .about-stat{border-color:rgba(255,255,255,.12)}
+
+        @media(max-width:992px){
+            .about-intro-grid,.mission-grid,.community-grid{grid-template-columns:1fr;gap:50px}
+            .values-grid{grid-template-columns:repeat(2,1fr)}
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
+            .about-stat:nth-child(2){border-right:0}
+            .about-cta-inner{flex-direction:column;align-items:flex-start}
+        }
+        @media(max-width:768px){
+            .about-hero{min-height:450px}
+            .about-hero-content{padding:100px 0 60px}
+            .about-intro,.about-values,.mission,.about-stats,.community,.about-cta{padding:70px 0}
+            .values-grid{grid-template-columns:1fr}
+            .about-intro-image img,.community-image img{height:380px}
+            .about-image-card{right:15px;bottom:20px}
+        }
+        @media(max-width:480px){
+            .about-hero h1{font-size:48px}
+            .about-hero p{font-size:15px}
+            .stats-grid{grid-template-columns:1fr}
+            .about-stat{border-right:0;border-bottom:1px solid #e5e5e5}
+            .about-stat:last-child{border-bottom:0}
+            .about-intro-image img,.community-image img{height:300px}
+        }
