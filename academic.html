@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahar University | Academics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="academic.css">
+
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     BAHAR UNIVERSITY HEADER
+===================================================== -->
+
+<header class="university-header">
+
+    <div class="header-mini">
+        <div class="container header-mini-inner">
+
+            <nav class="mini-links">
+                <a href="#" data-en="Student Portal" data-fa="پرتال دانشجویان">Student Portal</a>
+                <a href="#" data-en="Library" data-fa="کتابخانه">Library</a>
+                <a href="#" data-en="Alumni" data-fa="فارغان">Alumni</a>
+                <a href="#" data-en="Career Center" data-fa="مرکز کاریابی">Career Center</a>
+                <a href="#" data-en="Campus Map" data-fa="نقشه دانشگاه">Campus Map</a>
+            </nav>
+
+            <span class="admission-note"
+                  data-en="Admissions Open • 2026"
+                  data-fa="پذیرش سال ۲۰۲۶ باز است">
+                Admissions Open • 2026
+            </span>
+
+        </div>
+    </div>
+
+    <div class="container header-main">
+
+        <a href="#" class="university-logo">
+
+            <div class="crest">B</div>
+
+            <div class="logo-text">
+                <strong>Bahar University</strong>
+                <small data-en="Knowledge • Excellence • Future"
+                       data-fa="دانش • برتری • آینده">
+                    Knowledge • Excellence • Future
+                </small>
+            </div>
+
+        </a>
+
+
+        <nav class="university-nav" id="universityNav">
+
+            <a href="index.html" data-en="Home" data-fa="خانه">Home</a>
+
+            <a href="about.html" data-en="About" data-fa="درباره ما">About</a>
+
+            <a href="academic.html" class="active"
+               data-en="Academics" data-fa="آموزش">Academics</a>
+
+            <a href="#programs"
+               data-en="Programs" data-fa="برنامه‌ها">Programs</a>
+
+            <a href="#" data-en="Research" data-fa="پژوهش">Research</a>
+
+            <a href="#" data-en="Student Life" data-fa="زندگی دانشجویی">Student Life</a>
+
+            <a href="#" data-en="News" data-fa="اخبار">News</a>
+
+            <a href="#" data-en="Contact" data-fa="تماس">Contact</a>
+
+        </nav>
+
+
+        <div class="header-tools">
+
+            <!-- Search -->
+            <button class="header-tool"
+                    id="openSearch"
+                    title="Search"
+                    aria-label="Search">
+                <i class="bi bi-search"></i>
+            </button>
+
+
+            <!-- Language -->
+            <div class="language-wrapper" id="languageWrapper">
+
+                <button class="header-tool"
+                        id="languageButton"
+                        title="Language"
+                        aria-label="Language">
+                    <i class="bi bi-translate"></i>
+                </button>
+
+                <div class="language-menu">
+
+                    <button type="button"
+                            onclick="setAcademicLanguage('en')">
+                        English
+                    </button>
+
+                    <button type="button"
+                            onclick="setAcademicLanguage('fa')">
+                        دری
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dark mode -->
+            <button class="header-tool"
+                    id="themeButton"
+                    title="Dark mode"
+                    aria-label="Dark mode">
+                <i class="bi bi-moon"></i>
+            </button>
+
+
+            <!-- Mobile menu -->
+            <button class="header-tool mobile-menu-btn"
+                    id="mobileMenuButton"
+                    title="Menu"
+                    aria-label="Menu">
+                <i class="bi bi-list"></i>
+            </button>
+
+
+            <a href="#" class="login-btn"
+               data-en="Login"
+               data-fa="ورود">
+                Login
+            </a>
+
+            <a href="#" class="apply-btn"
+               data-en="Apply Now"
+               data-fa="اکنون درخواست دهید">
+                Apply Now
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- SEARCH OVERLAY -->
+
+<div class="search-overlay" id="searchOverlay">
+
+    <button class="search-close" id="searchClose">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+    <form class="search-box"
+          onsubmit="return false;">
+
+        <input type="search"
+               id="headerSearchInput"
+               placeholder="Search..."
+               data-placeholder-en="Search..."
+               data-placeholder-fa="جستجو کنید...">
+
+        <button class="search-submit"
+                type="submit"
+                data-en="Search"
+                data-fa="جستجو">
+            Search
+        </button>
+
+    </form>
+
+</div>
+
+
+<section class="academics-hero">
+    <div class="container hero-inner">
+        <div class="eyebrow" data-en="Academic Excellence" data-fa="برتری علمی">Academic Excellence</div>
+
+        <h1 class="hero-title"
+            data-en="Shape your future through <span>knowledge.</span>"
+            data-fa="آینده خود را با <span>دانش</span> بسازید.">
+            Shape your future through <span>knowledge.</span>
+        </h1>
+
+        <p class="hero-text"
+           data-en="At Bahar University, academics go beyond the classroom. Explore programs that connect knowledge, innovation and real-world opportunities."
+           data-fa="در دانشگاه بهار، آموزش فراتر از صنف درسی است. برنامه‌هایی را کشف کنید که دانش، نوآوری و فرصت‌های واقعی را به هم پیوند می‌دهند.">
+            At Bahar University, academics go beyond the classroom.
+            Explore programs that connect knowledge, innovation and real-world opportunities.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#schools" class="hero-btn primary"
+               data-en="Explore Schools" data-fa="مشاهده دانشکده‌ها">Explore Schools</a>
+
+            <a href="#programs" class="hero-btn outline"
+               data-en="View Programs" data-fa="مشاهده برنامه‌ها">View Programs</a>
+        </div>
+    </div>
+</section>
+
+<section class="academic-intro">
+    <div class="container intro-grid">
+        <div>
+            <div class="section-label" data-en="Our Academics" data-fa="بخش آموزشی">Our Academics</div>
+            <h2 class="section-heading"
+                data-en="Learning designed for a changing world."
+                data-fa="آموزش برای دنیایی در حال تغییر.">
+                Learning designed for a changing world.
+            </h2>
+        </div>
+
+        <p class="intro-copy"
+           data-en="Our academic community combines rigorous learning with practical experience. Students are encouraged to question, create, collaborate and prepare for meaningful careers."
+           data-fa="جامعه علمی ما آموزش دقیق را با تجربه عملی ترکیب می‌کند. دانشجویان تشویق می‌شوند پرسش کنند، خلاق باشند، همکاری کنند و برای آینده حرفه‌ای خود آماده شوند.">
+            Our academic community combines rigorous learning with practical experience.
+            Students are encouraged to question, create, collaborate and prepare for meaningful careers.
+        </p>
+    </div>
+</section>
+
+<section class="academic-stats">
+    <div class="container">
+        <div class="stats-wrap">
+            <div class="stat"><strong>60+</strong><span data-en="Programs" data-fa="برنامه تحصیلی">Programs</span></div>
+            <div class="stat"><strong>500+</strong><span data-en="Faculty Members" data-fa="اعضای هیئت علمی">Faculty Members</span></div>
+            <div class="stat"><strong>30K+</strong><span data-en="Students" data-fa="دانشجویان">Students</span></div>
+            <div class="stat"><strong>340+</strong><span data-en="Research Projects" data-fa="پروژه‌های تحقیقاتی">Research Projects</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="schools-section" id="schools">
+    <div class="container">
+
+        <div class="schools-top">
+            <div>
+                <div class="section-label" data-en="Academic Schools" data-fa="دانشکده‌های علمی">Academic Schools</div>
+                <h2 class="section-heading"
+                    data-en="Find your field."
+                    data-fa="رشته خود را پیدا کنید.">
+                    Find your field.
+                </h2>
+            </div>
+
+            <p data-en="Explore our schools and discover an academic environment built around curiosity, practical learning and future opportunities."
+               data-fa="دانشکده‌های ما را بررسی کنید و محیطی علمی را کشف کنید که بر کنجکاوی، آموزش عملی و فرصت‌های آینده تمرکز دارد.">
+                Explore our schools and discover an academic environment built around curiosity,
+                practical learning and future opportunities.
+            </p>
+        </div>
+
+        <div class="school-grid">
+
+            <article class="school">
+                <span class="school-number">01</span>
+                <div class="school-icon"><i class="bi bi-cpu"></i></div>
+                <h3 data-en="School of Computing" data-fa="دانشکده علوم کامپیوتر">School of Computing</h3>
+                <p data-en="Computing, software development, artificial intelligence and digital technologies."
+                   data-fa="کامپیوتر، توسعه نرم‌افزار، هوش مصنوعی و فناوری‌های دیجیتال.">
+                    Computing, software development, artificial intelligence and digital technologies.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+            <article class="school">
+                <span class="school-number">02</span>
+                <div class="school-icon"><i class="bi bi-buildings"></i></div>
+                <h3 data-en="School of Engineering" data-fa="دانشکده انجنیری">School of Engineering</h3>
+                <p data-en="Engineering education focused on design, innovation, problem solving and practical skills."
+                   data-fa="آموزش انجنیری با تمرکز بر طراحی، نوآوری، حل مسئله و مهارت‌های عملی.">
+                    Engineering education focused on design, innovation, problem solving and practical skills.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+            <article class="school">
+                <span class="school-number">03</span>
+                <div class="school-icon"><i class="bi bi-briefcase"></i></div>
+                <h3 data-en="School of Business" data-fa="دانشکده تجارت">School of Business</h3>
+                <p data-en="Business, management, entrepreneurship and leadership for tomorrow's economy."
+                   data-fa="تجارت، مدیریت، کارآفرینی و رهبری برای اقتصاد آینده.">
+                    Business, management, entrepreneurship and leadership for tomorrow's economy.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+            <article class="school">
+                <span class="school-number">04</span>
+                <div class="school-icon"><i class="bi bi-heart-pulse"></i></div>
+                <h3 data-en="School of Health" data-fa="دانشکده علوم صحی">School of Health</h3>
+                <p data-en="Health-focused education that prepares students for responsible professional practice."
+                   data-fa="آموزش در حوزه صحت برای آماده‌سازی دانشجویان جهت فعالیت حرفه‌ای مسئولانه.">
+                    Health-focused education that prepares students for responsible professional practice.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+            <article class="school">
+                <span class="school-number">05</span>
+                <div class="school-icon"><i class="bi bi-palette"></i></div>
+                <h3 data-en="School of Arts & Media" data-fa="دانشکده هنر و رسانه">School of Arts & Media</h3>
+                <p data-en="Creative thinking, communication, media and visual expression for a connected world."
+                   data-fa="تفکر خلاق، ارتباطات، رسانه و بیان هنری برای دنیایی به‌هم‌پیوسته.">
+                    Creative thinking, communication, media and visual expression for a connected world.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+            <article class="school">
+                <span class="school-number">06</span>
+                <div class="school-icon"><i class="bi bi-mortarboard"></i></div>
+                <h3 data-en="School of Education" data-fa="دانشکده آموزش">School of Education</h3>
+                <p data-en="Education, leadership and learning approaches that shape future educators."
+                   data-fa="آموزش، رهبری و روش‌های یادگیری برای تربیت آموزشگران آینده.">
+                    Education, leadership and learning approaches that shape future educators.
+                </p>
+                <a class="school-link" href="#programs" data-en="Explore →" data-fa="بررسی ←">Explore →</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="programs-section" id="programs">
+    <div class="container">
+
+        <div class="programs-header">
+            <div>
+                <div class="section-label" data-en="Featured Programs" data-fa="برنامه‌های منتخب">Featured Programs</div>
+                <h2 class="section-heading"
+                    data-en="Programs that move you forward."
+                    data-fa="برنامه‌هایی برای پیشرفت شما.">
+                    Programs that move you forward.
+                </h2>
+            </div>
+
+            <div class="filters">
+                <button class="filter active" data-filter="all" data-en="All" data-fa="همه">All</button>
+                <button class="filter" data-filter="undergraduate" data-en="Undergraduate" data-fa="لیسانس">Undergraduate</button>
+                <button class="filter" data-filter="graduate" data-en="Graduate" data-fa="ماستری">Graduate</button>
+            </div>
+        </div>
+
+        <div class="program-grid">
+
+            <article class="program" data-type="undergraduate">
+                <span class="program-tag">Undergraduate</span>
+                <h3 data-en="BSc Computer Science" data-fa="لیسانس علوم کامپیوتر">BSc Computer Science</h3>
+                <p data-en="Build strong foundations in programming, systems, data and modern computing."
+                   data-fa="پایه‌های قوی در برنامه‌نویسی، سیستم‌ها، داده و فناوری‌های نوین کامپیوتری ایجاد کنید.">
+                    Build strong foundations in programming, systems, data and modern computing.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 4 Years</span>
+                    <span><i class="bi bi-laptop"></i> Computing</span>
+                </div>
+            </article>
+
+            <article class="program" data-type="undergraduate">
+                <span class="program-tag">Undergraduate</span>
+                <h3 data-en="BBA Business Administration" data-fa="لیسانس اداره و تجارت">BBA Business Administration</h3>
+                <p data-en="Develop practical knowledge in management, strategy, marketing and entrepreneurship."
+                   data-fa="دانش عملی در مدیریت، استراتژی، بازاریابی و کارآفرینی کسب کنید.">
+                    Develop practical knowledge in management, strategy, marketing and entrepreneurship.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 4 Years</span>
+                    <span><i class="bi bi-briefcase"></i> Business</span>
+                </div>
+            </article>
+
+            <article class="program" data-type="undergraduate">
+                <span class="program-tag">Undergraduate</span>
+                <h3 data-en="BEng Civil Engineering" data-fa="لیسانس انجنیری سیول">BEng Civil Engineering</h3>
+                <p data-en="Learn design, construction, infrastructure and engineering problem solving."
+                   data-fa="طراحی، ساخت‌وساز، زیرساخت‌ها و حل مسائل انجنیری را بیاموزید.">
+                    Learn design, construction, infrastructure and engineering problem solving.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 4 Years</span>
+                    <span><i class="bi bi-buildings"></i> Engineering</span>
+                </div>
+            </article>
+
+            <article class="program" data-type="undergraduate">
+                <span class="program-tag">Undergraduate</span>
+                <h3 data-en="BSc Health Sciences" data-fa="لیسانس علوم صحی">BSc Health Sciences</h3>
+                <p data-en="Explore health, wellbeing, public health and responsible professional practice."
+                   data-fa="صحت، رفاه، صحت عامه و فعالیت حرفه‌ای مسئولانه را بررسی کنید.">
+                    Explore health, wellbeing, public health and responsible professional practice.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 4 Years</span>
+                    <span><i class="bi bi-heart-pulse"></i> Health</span>
+                </div>
+            </article>
+
+            <article class="program" data-type="graduate">
+                <span class="program-tag">Graduate</span>
+                <h3 data-en="MA Educational Leadership" data-fa="ماستری رهبری آموزشی">MA Educational Leadership</h3>
+                <p data-en="Advance your understanding of leadership, learning systems and educational development."
+                   data-fa="دانش خود را در رهبری، سیستم‌های یادگیری و توسعه آموزشی گسترش دهید.">
+                    Advance your understanding of leadership, learning systems and educational development.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 2 Years</span>
+                    <span><i class="bi bi-mortarboard"></i> Education</span>
+                </div>
+            </article>
+
+            <article class="program" data-type="graduate">
+                <span class="program-tag">Graduate</span>
+                <h3 data-en="MA Business Management" data-fa="ماستری مدیریت تجارت">MA Business Management</h3>
+                <p data-en="Develop advanced skills in strategic thinking, leadership and organizational management."
+                   data-fa="مهارت‌های پیشرفته در تفکر استراتژیک، رهبری و مدیریت سازمانی را توسعه دهید.">
+                    Develop advanced skills in strategic thinking, leadership and organizational management.
+                </p>
+                <div class="program-meta">
+                    <span><i class="bi bi-clock"></i> 2 Years</span>
+                    <span><i class="bi bi-briefcase"></i> Business</span>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="academic-cta">
+        <div>
+            <h2 data-en="Your next chapter starts here."
+                data-fa="فصل بعدی زندگی شما از اینجا آغاز می‌شود.">
+                Your next chapter starts here.
+            </h2>
+            <p data-en="Explore your options and take the next step toward your academic goals."
+               data-fa="گزینه‌های خود را بررسی کنید و قدم بعدی را به سوی اهداف تحصیلی خود بردارید.">
+                Explore your options and take the next step toward your academic goals.
+            </p>
+        </div>
+
+        <a href="#" class="cta-btn"
+           data-en="Apply Now" data-fa="اکنون درخواست دهید">
+            Apply Now
+        </a>
+    </div>
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Brand -->
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+                    <div class="footer-crest">B</div>
+
+                    <div>
+                        <h3>Bahar University</h3>
+                    </div>
+                </div>
+
+                <p
+                    data-en="A modern university committed to learning, research, innovation and a vibrant student experience."
+                    data-fa="دانشگاهی مدرن متعهد به آموزش، پژوهش، نوآوری و ایجاد یک تجربه پویا برای دانشجویان.">
+                    A modern university committed to learning, research,
+                    innovation and a vibrant student experience.
+                </p>
+
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                    <a href="#" aria-label="YouTube">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- University -->
+            <div class="footer-column">
+
+                <h4 data-en="University" data-fa="دانشگاه">
+                    University
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#"
+                           data-en="About Us"
+                           data-fa="درباره ما">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Academics"
+                           data-fa="بخش آموزشی">
+                            Academics
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Research"
+                           data-fa="پژوهش">
+                            Research
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Student Life"
+                           data-fa="زندگی دانشجویی">
+                            Student Life
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="News"
+                           data-fa="اخبار">
+                            News
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Quick Links -->
+            <div class="footer-column">
+
+                <h4 data-en="Quick Links" data-fa="لینک‌های سریع">
+                    Quick Links
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#programs"
+                           data-en="Programs"
+                           data-fa="برنامه‌های تحصیلی">
+                            Programs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#schools"
+                           data-en="Academic Schools"
+                           data-fa="دانشکده‌ها">
+                            Academic Schools
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Admissions"
+                           data-fa="پذیرش">
+                            Admissions
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Library"
+                           data-fa="کتابخانه">
+                            Library
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                           data-en="Campus Map"
+                           data-fa="نقشه دانشگاه">
+                            Campus Map
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="footer-column">
+
+                <h4 data-en="Contact Us" data-fa="تماس با ما">
+                    Contact Us
+                </h4>
+
+                <div class="footer-contact">
+
+                    <div>
+                        <i class="bi bi-geo-alt"></i>
+
+                        <span
+                            data-en="128 Swanstone Street, Melborn, Australia"
+                            data-fa="128 خیابان سوانستون، ملبورن، استرالیا">
+                            128 Swanstone Street, Melborn, Australia
+                        </span>
+                    </div>
+
+                    <div>
+                        <i class="bi bi-telephone"></i>
+
+                        <span>
+                            +61 39123 4567
+                        </span>
+                    </div>
+
+                    <div>
+                        <i class="bi bi-envelope"></i>
+
+                        <span>
+                            info@baharuniversity.edu
+                        </span>
+                    </div>
+
+                    <div>
+                        <i class="bi bi-clock"></i>
+
+                        <span
+                            data-en="Mon – Fri: 8:00 AM – 5:00 PM"
+                            data-fa="دوشنبه – جمعه: ۸ صبح – ۵ عصر">
+                            Mon – Fri: 8:00 AM – 5:00 PM
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="footer-bottom-inner">
+
+                <p
+                    data-en="© 2026 Bahar University. All rights reserved."
+                    data-fa="© ۲۰۲۶ دانشگاه بهار. تمامی حقوق محفوظ است.">
+                    © 2026 Bahar University. All rights reserved.
+                </p>
+
+                <div class="footer-bottom-links">
+
+                    <a href="#"
+                       data-en="Privacy Policy"
+                       data-fa="حریم خصوصی">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#"
+                       data-en="Terms & Conditions"
+                       data-fa="شرایط و قوانین">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ================================
+   HEADER INTERACTIONS
+================================ */
+
+const languageWrapper = document.getElementById("languageWrapper");
+const languageButton = document.getElementById("languageButton");
+const searchOverlay = document.getElementById("searchOverlay");
+const openSearch = document.getElementById("openSearch");
+const searchClose = document.getElementById("searchClose");
+const mobileMenuButton = document.getElementById("mobileMenuButton");
+const universityNav = document.getElementById("universityNav");
+const themeButton = document.getElementById("themeButton");
+
+languageButton.addEventListener("click", function(e){
+    e.stopPropagation();
+    languageWrapper.classList.toggle("open");
+});
+
+document.addEventListener("click", function(e){
+    if(!languageWrapper.contains(e.target)){
+        languageWrapper.classList.remove("open");
+    }
+});
+
+openSearch.addEventListener("click", function(){
+    searchOverlay.classList.add("open");
+    document.getElementById("headerSearchInput").focus();
+});
+
+searchClose.addEventListener("click", function(){
+    searchOverlay.classList.remove("open");
+});
+
+searchOverlay.addEventListener("click", function(e){
+    if(e.target === searchOverlay){
+        searchOverlay.classList.remove("open");
+    }
+});
+
+document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+        searchOverlay.classList.remove("open");
+        languageWrapper.classList.remove("open");
+    }
+});
+
+mobileMenuButton.addEventListener("click", function(){
+    universityNav.classList.toggle("open");
+
+    const icon = mobileMenuButton.querySelector("i");
+
+    if(universityNav.classList.contains("open")){
+        icon.className = "bi bi-x-lg";
+    }else{
+        icon.className = "bi bi-list";
+    }
+});
+
+document.querySelectorAll(".university-nav a").forEach(link=>{
+    link.addEventListener("click", ()=>{
+        universityNav.classList.remove("open");
+
+        const icon = mobileMenuButton.querySelector("i");
+        if(icon){
+            icon.className = "bi bi-list";
+        }
+    });
+});
+
+themeButton.addEventListener("click", function(){
+
+    document.documentElement.classList.toggle("dark-mode");
+
+    const icon = themeButton.querySelector("i");
+
+    if(document.documentElement.classList.contains("dark-mode")){
+        icon.className = "bi bi-sun";
+        themeButton.title = "Light mode";
+    }else{
+        icon.className = "bi bi-moon";
+        themeButton.title = "Dark mode";
+    }
+});
+
+const filters = document.querySelectorAll(".filter");
+const programs = document.querySelectorAll(".program");
+
+filters.forEach(button => {
+    button.addEventListener("click", () => {
+        filters.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const type = button.dataset.filter;
+
+        programs.forEach(program => {
+            program.style.display =
+                type === "all" || program.dataset.type === type
+                ? "block"
+                : "none";
+        });
+    });
+});
+
+/* Use this with your existing university language system */
+function setAcademicLanguage(lang){
+    document.querySelectorAll("[data-en][data-fa]").forEach(el=>{
+        el.innerHTML = lang === "fa" ? el.dataset.fa : el.dataset.en;
+    });
+
+    document.documentElement.lang = lang === "fa" ? "fa" : "en";
+    document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+}
+</script>
+
+</body>
+</html>
