@@ -1929,7 +1929,18 @@
 
                         <i class="bi bi-envelope"></i>
 
-                        <input type="email" id="loginEmail" placeholder="Enter your email"
+<div class="login-field">
+                <label for="accountType">Account Type</label>
+                <select id="accountType" required>
+                    <option value="">Select account type</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty / Professor</option>
+                    <option value="administrator">Administrator</option>
+                    <option value="applicant">Applicant</option>
+                </select>
+            </div>
+
+                                    <input type="email" id="loginEmail" placeholder="Enter your email"
                             data-placeholder-en="Enter your email" data-placeholder-fa="ایمیل خود را وارد کنید"
                             required>
 
@@ -2006,6 +2017,7 @@
 
 
                 <div class="login-message" id="loginMessage"></div>
+                    <div id="loginStorageMessage" class="login-storage-message" role="status"></div>
 
             </form>
 
@@ -2028,11 +2040,199 @@
     </div>
 
     <script src="index.js">
-
+        
     </script>
+        
+<!---=========================================================
+   BAHAR_LOCAL_STORAGE_LOGIN
+   Stores only non-sensitive login state.
+   NEVER store the user's password in localStorage.
+========================================================= --->
+<script>
+(function () {
+    "use strict";
+
+    const STORAGE_KEY = "baharUser";
+
+    const loginForm = document.getElementById("loginForm");
+    const loginModal = document.getElementById("loginModal");
+    const loginBtn = document.getElementById("loginBtn");
+    const loginEmail = document.getElementById("loginEmail");
+    const loginPassword = document.getElementById("loginPassword");
+    const accountType = document.getElementById("accountType");
+    const rememberMe = document.getElementById("rememberMe");
+    const loginMessage = document.getElementById("loginMessage");
+    const storageMessage = document.getElementById("loginStorageMessage");
+
+    function getStoredUser() {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY));
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function saveUser(email, role, remember) {
+        const user = {
+            email: email,
+            accountType: role,
+            isLoggedIn: true,
+            rememberMe: remember,
+            loggedInAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+        return user;
+    }
+
+    function clearUser() {
+        localStorage.removeItem(STORAGE_KEY);
+    }
+
+    function roleName(role) {
+        const names = {
+            student: "Student",
+            faculty: "Faculty / Professor",
+            administrator: "Administrator",
+            applicant: "Applicant"
+        };
+        return names[role] || role;
+    }
+
+    function showStorageMessage(message, type) {
+        if (!storageMessage) return;
+        storageMessage.textContent = message;
+        storageMessage.className = "login-storage-message " + type;
+    }
+
+    function hideStorageMessage() {
+        if (!storageMessage) return;
+        storageMessage.textContent = "";
+        storageMessage.className = "login-storage-message";
+    }
+
+    function closeLoginModal() {
+        if (!loginModal) return;
+        loginModal.classList.remove("active", "show", "open");
+        document.body.classList.remove("modal-open");
+    }
+
+    function updateLoginButton() {
+        if (!loginBtn) return;
+
+        const user = getStoredUser();
+        const text = loginBtn.querySelector("span");
+
+        if (user && user.isLoggedIn) {
+            loginBtn.classList.add("logged-in");
+            if (text) {
+                text.textContent = "Account";
+            }
+            loginBtn.title = roleName(user.accountType) + " — " + user.email;
+        } else {
+            loginBtn.classList.remove("logged-in");
+            if (text) {
+                text.textContent = "Login";
+            }
+            loginBtn.title = "Login";
+        }
+    }
+
+    // Submit login form.
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const email = loginEmail ? loginEmail.value.trim() : "";
+            const password = loginPassword ? loginPassword.value : "";
+            const role = accountType ? accountType.value : "";
+            const remember = rememberMe ? rememberMe.checked : false;
+
+            if (!email || !password || !role) {
+                showStorageMessage(
+                    "Please complete your email, password, and account type.",
+                    "error"
+                );
+                return;
+            }
+
+            // Front-end demo validation only.
+            // Real authentication must be handled by a secure backend.
+            if (!email.includes("@") || password.length < 6) {
+                showStorageMessage(
+                    "Please enter a valid email and a password of at least 6 characters.",
+                    "error"
+                );
+                return;
+            }
+
+            const user = saveUser(email, role, remember);
+
+            showStorageMessage(
+                "Login successful. " + roleName(user.accountType) +
+                " account saved in this browser.",
+                "success"
+            );
+
+            if (loginMessage) {
+                loginMessage.textContent =
+                    "Welcome back, " + roleName(user.accountType) + "!";
+            }
+
+            updateLoginButton();
+
+            // Give the success message a moment before closing.
+            setTimeout(function () {
+                closeLoginModal();
+            }, 900);
+        });
+    }
+
+    // Show saved account information when the page loads.
+    const storedUser = getStoredUser();
+
+    if (storedUser && storedUser.isLoggedIn) {
+        updateLoginButton();
+
+        // Pre-fill only the email and role; never the password.
+        if (loginEmail) loginEmail.value = storedUser.email || "";
+        if (accountType) accountType.value = storedUser.accountType || "";
+        if (rememberMe) rememberMe.checked = !!storedUser.rememberMe;
+    }
+
+    // Make logout available globally for a future dashboard/logout button.
+    window.baharLogout = function () {
+        clearUser();
+        updateLoginButton();
+
+        if (loginEmail) loginEmail.value = "";
+        if (loginPassword) loginPassword.value = "";
+        if (accountType) accountType.value = "";
+        if (rememberMe) rememberMe.checked = false;
+
+        showStorageMessage("You have been logged out.", "success");
+    };
+
+    // Make the stored user available to other pages/scripts.
+    window.getBaharUser = function () {
+        return getStoredUser();
+    };
+
+    // If another page wants to protect itself:
+    window.isBaharLoggedIn = function () {
+        const user = getStoredUser();
+        return !!(user && user.isLoggedIn);
+    };
+
+    // Console helper for testing.
+    console.log("Bahar University Local Storage User:", getStoredUser());
+})();
 
 
 
+
+
+</script>
 
 </body>
 

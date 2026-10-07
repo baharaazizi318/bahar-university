@@ -446,4 +446,166 @@
 
         setTheme(savedTheme);
 
+
+
+
+
+
+
+/* =========================================================
+   BAHAR UNIVERSITY - PROGRAMS JS
+   Search + Faculty Filter + Load More
+========================================================= */
+
+const searchInput = document.getElementById("programSearch");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const cards = Array.from(document.querySelectorAll(".program-card"));
+const noResults = document.getElementById("noResults");
+const loadMoreButton = document.getElementById("loadMore");
+
+let activeFilter = "all";
+let visibleLimit = 6;
+
+
+/* =========================================
+   Filter Programs
+========================================= */
+
+function updatePrograms() {
+
+    const searchValue = searchInput.value
+        .toLowerCase()
+        .trim();
+
+    let matchedCards = [];
+
+    cards.forEach(card => {
+
+        const category = card.dataset.category;
+
+        const searchableText =
+            card.dataset.search.toLowerCase();
+
+        const matchesSearch =
+            searchableText.includes(searchValue);
+
+        const matchesFilter =
+            activeFilter === "all" ||
+            category === activeFilter;
+
+
+        if (matchesSearch && matchesFilter) {
+            matchedCards.push(card);
+        }
+
+        card.classList.add("hidden");
+
+    });
+
+
+    matchedCards.forEach((card, index) => {
+
+        if (index < visibleLimit) {
+            card.classList.remove("hidden");
+        }
+
+    });
+
+
+    /* No results message */
+
+    noResults.classList.toggle(
+        "show",
+        matchedCards.length === 0
+    );
+
+
+    /* Load More button */
+
+    loadMoreButton.style.display =
+        matchedCards.length > visibleLimit
+            ? "inline-flex"
+            : "none";
+}
+
+
+/* =========================================
+   Search
+========================================= */
+
+searchInput.addEventListener("input", () => {
+
+    visibleLimit = 6;
+
+    updatePrograms();
+
+});
+
+
+/* =========================================
+   Faculty Filter
+========================================= */
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        /* Remove active from all buttons */
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+
+        /* Add active to clicked button */
+
+        button.classList.add("active");
+
+
+        /* Get selected category */
+
+        activeFilter =
+            button.dataset.filter;
+
+
+        visibleLimit = 6;
+
+        updatePrograms();
+
+    });
+
+});
+
+
+/* =========================================
+   Load More
+========================================= */
+
+loadMoreButton.addEventListener("click", () => {
+
+    visibleLimit += 6;
+
+    updatePrograms();
+
+});
+
+
+/* =========================================
+   First Load
+========================================= */
+
+updatePrograms();
+   
+
+
+
+
+
+
+
+
+
+
+
+
     

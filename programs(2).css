@@ -1,0 +1,364 @@
+/* =========================================================
+   BAHAR UNIVERSITY - PROGRAMS
+========================================================= */
+
+:root {
+    --ink: #142536;
+    --blue: #245c7c;
+    --blue-dark: #0f3148;
+    --sky: #eaf4f8;
+    --gold: #c99a3d;
+    --cream: #f7f4ed;
+    --white: #ffffff;
+    --muted: #6e7882;
+    --border: #e5e8eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    color: var(--ink);
+    background: #fff;
+}
+
+.programs-section {
+    padding: 100px 0;
+    background:
+        linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-kicker {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(36px, 5vw, 54px);
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 17px;
+}
+
+/* Search + Filters */
+
+.program-tools {
+    margin: 0 auto 42px;
+}
+
+.program-search {
+    width: min(620px, 100%);
+    height: 58px;
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0 22px;
+
+    box-shadow: 0 10px 30px rgba(20, 37, 54, .08);
+    transition: .25s ease;
+}
+
+.program-search:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 12px 34px rgba(201, 154, 61, .18);
+}
+
+.search-icon {
+    color: var(--gold);
+    font-size: 28px;
+    line-height: 1;
+    margin-right: 10px;
+}
+
+.program-search input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+
+    font: inherit;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+.program-search input::placeholder {
+    color: #9aa1a7;
+}
+
+.program-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    border: 1px solid #dce1e5;
+    background: #fff;
+    color: var(--ink);
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    transition: .25s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+}
+
+/* Cards */
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.program-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(20, 37, 54, .08);
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(20, 37, 54, .08);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+    animation: cardIn .35s ease both;
+}
+
+.program-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(20, 37, 54, .14);
+}
+
+.program-card.hidden {
+    display: none;
+}
+
+.program-image {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    background: #dfe9ed;
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.program-card:hover .program-image img {
+    transform: scale(1.06);
+}
+
+.program-image span {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    padding: 7px 13px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, .92);
+    color: var(--blue-dark);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.program-content {
+    padding: 25px;
+}
+
+.program-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.program-content p {
+    min-height: 78px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.program-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.program-meta span {
+    padding: 7px 11px;
+    background: var(--sky);
+    color: var(--blue-dark);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.apply-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    text-decoration: none;
+    color: #fff;
+    background: var(--gold);
+
+    border-radius: 10px;
+    font-weight: 700;
+
+    transition: .25s ease;
+}
+
+.apply-btn:hover {
+    background: #b6872e;
+    transform: translateY(-2px);
+}
+
+/* No results */
+
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 35px;
+    margin-top: 25px;
+    color: var(--muted);
+}
+
+.no-results.show {
+    display: block;
+}
+
+/* Load more */
+
+.load-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 38px;
+}
+
+.load-more {
+    border: 1px solid var(--blue);
+    background: transparent;
+    color: var(--blue);
+
+    padding: 12px 30px;
+    border-radius: 999px;
+
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.load-more:hover {
+    background: var(--blue);
+    color: #fff;
+}
+
+/* Responsive */
+
+@media (max-width: 1050px) {
+    .programs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .programs-section {
+        padding: 75px 0;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .program-image {
+        height: 210px;
+    }
+
+    .program-content p {
+        min-height: auto;
+    }
+
+    .program-filter {
+        gap: 7px;
+    }
+
+    .filter-btn {
+        padding: 9px 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-heading h1 {
+        font-size: 34px;
+    }
+
+    .program-search {
+        height: 54px;
+    }
+
+    .program-content {
+        padding: 21px;
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
