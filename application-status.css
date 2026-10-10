@@ -1,0 +1,248 @@
+/* =========================================================
+   BAHAR UNIVERSITY — APPLICATION STATUS
+   Works alongside index.css; includes safe fallback colors.
+========================================================= */
+
+.status-page {
+    --status-ink: var(--ink, #142536);
+    --status-blue: var(--blue, #245c7c);
+    --status-blue-dark: var(--blue-dark, #0f3148);
+    --status-gold: var(--gold, #c99a3d);
+    --status-cream: var(--cream, #f7f4ed);
+    --status-white: #ffffff;
+    --status-muted: #6b7783;
+    --status-border: #e4e8eb;
+    --status-shadow: 0 18px 50px rgba(20, 37, 54, 0.08);
+    margin: 0;
+    background: #f7f8fa;
+    color: var(--status-ink);
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+}
+
+.status-page * { box-sizing: border-box; }
+.status-page a { color: inherit; text-decoration: none; }
+.status-page button, .status-page input { font: inherit; }
+
+.status-header {
+    min-height: 82px;
+    padding: 14px clamp(20px, 5vw, 76px);
+    background: #fff;
+    border-bottom: 1px solid rgba(20, 37, 54, .08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.status-brand { display: inline-flex; align-items: center; gap: 12px; }
+.status-brand-mark {
+    width: 47px; height: 47px; border-radius: 14px;
+    display: grid; place-items: center;
+    color: #fff; background: linear-gradient(145deg, #c99a3d, #e5c77f);
+    font-family: "Playfair Display", serif; font-size: 28px; font-weight: 700;
+    box-shadow: 0 6px 16px rgba(201, 154, 61, .2);
+}
+.status-brand-copy { display: flex; flex-direction: column; gap: 3px; }
+.status-brand-copy strong { font-size: 16px; letter-spacing: -.2px; }
+.status-brand-copy small { color: var(--status-muted); font-size: 10px; letter-spacing: .4px; }
+.status-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+.status-nav a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 13px; border-radius: 9px;
+    color: #536170; font-size: 13px; font-weight: 600;
+    transition: background .2s ease, color .2s ease;
+}
+.status-nav a:hover, .status-nav .status-nav-current { background: #f7f1e5; color: var(--status-blue-dark); }
+.status-nav .status-nav-current { box-shadow: inset 0 -2px 0 var(--status-gold); }
+
+.status-hero {
+    position: relative; overflow: hidden;
+    min-height: 245px; padding: 54px 24px 68px;
+    color: #fff;
+    background: linear-gradient(115deg, #102c42 0%, #1b4b68 68%, #245c7c 100%);
+}
+.status-hero::before, .status-hero::after {
+    content: ""; position: absolute; border: 1px solid rgba(255,255,255,.1); border-radius: 50%;
+    pointer-events: none;
+}
+.status-hero::before { width: 350px; height: 350px; right: -70px; top: -210px; }
+.status-hero::after { width: 260px; height: 260px; right: 5px; top: -165px; }
+.status-hero-inner { width: min(100%, 1080px); margin: 0 auto; position: relative; z-index: 1; }
+.status-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: #f0d79f; font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+}
+.status-hero h1 {
+    margin: 13px 0 10px; max-width: 720px;
+    font: 600 clamp(31px, 4.2vw, 47px)/1.15 "Playfair Display", serif;
+    letter-spacing: -.8px;
+}
+.status-hero h1 span { color: #e5c77f; }
+.status-hero p { max-width: 610px; margin: 0; color: #d9e5ec; font-size: 14px; line-height: 1.8; }
+.status-hero-decoration {
+    position: absolute; right: max(6%, calc((100% - 1080px) / 2)); top: 57px;
+    width: 130px; height: 130px; border: 1px solid rgba(229,199,127,.35);
+    border-radius: 28px; transform: rotate(8deg);
+    display: grid; place-items: center; color: rgba(229,199,127,.65); font-size: 58px;
+}
+
+.status-main-section { padding: 0 22px 60px; }
+.status-content { width: min(100%, 920px); margin: -35px auto 0; position: relative; z-index: 1; }
+.status-search-card, .status-result-card {
+    background: #fff; border: 1px solid rgba(20,37,54,.07);
+    border-radius: 18px; box-shadow: var(--status-shadow);
+}
+.status-search-card { padding: clamp(22px, 4vw, 34px); }
+.status-card-heading { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.status-icon-box {
+    flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center;
+    color: var(--status-blue); background: #edf4f7; border-radius: 14px; font-size: 21px;
+}
+.status-card-heading h2 { margin: 0 0 5px; font-size: 19px; letter-spacing: -.3px; }
+.status-card-heading p { margin: 0; color: var(--status-muted); font-size: 12px; line-height: 1.6; }
+.status-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.status-field label { display: block; margin-bottom: 8px; color: #293c4e; font-size: 12px; font-weight: 700; }
+.status-input-wrap { position: relative; }
+.status-input-wrap > i {
+    position: absolute; top: 50%; left: 14px; transform: translateY(-50%);
+    color: #83909b; font-size: 16px; pointer-events: none;
+}
+.status-input-wrap input {
+    width: 100%; height: 49px; padding: 0 42px 0 13px;
+    border: 1px solid #dce2e7; border-radius: 10px; outline: none;
+    color: var(--status-ink); background: #fcfdfe; font-size: 13px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.status-input-wrap input:focus { border-color: var(--status-blue); box-shadow: 0 0 0 3px rgba(36,92,124,.1); background: #fff; }
+.status-input-wrap input::placeholder { color: #a2acb5; }
+.status-feedback { min-height: 20px; margin: 10px 0 4px; font-size: 12px; line-height: 1.6; }
+.status-feedback.error { color: #b42318; }
+.status-feedback.success { color: #247044; }
+.status-primary-button {
+    min-height: 48px; width: 100%; border: 0; border-radius: 10px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 11px;
+    color: #fff; background: var(--status-blue-dark); font-size: 13px; font-weight: 700;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.status-primary-button:hover { background: var(--status-blue); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15,49,72,.17); }
+.status-primary-button:focus-visible, .status-secondary-button:focus-visible, .status-page a:focus-visible { outline: 3px solid #e5c77f; outline-offset: 3px; }
+.status-help-note { display: flex; gap: 10px; align-items: flex-start; padding: 14px 15px; margin-top: 19px; border-radius: 10px; background: #fbf7ee; color: #77633c; }
+.status-help-note > i { margin-top: 2px; color: #b38b39; }
+.status-help-note p { margin: 0; font-size: 11px; line-height: 1.7; }
+
+.status-result-card { margin-top: 22px; padding: clamp(22px, 4vw, 34px); }
+.status-result-card[hidden] { display: none; }
+.status-result-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid var(--status-border); }
+.status-result-label { color: #a27a2c; font-size: 10px; font-weight: 800; letter-spacing: 1.3px; }
+.status-result-top h2 { margin: 7px 0 6px; font: 600 25px/1.25 "Playfair Display", serif; }
+.status-reference { margin: 0; color: var(--status-muted); font-size: 12px; overflow-wrap: anywhere; }
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 30px; white-space: nowrap; font-size: 11px; font-weight: 700; background: #edf4f7; color: #245c7c; }
+.status-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status-badge[data-status="under review"] { color: #966b13; background: #fff5d9; }
+.status-badge[data-status="accepted"] { color: #247044; background: #e8f7ee; }
+.status-badge[data-status="rejected"] { color: #b42318; background: #fff0ee; }
+.status-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 25px; padding: 10px 0 24px; }
+.status-detail { min-width: 0; padding: 15px 0; border-bottom: 1px solid #eef0f2; }
+.status-detail > span { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; color: var(--status-muted); font-size: 11px; }
+.status-detail > span i { color: var(--status-gold); font-size: 14px; }
+.status-detail strong { display: block; color: #263b4e; font-size: 13px; font-weight: 700; overflow-wrap: anywhere; }
+.status-progress-section { padding: 22px 0 24px; border-top: 1px solid var(--status-border); }
+.status-progress-section h3 { margin: 0 0 7px; font-size: 16px; }
+.status-explanation { margin: 0 0 25px; color: var(--status-muted); font-size: 12px; line-height: 1.7; }
+.status-progress-track { display: flex; align-items: flex-start; width: 100%; }
+.status-progress-step { display: flex; flex: 0 0 auto; align-items: center; flex-direction: column; gap: 9px; min-width: 84px; color: #98a2ab; font-size: 10px; font-weight: 600; text-align: center; }
+.status-step-dot { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #dce2e7; background: #fff; color: #9aa4ad; font-size: 14px; }
+.status-progress-line { flex: 1 1 auto; height: 2px; margin: 16px 8px 0; background: #e2e6e9; }
+.status-progress-step.is-complete { color: #247044; }
+.status-progress-step.is-complete .status-step-dot { border-color: #247044; background: #e8f7ee; color: #247044; }
+.status-progress-step.is-current { color: #966b13; }
+.status-progress-step.is-current .status-step-dot { border-color: var(--status-gold); background: #fff5d9; color: #966b13; box-shadow: 0 0 0 4px rgba(201,154,61,.12); }
+.status-progress-track[data-stage="review"] .status-progress-line:first-of-type,
+.status-progress-track[data-stage="decision"] .status-progress-line { background: var(--status-gold); }
+.status-next-box { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #f5f8fa; border: 1px solid #e8eef1; border-radius: 12px; }
+.status-next-icon { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 10px; color: #9b762e; background: #fff0cf; }
+.status-next-box strong { display: block; margin: 1px 0 5px; font-size: 12px; }
+.status-next-box p { margin: 0; color: var(--status-muted); font-size: 11px; line-height: 1.7; }
+.status-result-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+.status-secondary-button { padding: 10px 14px; border: 1px solid #d8e0e5; border-radius: 9px; background: #fff; color: var(--status-ink); cursor: pointer; font-size: 12px; font-weight: 700; }
+.status-secondary-button:hover { border-color: var(--status-blue); color: var(--status-blue); }
+.status-text-link { color: var(--status-blue); font-size: 12px; font-weight: 700; }
+.status-text-link:hover { color: var(--status-gold); }
+
+.status-cant-find { display: flex; align-items: flex-start; gap: 13px; margin-top: 24px; padding: 20px 22px; border: 1px solid #e7eaed; border-radius: 14px; background: rgba(255,255,255,.75); }
+.status-cant-find-icon { color: var(--status-blue); font-size: 22px; }
+.status-cant-find h3 { margin: 0 0 6px; font-size: 13px; }
+.status-cant-find p { margin: 0; color: var(--status-muted); font-size: 11px; line-height: 1.8; }
+.status-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px clamp(20px, 5vw, 76px); border-top: 1px solid #e6e9ec; background: #fff; color: var(--status-muted); font-size: 11px; }
+.status-footer p { margin: 0; }
+.status-footer a { color: var(--status-blue); font-weight: 700; }
+
+html.dark-mode .status-page, html.dark-mode body.status-page { background: #171717; color: #f1f1f1; }
+html.dark-mode .status-header, html.dark-mode .status-search-card, html.dark-mode .status-result-card,
+html.dark-mode .status-footer { background: #202020; border-color: #353535; }
+html.dark-mode .status-brand-copy small, html.dark-mode .status-card-heading p,
+html.dark-mode .status-detail > span, html.dark-mode .status-reference,
+html.dark-mode .status-explanation, html.dark-mode .status-next-box p,
+html.dark-mode .status-cant-find p, html.dark-mode .status-footer { color: #b6b6b6; }
+html.dark-mode .status-nav a { color: #d0d0d0; }
+html.dark-mode .status-nav a:hover, html.dark-mode .status-nav .status-nav-current { background: #302b20; color: #f2d58d; }
+html.dark-mode .status-card-heading h2, html.dark-mode .status-result-top h2,
+html.dark-mode .status-detail strong, html.dark-mode .status-progress-section h3,
+html.dark-mode .status-next-box strong, html.dark-mode .status-cant-find h3 { color: #f2f2f2; }
+html.dark-mode .status-input-wrap input { background: #181818; border-color: #454545; color: #f5f5f5; }
+html.dark-mode .status-input-wrap input:focus { background: #1d1d1d; }
+html.dark-mode .status-help-note { background: #302b20; color: #e4d1a3; }
+html.dark-mode .status-detail, html.dark-mode .status-result-top, html.dark-mode .status-progress-section { border-color: #383838; }
+html.dark-mode .status-next-box, html.dark-mode .status-cant-find { background: #242424; border-color: #383838; }
+html.dark-mode .status-secondary-button { background: #202020; border-color: #454545; color: #eee; }
+html.dark-mode .status-step-dot { background: #202020; border-color: #4b4b4b; }
+html.dark-mode .status-progress-line { background: #454545; }
+
+@media (max-width: 760px) {
+    .status-header { align-items: flex-start; flex-direction: column; gap: 14px; padding: 15px 20px; }
+    .status-nav { width: 100%; gap: 3px; }
+    .status-nav a { padding: 9px 10px; font-size: 11px; }
+    .status-hero { min-height: 220px; padding: 43px 22px 58px; }
+    .status-hero-decoration { right: -25px; top: 30px; opacity: .45; }
+    .status-hero-inner { max-width: 100%; }
+    .status-hero h1 { max-width: 560px; }
+    .status-form-grid { grid-template-columns: 1fr; gap: 14px; }
+    .status-content { margin-top: -27px; }
+}
+@media (max-width: 520px) {
+    .status-main-section { padding: 0 13px 38px; }
+    .status-header { padding: 13px 15px; }
+    .status-nav { display: grid; grid-template-columns: 1fr 1fr; }
+    .status-nav a:last-child { grid-column: 1 / -1; }
+    .status-hero { padding: 36px 17px 54px; }
+    .status-hero h1 { font-size: 32px; }
+    .status-hero p { font-size: 12px; }
+    .status-hero-decoration { display: none; }
+    .status-search-card, .status-result-card { padding: 21px 17px; border-radius: 14px; }
+    .status-card-heading { align-items: flex-start; gap: 11px; }
+    .status-icon-box { width: 42px; height: 42px; flex-basis: 42px; }
+    .status-card-heading h2 { font-size: 16px; }
+    .status-card-heading p { font-size: 11px; }
+    .status-result-top { flex-direction: column; }
+    .status-result-top h2 { font-size: 22px; }
+    .status-detail-grid { grid-template-columns: 1fr; }
+    .status-detail { padding: 12px 0; }
+    .status-progress-step { min-width: 67px; font-size: 9px; }
+    .status-step-dot { width: 31px; height: 31px; }
+    .status-progress-line { margin: 15px 4px 0; }
+    .status-result-actions { align-items: stretch; flex-direction: column; }
+    .status-secondary-button { width: 100%; }
+    .status-footer { align-items: flex-start; flex-direction: column; padding: 20px; }
+}
+@media print {
+    .status-header, .status-hero, .status-search-card, .status-cant-find,
+    .status-footer, .status-result-actions { display: none !important; }
+    .status-page { background: #fff !important; color: #000 !important; }
+    .status-main-section { padding: 0; }
+    .status-content { width: 100%; margin: 0; }
+    .status-result-card { display: block !important; margin: 0; padding: 0; border: 0; box-shadow: none; }
+    .status-detail strong, .status-result-top h2 { color: #000 !important; }
+}

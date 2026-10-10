@@ -1,0 +1,399 @@
+
+/* =====================================================
+   BAHAR UNIVERSITY - ADMISSIONS APPLICATION
+===================================================== */
+
+.admission-section {
+    padding: 100px 0;
+    background: var(--cream, #f7f4ed);
+    color: var(--ink, #142536);
+    scroll-margin-top: 100px;
+}
+
+.admission-container {
+    width: min(1180px, 92%);
+    margin-inline: auto;
+}
+
+.admission-heading {
+    max-width: 700px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.admission-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--gold, #c99a3d);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.admission-heading h2 {
+    margin: 0 0 14px;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.2;
+}
+
+.admission-heading p,
+.admission-info > p {
+    color: var(--muted, #6e7882);
+    line-height: 1.8;
+}
+
+.admission-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.6fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.admission-info {
+    padding: 34px 28px;
+    color: #fff;
+    background: linear-gradient(145deg, #142536, #245c7c);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(20, 37, 54, 0.12);
+}
+
+.admission-info-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 24px;
+    color: #c99a3d;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(201, 154, 61, 0.45);
+    border-radius: 16px;
+    font-size: 26px;
+}
+
+.admission-info h3 {
+    margin: 0 0 14px;
+    font-size: 25px;
+    line-height: 1.4;
+}
+
+.admission-info > p {
+    color: #e0e7ed;
+    margin-bottom: 26px;
+}
+
+.admission-info ul {
+    display: grid;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.admission-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.65;
+    color: #f5f7f9;
+}
+
+.admission-info li i {
+    color: #e4bd69;
+    margin-top: 4px;
+}
+
+.admission-note {
+    display: flex;
+    gap: 10px;
+    margin-top: 32px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e7ed;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.admission-note i {
+    color: #e4bd69;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.admission-form-card {
+    min-width: 0;
+    padding: clamp(22px, 4vw, 38px);
+    background: var(--white, #fff);
+    border: 1px solid rgba(20, 37, 54, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(20, 37, 54, 0.07);
+}
+
+.admission-form-title {
+    padding-bottom: 22px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(20, 37, 54, 0.1);
+}
+
+.admission-form-title h3 {
+    margin: 0 0 8px;
+    font-size: 24px;
+}
+
+.admission-form-title p {
+    margin: 0;
+    color: var(--muted, #6e7882);
+    font-size: 13px;
+}
+
+.admission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 18px;
+}
+
+.admission-field {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.admission-full {
+    grid-column: 1 / -1;
+}
+
+.admission-field label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.admission-field input,
+.admission-field select,
+.admission-field textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+    color: var(--ink, #142536);
+    background: var(--input-bg, #fbfaf7);
+    border: 1px solid var(--input-border, #dce1e5);
+    border-radius: 10px;
+    outline: none;
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admission-field input,
+.admission-field select {
+    min-height: 48px;
+}
+
+.admission-field textarea {
+    resize: vertical;
+    min-height: 125px;
+    line-height: 1.7;
+}
+
+.admission-field input:focus,
+.admission-field select:focus,
+.admission-field textarea:focus {
+    border-color: var(--gold, #c99a3d);
+    box-shadow: 0 0 0 3px rgba(201, 154, 61, 0.14);
+}
+
+.admission-field input::placeholder,
+.admission-field textarea::placeholder {
+    color: #8a929a;
+}
+
+.admission-field small {
+    color: var(--muted, #6e7882);
+    font-size: 12px;
+}
+
+.admission-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 26px 0 22px;
+    font-size: 13px;
+    line-height: 1.8;
+    cursor: pointer;
+}
+
+.admission-consent input {
+    width: 17px;
+    height: 17px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    accent-color: var(--gold, #c99a3d);
+}
+
+.admission-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    color: #fff;
+    background: var(--ink, #142536);
+    border: 1px solid var(--ink, #142536);
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.admission-submit:hover {
+    background: var(--blue, #245c7c);
+    transform: translateY(-2px);
+}
+
+.admission-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.admission-message {
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.admission-message.error {
+    color: #b42318;
+}
+
+.admission-message.success {
+    color: #18794e;
+}
+
+.admission-receipt {
+    margin-top: 20px;
+    padding: 24px;
+    text-align: center;
+    background: #f0f8f2;
+    border: 1px solid #c9e7d0;
+    border-radius: 14px;
+    color: #174b2c;
+}
+
+.admission-receipt[hidden] {
+    display: none;
+}
+
+.admission-receipt > i {
+    font-size: 36px;
+}
+
+.admission-receipt h4 {
+    margin: 12px 0;
+    font-size: 21px;
+}
+
+.admission-receipt p {
+    line-height: 1.7;
+}
+
+.admission-new-button {
+    margin-top: 12px;
+    padding: 10px 16px;
+    color: #fff;
+    background: #174b2c;
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.admission-new-button:hover {
+    background: #22653d;
+}
+
+/* Dark mode: uses the existing project's html.dark-mode */
+html.dark-mode .admission-section {
+    background: var(--cream, #171717);
+    color: var(--ink, #f4f4f4);
+}
+
+html.dark-mode .admission-form-card {
+    background: var(--white, #202020);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .admission-form-title {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+html.dark-mode .admission-field input,
+html.dark-mode .admission-field select,
+html.dark-mode .admission-field textarea {
+    color: var(--ink, #f4f4f4);
+    background: var(--input-bg, #292929);
+    border-color: var(--input-border, #454545);
+}
+
+html.dark-mode .admission-field input::placeholder,
+html.dark-mode .admission-field textarea::placeholder {
+    color: #a8a8a8;
+}
+
+html.dark-mode .admission-submit {
+    color: #171717;
+    background: #d4af5a;
+    border-color: #d4af5a;
+}
+
+html.dark-mode .admission-submit:hover {
+    background: #e4c675;
+}
+
+html.dark-mode .admission-receipt {
+    color: #c9f2d3;
+    background: #1c3325;
+    border-color: #365c43;
+}
+
+html.dark-mode .admission-new-button {
+    color: #fff;
+    background: #28633c;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .admission-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admission-info {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 560px) {
+    .admission-section {
+        padding: 65px 0;
+    }
+
+    .admission-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .admission-full {
+        grid-column: auto;
+    }
+
+    .admission-form-card {
+        padding: 22px 17px;
+    }
+
+    .admission-heading {
+        margin-bottom: 30px;
+    }
+}

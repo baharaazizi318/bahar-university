@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check your Bahar University admission application status.">
+    <title>Application Status | Bahar University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="application-status.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="status-page">
+    <header class="status-header">
+        <a class="status-brand" href="index.html" aria-label="Bahar University home">
+            <span class="status-brand-mark">B</span>
+            <span class="status-brand-copy">
+                <strong>Bahar University</strong>
+                <small>Knowledge • Excellence • Future</small>
+            </span>
+        </a>
+
+        <nav class="status-nav" aria-label="Main navigation">
+            <a href="index.html"><i class="bi bi-house"></i> Home</a>
+            <a href="admission.html"><i class="bi bi-file-earmark-text"></i> Apply</a>
+            <a class="status-nav-current" href="application-status.html" aria-current="page">
+                <i class="bi bi-clipboard-check"></i> Application Status
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="status-hero">
+            <div class="status-hero-inner">
+                <span class="status-eyebrow"><i class="bi bi-mortarboard"></i> ADMISSIONS OFFICE</span>
+                <h1>Track Your <span>Application</span></h1>
+                <p>Enter your application reference number and the email address you used to apply.</p>
+            </div>
+            <div class="status-hero-decoration" aria-hidden="true">
+                <i class="bi bi-journal-check"></i>
+            </div>
+        </section>
+
+        <section class="status-main-section">
+            <div class="status-content">
+                <section class="status-search-card" aria-labelledby="lookupTitle">
+                    <div class="status-card-heading">
+                        <span class="status-icon-box"><i class="bi bi-search"></i></span>
+                        <div>
+                            <h2 id="lookupTitle">Check Application Status</h2>
+                            <p>Use the details shown on your application receipt.</p>
+                        </div>
+                    </div>
+
+                    <form id="statusLookupForm" novalidate>
+                        <div class="status-form-grid">
+                            <div class="status-field">
+                                <label for="referenceInput">Application Reference Number</label>
+                                <div class="status-input-wrap">
+                                
+                                    <input id="referenceInput" name="reference" type="text"
+                                           placeholder="e.g. BAH-20261009-123456" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="status-field">
+                                <label for="emailInput">Email Address</label>
+                                <div class="status-input-wrap">
+                                    
+                                    <input id="emailInput" name="email" type="email"
+                                           placeholder="you@example.com" autocomplete="email" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="lookupMessage" class="status-feedback" role="status" aria-live="polite"></p>
+                        <button class="status-primary-button" id="lookupButton" type="submit">
+                            Check Status <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <div class="status-help-note">
+                        <i class="bi bi-info-circle" aria-hidden="true"></i>
+                        <p>Your reference number is available on the confirmation receipt displayed after submitting your admission form.</p>
+                    </div>
+                </section>
+
+                <section id="statusResult" class="status-result-card" hidden aria-live="polite">
+                    <div class="status-result-top">
+                        <div>
+                            <span class="status-result-label">APPLICATION SUMMARY</span>
+                            <h2 id="resultGreeting">Application Details</h2>
+                            <p id="resultReference" class="status-reference"></p>
+                        </div>
+                        <span id="statusBadge" class="status-badge">Submitted</span>
+                    </div>
+
+                    <div class="status-detail-grid">
+                        <div class="status-detail">
+                            <span><i class="bi bi-person"></i> Applicant Name</span>
+                            <strong id="resultName">—</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span><i class="bi bi-envelope"></i> Email Address</span>
+                            <strong id="resultEmail">—</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span><i class="bi bi-book"></i> Selected Program</span>
+                            <strong id="resultProgram">—</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span><i class="bi bi-calendar-event"></i> Intake / Term</span>
+                            <strong id="resultTerm">—</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span><i class="bi bi-calendar-check"></i> Date Submitted</span>
+                            <strong id="resultDate">—</strong>
+                        </div>
+                        <div class="status-detail">
+                            <span><i class="bi bi-globe"></i> Applicant Country</span>
+                            <strong id="resultCountry">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="status-progress-section">
+                        <h3>Application Progress</h3>
+                        <p id="statusExplanation" class="status-explanation">Your application has been received.</p>
+                        <div id="progressTrack" class="status-progress-track" data-stage="submitted">
+                            <div class="status-progress-step" data-step="submitted">
+                                <span class="status-step-dot"><i class="bi bi-check-lg"></i></span>
+                                <span>Submitted</span>
+                            </div>
+                            <div class="status-progress-line"></div>
+                            <div class="status-progress-step" data-step="review">
+                                <span class="status-step-dot"><i class="bi bi-search"></i></span>
+                                <span>Under Review</span>
+                            </div>
+                            <div class="status-progress-line"></div>
+                            <div class="status-progress-step" data-step="decision">
+                                <span class="status-step-dot"><i class="bi bi-mortarboard"></i></span>
+                                <span>Decision</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-next-box">
+                        <span class="status-next-icon"><i class="bi bi-lightbulb"></i></span>
+                        <div>
+                            <strong id="nextStepTitle">What happens next?</strong>
+                            <p id="nextStepText">Keep your reference number for future communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="status-result-actions">
+                        <button id="printStatusButton" type="button" class="status-secondary-button">
+                            <i class="bi bi-printer"></i> Print Status
+                        </button>
+                        <a href="admission.html" class="status-text-link">Return to Admission Form <i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                </section>
+
+                <section class="status-cant-find">
+                    <div class="status-cant-find-icon"><i class="bi bi-question-circle"></i></div>
+                    <div>
+                        <h3>Can't find your application?</h3>
+                        <p>Double-check your reference number and email address. If you submitted the form in another browser or on another device, your saved application may not be available here.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="status-footer">
+        <p>© <span id="currentYear"></span> Bahar University. All rights reserved.</p>
+        <a href="index.html">Back to Home</a>
+    </footer>
+
+    <script src="application-status.js"></script>
+</body>
+</html>

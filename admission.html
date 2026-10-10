@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Apply to Bahar University. Complete your admission application and begin your academic journey.">
+
+    <title>Apply for Admission | Bahar University</title>
+
+    <!-- Main website CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Admission page CSS -->
+    <link rel="stylesheet" href="admission.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "DM Sans", Arial, sans-serif;
+        }
+
+        .admission-page-header {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 4%;
+            background: var(--white, #fff);
+            border-bottom: 1px solid rgba(20, 37, 54, 0.1);
+        }
+
+        .admission-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--ink, #142536);
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .admission-brand i {
+            color: var(--gold, #c99a3d);
+            font-size: 27px;
+        }
+
+        .admission-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .admission-header-actions a {
+            color: var(--ink, #142536);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .admission-header-actions a:hover {
+            color: var(--gold, #c99a3d);
+        }
+
+        .admission-header-actions .admission-home-button {
+            padding: 11px 18px;
+            color: #fff;
+            background: var(--ink, #142536);
+            border-radius: 8px;
+        }
+
+        .admission-header-actions .admission-home-button:hover {
+            color: #fff;
+            background: var(--blue, #245c7c);
+        }
+
+        .admission-page-main {
+            min-height: 80vh;
+        }
+
+        .admission-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 26px;
+            color: var(--blue, #245c7c);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .admission-back-link:hover {
+            color: var(--gold, #c99a3d);
+        }
+
+        .admission-required-note {
+            margin-top: 18px;
+            color: var(--muted, #6e7882);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .admission-page-footer {
+            padding: 24px 4%;
+            text-align: center;
+            color: var(--muted, #6e7882);
+            background: var(--white, #fff);
+            border-top: 1px solid rgba(20, 37, 54, 0.1);
+            font-size: 13px;
+        }
+
+        .admission-page-footer p {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        html.dark-mode .admission-page-header,
+        html.dark-mode .admission-page-footer {
+            background: #202020;
+            border-color: #383838;
+        }
+
+        html.dark-mode .admission-brand,
+        html.dark-mode .admission-header-actions a:not(.admission-home-button) {
+            color: #f4f4f4;
+        }
+
+        html.dark-mode .admission-header-actions .admission-home-button {
+            color: #171717;
+            background: #d4af5a;
+        }
+
+        html.dark-mode .admission-header-actions .admission-home-button:hover {
+            background: #e4c675;
+        }
+
+        @media (max-width: 600px) {
+            .admission-page-header {
+                padding: 17px 5%;
+            }
+
+            .admission-brand {
+                font-size: 16px;
+            }
+
+            .admission-brand i {
+                font-size: 23px;
+            }
+
+            .admission-header-actions {
+                gap: 10px;
+            }
+
+            .admission-header-actions a {
+                font-size: 12px;
+            }
+
+            .admission-header-actions .admission-home-button {
+                padding: 9px 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="admission-page-header">
+
+        <a href="index.html" class="admission-brand">
+            <i class="bi bi-mortarboard-fill"></i>
+            <span>Bahar University</span>
+        </a>
+
+        <nav class="admission-header-actions" aria-label="Page navigation">
+            <a href="index.html">Home</a>
+
+            <a href="#admissions" class="admission-home-button">
+                Apply Now
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="admission-page-main">
+
+        <section class="admission-section" id="admissions">
+
+            <div class="admission-container">
+
+                <a href="index.html" class="admission-back-link">
+                    <i class="bi bi-arrow-left"></i>
+                    Back to Home
+                </a>
+
+
+                <!-- PAGE HEADING -->
+                <div class="admission-heading">
+
+                    <span class="admission-eyebrow">
+                        BAHAR UNIVERSITY
+                    </span>
+
+                    <h2>Apply for Admission</h2>
+
+                    <p>
+                        Start your academic journey with us.
+                        Complete the application form below to apply
+                        for your preferred academic program.
+                    </p>
+
+                </div>
+
+
+                <!-- =========================
+                     FORM LAYOUT
+                ========================== -->
+                <div class="admission-layout">
+
+
+                    <!-- LEFT INFORMATION PANEL -->
+                    <aside class="admission-info">
+
+                        <div class="admission-info-icon">
+                            <i class="bi bi-mortarboard"></i>
+                        </div>
+
+                        <h3>Your Future Starts Here</h3>
+
+                        <p>
+                            Take the next step toward your academic
+                            and professional goals with Bahar University.
+                        </p>
+
+                        <ul>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Choose a program that matches your goals.</span>
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Provide accurate personal and academic information.</span>
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Review your application before submitting it.</span>
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Keep your application reference number for future use.</span>
+                            </li>
+
+                        </ul>
+
+                        <div class="admission-note">
+                            <i class="bi bi-info-circle-fill"></i>
+
+                            <span>
+                                Please complete all required fields.
+                                Submitting this form does not guarantee admission.
+                            </span>
+                        </div>
+
+                    </aside>
+
+
+                    <!-- RIGHT APPLICATION FORM -->
+                    <div class="admission-form-card">
+
+                        <div class="admission-form-title">
+
+                            <h3>Application Form</h3>
+
+                            <p>
+                                Enter your details carefully.
+                                Fields marked with * are required.
+                            </p>
+
+                        </div>
+
+
+                        <form id="admissionForm" novalidate>
+
+                            <div class="admission-grid">
+
+
+                                <!-- FULL NAME -->
+                                <div class="admission-field">
+
+                                    <label for="appFullName">
+                                        Full Name *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="appFullName"
+                                        name="fullName"
+                                        placeholder="Enter your full name"
+                                        autocomplete="name"
+                                        minlength="2"
+                                        maxlength="100"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+                                <div class="admission-field">
+
+                                    <label for="appEmail">
+                                        Email Address *
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="appEmail"
+                                        name="email"
+                                        placeholder="example@email.com"
+                                        autocomplete="email"
+                                        maxlength="150"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- PHONE -->
+                                <div class="admission-field">
+
+                                    <label for="appPhone">
+                                        Phone Number *
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="appPhone"
+                                        name="phone"
+                                        placeholder="Enter your phone number"
+                                        autocomplete="tel"
+                                        minlength="7"
+                                        maxlength="25"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- DATE OF BIRTH -->
+                                <div class="admission-field">
+
+                                    <label for="appBirthDate">
+                                        Date of Birth *
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="appBirthDate"
+                                        name="birthDate"
+                                        autocomplete="bday"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- COUNTRY -->
+                                <div class="admission-field">
+
+                                    <label for="appCountry">
+                                        Country of Residence *
+                                    </label>
+
+                                    <select
+                                        id="appCountry"
+                                        name="country"
+                                        autocomplete="country-name"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select your country
+                                        </option>
+
+                                        <option value="Afghanistan">
+                                            Afghanistan
+                                        </option>
+
+                                        <option value="Iran">
+                                            Iran
+                                        </option>
+
+                                        <option value="Pakistan">
+                                            Pakistan
+                                        </option>
+
+                                        <option value="India">
+                                            India
+                                        </option>
+
+                                        <option value="Turkey">
+                                            Turkey
+                                        </option>
+
+                                        <option value="Azerbaijan">
+                                            Azerbaijan
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- PREVIOUS EDUCATION -->
+                                <div class="admission-field">
+
+                                    <label for="appEducation">
+                                        Previous Education *
+                                    </label>
+
+                                    <select
+                                        id="appEducation"
+                                        name="education"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select your education level
+                                        </option>
+
+                                        <option value="High School">
+                                            High School Graduate
+                                        </option>
+
+                                        <option value="Diploma">
+                                            Diploma
+                                        </option>
+
+                                        <option value="Bachelor">
+                                            Bachelor's Degree
+                                        </option>
+
+                                        <option value="Master">
+                                            Master's Degree
+                                        </option>
+
+                                        <option value="Doctorate">
+                                            Doctorate
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- DESIRED PROGRAM -->
+                                <div class="admission-field">
+
+                                    <label for="appProgram">
+                                        Desired Program *
+                                    </label>
+
+                                    <select
+                                        id="appProgram"
+                                        name="program"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select your program
+                                        </option>
+
+                                        <option value="Computer Science">
+                                            Computer Science
+                                        </option>
+
+                                        <option value="Business Administration">
+                                            Business Administration
+                                        </option>
+
+                                        <option value="Civil Engineering">
+                                            Civil Engineering
+                                        </option>
+
+                                        <option value="Information Technology">
+                                            Information Technology
+                                        </option>
+
+                                        <option value="Economics">
+                                            Economics
+                                        </option>
+
+                                        <option value="Public Health">
+                                            Public Health
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- PREFERRED INTAKE -->
+                                <div class="admission-field">
+
+                                    <label for="appTerm">
+                                        Preferred Intake *
+                                    </label>
+
+                                    <select
+                                        id="appTerm"
+                                        name="term"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select an intake
+                                        </option>
+
+                                        <option value="Spring">
+                                            Spring Semester
+                                        </option>
+
+                                        <option value="Summer">
+                                            Summer Semester
+                                        </option>
+
+                                        <option value="Fall">
+                                            Fall Semester
+                                        </option>
+
+                                        <option value="Winter">
+                                            Winter Semester
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- ADDRESS -->
+                                <div class="admission-field admission-full">
+
+                                    <label for="appAddress">
+                                        Residential Address *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="appAddress"
+                                        name="address"
+                                        placeholder="Enter your city and residential address"
+                                        autocomplete="street-address"
+                                        minlength="5"
+                                        maxlength="250"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- PERSONAL STATEMENT -->
+                                <div class="admission-field admission-full">
+
+                                    <label for="appStatement">
+                                        Personal Statement *
+                                    </label>
+
+                                    <textarea
+                                        id="appStatement"
+                                        name="statement"
+                                        placeholder="Tell us about your academic goals, interests, and why you want to study at Bahar University."
+                                        minlength="30"
+                                        maxlength="2000"
+                                        rows="6"
+                                        required
+                                    ></textarea>
+
+                                    <small>
+                                        Write between 30 and 2000 characters.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CONSENT -->
+                            <label class="admission-consent" for="appConsent">
+
+                                <input
+                                    type="checkbox"
+                                    id="appConsent"
+                                    name="consent"
+                                    required
+                                >
+
+                                <span>
+                                    I confirm that the information provided
+                                    in this application is accurate and
+                                    complete to the best of my knowledge. *
+                                </span>
+
+                            </label>
+
+
+                            <!-- SUBMIT -->
+                            <button
+                                type="submit"
+                                id="admissionSubmit"
+                                class="admission-submit"
+                            >
+
+                                <span>Submit Application</span>
+
+                                <i class="bi bi-arrow-right"></i>
+
+                            </button>
+
+
+                            <!-- STATUS MESSAGE -->
+                            <p
+                                id="admissionMessage"
+                                class="admission-message"
+                                role="status"
+                                aria-live="polite"
+                            ></p>
+
+
+                            <!-- APPLICATION RECEIPT -->
+                            <div
+                                id="admissionReceipt"
+                                class="admission-receipt"
+                                role="status"
+                                aria-live="polite"
+                                hidden
+                            >
+
+                                <i class="bi bi-check-circle-fill"></i>
+
+                                <h4>Application Submitted!</h4>
+
+                                <p>
+                                    Your application has been saved in
+                                    this browser.
+                                </p>
+
+                                <p>
+                                    <strong>Reference Number:</strong>
+
+                                    <span id="admissionReference"></span>
+                                </p>
+
+                                <p>
+                                    Please keep your reference number
+                                    for your records.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    id="newAdmissionButton"
+                                    class="admission-new-button"
+                                >
+                                    Start a New Application
+                                </button>
+
+                            </div>
+
+
+                            <p class="admission-required-note">
+                                * Required fields. Please review all
+                                information before submitting.
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="admission-page-footer">
+
+        <p>
+            &copy; <span id="admissionYear"></span>
+            Bahar University. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- Admission form JavaScript -->
+    <script>
+        document.getElementById("admissionYear").textContent =
+            new Date().getFullYear();
+
+        // Prevent selecting a future date of birth.
+        const birthDateInput = document.getElementById("appBirthDate");
+
+        if (birthDateInput) {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const day = String(today.getDate()).padStart(2, "0");
+
+            birthDateInput.max = `${year}-${month}-${day}`;
+        }
+    </script>
+
+    <script src="admission.js"></script>
+
+</body>
+</html>
+```
