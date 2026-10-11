@@ -22,6 +22,128 @@
     <!-- CSS -->
     <link rel="stylesheet" href="index.css">
 
+
+<style>
+/* =========================================================
+   BAHAR UNIVERSITY - LOGIN ACCOUNT TYPE / STORAGE MESSAGE
+========================================================= */
+
+.login-field {
+    display: block;
+}
+
+#accountType {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid rgb(154, 152, 152);
+    outline: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+#accountType option {
+    background: #ffffff;
+    color: #142536;
+}
+
+html.dark-mode #accountType option {
+    background: #202020;
+    color: #ffffff;
+}
+
+.login-message,
+.login-storage-message {
+    min-height: 22px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.login-message.success,
+.login-storage-message.success {
+    color: #2f7d4a;
+}
+
+.login-message.error,
+.login-storage-message.error {
+    color: #b23a3a;
+}
+
+.login-btn.logged-in {
+    border-color: rgba(201, 154, 61, .55);
+}
+
+.login-btn.logged-in i {
+    color: #c99a3d;
+}
+
+.login-submit:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+html[dir="rtl"] .login-field .input-wrap {
+    direction: rtl;
+}
+
+html[dir="rtl"] #accountType {
+    text-align: right;
+}
+</style>
+
+
+<style id="bahar-sidebar-styles">
+.user-sidebar{position:fixed;top:0;right:0;width:285px;max-width:86vw;height:100vh;padding:24px 18px;background:#142536;color:#fff;z-index:2001;transform:translateX(105%);visibility:hidden;transition:transform .28s ease,visibility .28s;overflow-y:auto;box-shadow:-12px 0 35px rgba(0,0,0,.16)}
+.user-sidebar.open{transform:translateX(0);visibility:visible}
+.sidebar-backdrop{position:fixed;inset:0;background:rgba(7,18,28,.48);z-index:2000;display:none}
+.sidebar-backdrop.show{display:block}
+.sidebar-header,.sidebar-user{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.sidebar-header{justify-content:space-between;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.13)}
+.sidebar-header strong{font-family:'Playfair Display',serif;font-size:17px}
+.sidebar-header small,.sidebar-user small{display:block;margin-top:5px;color:#cbd5e1;font-size:12px;overflow-wrap:anywhere}
+#sidebarClose{background:transparent;color:#fff;border:0;font-size:28px;line-height:1;cursor:pointer}
+.sidebar-user{padding:15px 0}
+.sidebar-user>i{font-size:35px;color:#c99a3d}
+.sidebar-links{display:grid;gap:8px}
+.sidebar-links a,.sidebar-links button{display:flex;align-items:center;gap:12px;padding:13px 14px;border:0;border-radius:7px;background:transparent;color:#fff;text-decoration:none;font:inherit;text-align:left;cursor:pointer}
+.sidebar-links a:hover,.sidebar-links button:hover{background:#245c7c}
+.sidebar-links button{color:#f0c66e}
+html[dir="rtl"] .user-sidebar{right:auto;left:0;transform:translateX(-105%)}
+html[dir="rtl"] .user-sidebar.open{transform:translateX(0)}
+html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-align:right}
+@media(prefers-reduced-motion:reduce){.user-sidebar{transition:none}}
+</style>
+
+
+<style id="bahar-dashboard-styles">
+  .my-dashboard{position:fixed;inset:0;z-index:1500;display:none;overflow-y:auto;background:#f7f4ed;color:#142536;padding:105px 24px 50px;box-sizing:border-box}
+  .my-dashboard.active{display:block}
+  .dashboard-top{max-width:1180px;margin:0 auto 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .dashboard-kicker{font-size:12px;font-weight:800;letter-spacing:2px;color:#a77b25}
+  .dashboard-top h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,44px);margin:10px 0}
+  .dashboard-top p{margin:0;color:#64748b}
+  .dashboard-close{border:1px solid #d6dce2;background:#fff;color:#142536;border-radius:9px;padding:11px 15px;cursor:pointer;font:inherit;white-space:nowrap}
+  .dashboard-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .dashboard-card{background:#fff;border:1px solid rgba(20,37,54,.07);border-radius:15px;padding:26px;box-shadow:0 8px 24px rgba(20,37,54,.07);min-width:0}
+  .dashboard-card>i{font-size:29px;color:#c99a3d}
+  .dashboard-card h2{font-size:19px;margin:15px 0 8px}
+  .dashboard-card p{color:#64748b;line-height:1.7;margin:0;overflow-wrap:anywhere}
+  .dashboard-card a{display:inline-flex;margin-top:18px;color:#245c7c;text-decoration:none;font-weight:700}
+  .dashboard-welcome{max-width:1180px;margin:0 auto 24px;padding:22px 25px;background:#142536;color:#fff;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+  .dashboard-welcome strong{font-size:18px}.dashboard-welcome span{color:#d8e0e8;font-size:14px}
+  .dashboard-logout{border:0;border-radius:8px;background:#c99a3d;color:#142536;padding:10px 15px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}
+  html.dark-mode .my-dashboard{background:#171717;color:#f5f5f5}
+  html.dark-mode .dashboard-card,html.dark-mode .dashboard-close{background:#202020;color:#f5f5f5;border-color:#333}
+  html.dark-mode .dashboard-card p,html.dark-mode .dashboard-top p{color:#c0c0c0}
+  @media(max-width:800px){.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.my-dashboard{padding-top:90px}}
+  @media(max-width:540px){.dashboard-grid{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.dashboard-welcome{align-items:flex-start;flex-direction:column}.my-dashboard{padding:85px 16px 30px}}
+</style>
+
 </head>
 
 
@@ -317,7 +439,7 @@
                     </a>
 
 
-                    <a href="about.html" class="outline" data-en="Discover Bahar" data-fa="آشنایی با بهار">
+                    <a href="#about" class="outline" data-en="Discover Bahar" data-fa="آشنایی با بهار">
                         Discover Bahar
                     </a>
 
@@ -1865,6 +1987,44 @@
 
 
 
+
+<!-- DASHBOARD: overlays the original homepage without deleting any original sections -->
+<section class="my-dashboard" id="myDashboard" aria-label="My Dashboard" aria-hidden="true">
+  <div class="dashboard-top">
+    <div><div class="dashboard-kicker">BAHAR UNIVERSITY</div><h1 data-en="My Dashboard" data-fa="داشبورد من">My Dashboard</h1><p data-en="Your university account at a glance." data-fa="خلاصه‌ای از حساب دانشگاهی شما.">Your university account at a glance.</p></div>
+    <button type="button" class="dashboard-close" id="dashboardClose"><i class="bi bi-arrow-left"></i> <span data-en="Back to Website" data-fa="بازگشت به سایت">Back to Website</span></button>
+  </div>
+  <div class="dashboard-welcome">
+    <div><strong><span data-en="Welcome," data-fa="خوش آمدید،">Welcome,</span> <span id="dashboardName">University User</span></strong><br><span id="dashboardRoleText">Student account</span></div>
+    <button type="button" class="dashboard-logout" id="dashboardLogout"><i class="bi bi-box-arrow-right"></i> <span data-en="Log out" data-fa="خروج">Log out</span></button>
+  </div>
+  <div class="dashboard-grid">
+    <article class="dashboard-card"><i class="bi bi-book"></i><h2 data-en="My Courses" data-fa="درس‌های من">My Courses</h2><p data-en="Your courses and learning activities will appear here when connected to the university system." data-fa="پس از اتصال به سیستم دانشگاه، درس‌ها و فعالیت‌های آموزشی شما در این بخش نمایش داده می‌شود.">Your courses and learning activities will appear here when connected to the university system.</p><a href="#programs" class="dashboard-home-link" data-en="Explore programs →" data-fa="مشاهده برنامه‌ها ←">Explore programs →</a></article>
+    <article class="dashboard-card"><i class="bi bi-person-circle"></i><h2 data-en="My Profile" data-fa="پروفایل من">My Profile</h2><p id="dashboardEmail">Your account email will appear here.</p><a href="#contact" class="dashboard-home-link" data-en="Contact university →" data-fa="تماس با دانشگاه ←">Contact university →</a></article>
+    <article class="dashboard-card"><i class="bi bi-bell"></i><h2 data-en="Notifications" data-fa="اعلان‌ها">Notifications</h2><p data-en="University announcements and important updates will appear here." data-fa="اعلان‌های دانشگاه و خبرهای مهم در این بخش نمایش داده می‌شود.">University announcements and important updates will appear here.</p></article>
+  </div>
+</section>
+
+<!-- USER SIDEBAR: opens after successful login -->
+<aside class="user-sidebar" id="userSidebar" aria-label="User menu" aria-hidden="true">
+  <div class="sidebar-header">
+    <div><strong>Bahar University</strong><small id="sidebarRole">Student</small></div>
+    <button type="button" id="sidebarClose" aria-label="Close sidebar">&times;</button>
+  </div>
+  <div class="sidebar-user">
+    <i class="bi bi-person-circle" aria-hidden="true"></i>
+    <div><strong id="sidebarName">University User</strong><small id="sidebarEmail"></small></div>
+  </div>
+  <nav class="sidebar-links" aria-label="Account navigation">
+    <a href="#myDashboard" id="myDashboardLink" data-en="Dashboard" data-fa="داشبورد"><i class="bi bi-grid"></i><span>Dashboard</span></a>
+    <a href="#programs" data-en="My Courses" data-fa="درس‌های من"><i class="bi bi-book"></i><span>My Courses</span></a>
+    <a href="#contact" data-en="My Profile" data-fa="پروفایل من"><i class="bi bi-person"></i><span>My Profile</span></a>
+    <a href="#" id="sidebarSettings" data-en="Settings" data-fa="تنظیمات"><i class="bi bi-gear"></i><span>Settings</span></a>
+    <button type="button" id="sidebarLogout"><i class="bi bi-box-arrow-right"></i><span data-en="Logout" data-fa="خروج">Logout</span></button>
+  </nav>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
     <!-- =====================================================
      LOGIN MODAL
 ===================================================== -->
@@ -1915,6 +2075,31 @@
 
             <form id="loginForm">
 
+                 <!-- Account Type -->
+
+                <label class="login-field">
+
+                    <span data-en="Account Type" data-fa="نوع حساب">
+                        Account Type
+                    </span>
+
+                    <div class="input-wrap">
+
+                       
+
+                        <select id="accountType" required>
+                            <option value="">Select account type</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty / Professor</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="applicant">Applicant</option>
+                        </select>
+
+                    </div>
+
+                </label>
+
+
 
                 <!-- Email -->
 
@@ -1929,18 +2114,7 @@
 
                         <i class="bi bi-envelope"></i>
 
-<div class="login-field">
-                <label for="accountType">Account Type</label>
-                <select id="accountType" required>
-                    <option value="">Select account type</option>
-                    <option value="student">Student</option>
-                    <option value="faculty">Faculty / Professor</option>
-                    <option value="administrator">Administrator</option>
-                    <option value="applicant">Applicant</option>
-                </select>
-            </div>
-
-                                    <input type="email" id="loginEmail" placeholder="Enter your email"
+                        <input type="email" id="loginEmail" placeholder="Enter your email"
                             data-placeholder-en="Enter your email" data-placeholder-fa="ایمیل خود را وارد کنید"
                             required>
 
@@ -1949,7 +2123,7 @@
                 </label>
 
 
-
+               
                 <!-- Password -->
 
                 <label>
@@ -2039,200 +2213,81 @@
 
     </div>
 
-    <script src="index.js">
-        
-    </script>
-        
-<!---=========================================================
-   BAHAR_LOCAL_STORAGE_LOGIN
-   Stores only non-sensitive login state.
-   NEVER store the user's password in localStorage.
-========================================================= --->
-<script>
-(function () {
-    "use strict";
+    <script src="index.js"></script>
 
-    const STORAGE_KEY = "baharUser";
+<script id="bahar-dashboard-script">
+document.addEventListener('DOMContentLoaded', function () {
+  const dashboard = document.getElementById('myDashboard');
+  const dashboardLink = document.getElementById('myDashboardLink');
+  const dashboardClose = document.getElementById('dashboardClose');
+  const dashboardLogout = document.getElementById('dashboardLogout');
+  const sidebar = document.getElementById('userSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const roleLabels = {student:'Student', faculty:'Faculty / Professor', administrator:'Administrator', applicant:'Applicant'};
 
-    const loginForm = document.getElementById("loginForm");
-    const loginModal = document.getElementById("loginModal");
-    const loginBtn = document.getElementById("loginBtn");
-    const loginEmail = document.getElementById("loginEmail");
-    const loginPassword = document.getElementById("loginPassword");
-    const accountType = document.getElementById("accountType");
-    const rememberMe = document.getElementById("rememberMe");
-    const loginMessage = document.getElementById("loginMessage");
-    const storageMessage = document.getElementById("loginStorageMessage");
-
-    function getStoredUser() {
-        try {
-            return JSON.parse(localStorage.getItem(STORAGE_KEY));
-        } catch (error) {
-            return null;
-        }
+  function currentUser() {
+    try {
+      const raw = localStorage.getItem('baharUser') || sessionStorage.getItem('baharUser');
+      const user = raw ? JSON.parse(raw) : null;
+      return user && user.isLoggedIn ? user : null;
+    } catch (error) { return null; }
+  }
+  function closeAccountSidebar() {
+    sidebar?.classList.remove('open');
+    sidebar?.setAttribute('aria-hidden', 'true');
+    backdrop?.classList.remove('show');
+  }
+  function showDashboard() {
+    const user = currentUser();
+    if (!user) {
+      document.getElementById('loginModal')?.classList.add('show');
+      closeAccountSidebar();
+      return;
     }
-
-    function saveUser(email, role, remember) {
-        const user = {
-            email: email,
-            accountType: role,
-            isLoggedIn: true,
-            rememberMe: remember,
-            loggedInAt: new Date().toISOString()
-        };
-
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
-        return user;
-    }
-
-    function clearUser() {
-        localStorage.removeItem(STORAGE_KEY);
-    }
-
-    function roleName(role) {
-        const names = {
-            student: "Student",
-            faculty: "Faculty / Professor",
-            administrator: "Administrator",
-            applicant: "Applicant"
-        };
-        return names[role] || role;
-    }
-
-    function showStorageMessage(message, type) {
-        if (!storageMessage) return;
-        storageMessage.textContent = message;
-        storageMessage.className = "login-storage-message " + type;
-    }
-
-    function hideStorageMessage() {
-        if (!storageMessage) return;
-        storageMessage.textContent = "";
-        storageMessage.className = "login-storage-message";
-    }
-
-    function closeLoginModal() {
-        if (!loginModal) return;
-        loginModal.classList.remove("active", "show", "open");
-        document.body.classList.remove("modal-open");
-    }
-
-    function updateLoginButton() {
-        if (!loginBtn) return;
-
-        const user = getStoredUser();
-        const text = loginBtn.querySelector("span");
-
-        if (user && user.isLoggedIn) {
-            loginBtn.classList.add("logged-in");
-            if (text) {
-                text.textContent = "Account";
-            }
-            loginBtn.title = roleName(user.accountType) + " — " + user.email;
-        } else {
-            loginBtn.classList.remove("logged-in");
-            if (text) {
-                text.textContent = "Login";
-            }
-            loginBtn.title = "Login";
-        }
-    }
-
-    // Submit login form.
-    if (loginForm) {
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const email = loginEmail ? loginEmail.value.trim() : "";
-            const password = loginPassword ? loginPassword.value : "";
-            const role = accountType ? accountType.value : "";
-            const remember = rememberMe ? rememberMe.checked : false;
-
-            if (!email || !password || !role) {
-                showStorageMessage(
-                    "Please complete your email, password, and account type.",
-                    "error"
-                );
-                return;
-            }
-
-            // Front-end demo validation only.
-            // Real authentication must be handled by a secure backend.
-            if (!email.includes("@") || password.length < 6) {
-                showStorageMessage(
-                    "Please enter a valid email and a password of at least 6 characters.",
-                    "error"
-                );
-                return;
-            }
-
-            const user = saveUser(email, role, remember);
-
-            showStorageMessage(
-                "Login successful. " + roleName(user.accountType) +
-                " account saved in this browser.",
-                "success"
-            );
-
-            if (loginMessage) {
-                loginMessage.textContent =
-                    "Welcome back, " + roleName(user.accountType) + "!";
-            }
-
-            updateLoginButton();
-
-            // Give the success message a moment before closing.
-            setTimeout(function () {
-                closeLoginModal();
-            }, 900);
-        });
-    }
-
-    // Show saved account information when the page loads.
-    const storedUser = getStoredUser();
-
-    if (storedUser && storedUser.isLoggedIn) {
-        updateLoginButton();
-
-        // Pre-fill only the email and role; never the password.
-        if (loginEmail) loginEmail.value = storedUser.email || "";
-        if (accountType) accountType.value = storedUser.accountType || "";
-        if (rememberMe) rememberMe.checked = !!storedUser.rememberMe;
-    }
-
-    // Make logout available globally for a future dashboard/logout button.
-    window.baharLogout = function () {
-        clearUser();
-        updateLoginButton();
-
-        if (loginEmail) loginEmail.value = "";
-        if (loginPassword) loginPassword.value = "";
-        if (accountType) accountType.value = "";
-        if (rememberMe) rememberMe.checked = false;
-
-        showStorageMessage("You have been logged out.", "success");
-    };
-
-    // Make the stored user available to other pages/scripts.
-    window.getBaharUser = function () {
-        return getStoredUser();
-    };
-
-    // If another page wants to protect itself:
-    window.isBaharLoggedIn = function () {
-        const user = getStoredUser();
-        return !!(user && user.isLoggedIn);
-    };
-
-    // Console helper for testing.
-    console.log("Bahar University Local Storage User:", getStoredUser());
-})();
-
-
-
-
-
+    document.getElementById('dashboardName').textContent = user.name || user.email || 'University User';
+    document.getElementById('dashboardEmail').textContent = user.email || 'No email available';
+    document.getElementById('dashboardRoleText').textContent = roleLabels[user.accountType] || 'University account';
+    dashboard.classList.add('active');
+    dashboard.setAttribute('aria-hidden', 'false');
+    closeAccountSidebar();
+    document.body.style.overflow = 'hidden';
+  }
+  function hideDashboard() {
+    dashboard.classList.remove('active');
+    dashboard.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function logoutFromDashboard() {
+    localStorage.removeItem('baharUser');
+    sessionStorage.removeItem('baharUser');
+    hideDashboard();
+    closeAccountSidebar();
+    document.getElementById('loginForm')?.reset();
+    const loginButton = document.getElementById('loginBtn');
+    const label = loginButton?.querySelector('span');
+    if (label) label.textContent = document.documentElement.lang === 'fa' ? 'ورود' : 'Login';
+    loginButton?.classList.remove('logged-in');
+    if (typeof window.updateLoginButton === 'function') window.updateLoginButton();
+  }
+  dashboardLink?.addEventListener('click', function (event) {
+    event.preventDefault();
+    showDashboard();
+  });
+  dashboardClose?.addEventListener('click', hideDashboard);
+  dashboardLogout?.addEventListener('click', logoutFromDashboard);
+  document.querySelectorAll('.dashboard-home-link').forEach(link => {
+    link.addEventListener('click', function () { hideDashboard(); });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && dashboard.classList.contains('active')) hideDashboard();
+  });
+});
 </script>
+
+
+
+
+
 
 </body>
 

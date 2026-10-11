@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#142536">
+  <title>Application Confirmation | Bahar University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="application-confirmation.css">
+</head>
+<body class="confirmation-page">
+  <header class="ac-header">
+    <a class="ac-brand" href="index.html" aria-label="Bahar University home">
+      <span class="ac-brand-mark">B</span>
+      <span class="ac-brand-text"><strong>Bahar University</strong><small>KNOWLEDGE • EXCELLENCE • FUTURE</small></span>
+    </a>
+    <nav class="ac-header-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="admission.html">Admissions</a>
+      <a href="application-status.html">Check Application Status</a>
+    </nav>
+    <button class="ac-theme-button" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <i class="bi bi-moon-stars" id="themeToggleIcon"></i>
+    </button>
+  </header>
+
+  <main class="ac-main">
+    <div class="ac-breadcrumb"><a href="index.html">Home</a><i class="bi bi-chevron-right"></i><a href="admission.html">Admissions</a><i class="bi bi-chevron-right"></i><span>Confirmation</span></div>
+
+    <section class="ac-card" aria-labelledby="confirmationTitle">
+      <div class="ac-success-symbol" id="successSymbol"><i class="bi bi-check-lg"></i></div>
+      <p class="ac-eyebrow" id="statusEyebrow">APPLICATION RECEIVED</p>
+      <h1 id="confirmationTitle">Thank you for applying to <span>Bahar University</span></h1>
+      <p class="ac-intro" id="confirmationMessage">Your application has been saved on this device. Keep your reference number for future tracking.</p>
+
+      <div class="ac-status-pill" id="statusPill"><span class="ac-status-dot"></span><span id="statusText">Submitted</span></div>
+
+      <div class="ac-reference-panel">
+        <div>
+          <span class="ac-field-label">APPLICATION REFERENCE NUMBER</span>
+          <strong id="referenceNumber">Loading…</strong>
+          <small>Use this reference number to check your application status.</small>
+        </div>
+        <button class="ac-copy-button" id="copyReferenceButton" type="button">
+          <i class="bi bi-copy"></i><span>Copy reference</span>
+        </button>
+      </div>
+
+      <div class="ac-details-grid">
+        <div class="ac-detail">
+          <span class="ac-detail-icon"><i class="bi bi-calendar-check"></i></span>
+          <div><span class="ac-field-label">SUBMISSION DATE</span><strong id="submissionDate">—</strong></div>
+        </div>
+        <div class="ac-detail">
+          <span class="ac-detail-icon"><i class="bi bi-mortarboard"></i></span>
+          <div><span class="ac-field-label">PROGRAM</span><strong id="programName">Not provided</strong></div>
+        </div>
+        <div class="ac-detail">
+          <span class="ac-detail-icon"><i class="bi bi-person-vcard"></i></span>
+          <div><span class="ac-field-label">APPLICANT</span><strong id="applicantName">Not provided</strong></div>
+        </div>
+        <div class="ac-detail">
+          <span class="ac-detail-icon"><i class="bi bi-envelope"></i></span>
+          <div><span class="ac-field-label">EMAIL ADDRESS</span><strong id="applicantEmail">Not provided</strong></div>
+        </div>
+      </div>
+
+      <div class="ac-next-steps">
+        <h2><i class="bi bi-list-check"></i> What happens next?</h2>
+        <ol>
+          <li><span>1</span><div><strong>Save your reference number</strong><p>You will need it when checking your application status.</p></div></li>
+          <li><span>2</span><div><strong>Upload your supporting documents</strong><p>Make sure your identity document, transcript, and certificate are ready.</p></div></li>
+          <li><span>3</span><div><strong>Check for updates</strong><p>Visit the application status page for the latest status stored by this website.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="ac-alert" id="storageNotice" role="status" hidden>
+        <i class="bi bi-info-circle"></i>
+        <p>This page could not find a saved application in this browser. You can still use the links below, but the reference details may be unavailable until you return from the application form.</p>
+      </div>
+
+      <div class="ac-actions">
+        <a class="ac-button ac-button-primary" href="application-status.html"><i class="bi bi-search"></i> Check Application Status</a>
+        <a class="ac-button ac-button-secondary" href="document-upload.html"><i class="bi bi-cloud-arrow-up"></i> Upload Documents</a>
+        <a class="ac-text-link" href="index.html"><i class="bi bi-arrow-left"></i> Return to Home</a>
+      </div>
+      <p class="ac-local-note"><i class="bi bi-shield-check"></i> Demo note: application details are read from this browser’s localStorage. This is not a secure university admissions database.</p>
+    </section>
+  </main>
+
+  <footer class="ac-footer">
+    <span>© <span id="currentYear"></span> Bahar University</span>
+    <span>Knowledge • Excellence • Future</span>
+  </footer>
+
+  <div class="ac-toast" id="confirmationToast" role="status" aria-live="polite"></div>
+  <script src="application-confirmation.js"></script>
+</body>
+</html>

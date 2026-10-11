@@ -2550,3 +2550,118 @@ html[dir="rtl"] .life-card div {
         font-size: 39px;
     }
 }
+
+/* Login role selector and inline feedback */
+.login-field.role-field { margin: 0 0 16px; }
+.login-field.role-field label { display:block; margin-bottom:8px; font-size:13px; color:var(--ink, #142536); font-weight:600; }
+.login-field.role-field select { width:100%; min-height:46px; border:1px solid #e2e5e7; border-radius:10px; padding:0 13px; background:#fff; color:#263747; font:inherit; outline:none; }
+.login-field.role-field select:focus { border-color:#c99a3d; box-shadow:0 0 0 3px rgba(201,154,61,.12); }
+.login-message[data-kind="error"] { color:#b42318; }
+.login-message[data-kind="success"] { color:#20805d; }
+.login-storage-message { font-size:12px; margin-top:8px; }
+
+/* USER SIDEBAR */
+.user-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 85vw;
+    height: 100vh;
+    padding: 22px;
+    background: #142536;
+    color: white;
+    z-index: 2001;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    visibility: hidden;
+    overflow-y: auto;
+}
+
+.user-sidebar.open {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 2000;
+    display: none;
+}
+
+.sidebar-backdrop.show {
+    display: block;
+}
+
+.sidebar-header,
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.sidebar-header {
+    justify-content: space-between;
+}
+
+.sidebar-logo {
+    background: #c99a3d;
+    color: #142536;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 800;
+}
+
+.sidebar-header small,
+.sidebar-user small {
+    display: block;
+    color: #cbd5e1;
+    margin-top: 5px;
+    overflow-wrap: anywhere;
+}
+
+#sidebarClose {
+    color: white;
+    background: transparent;
+    border: 0;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.sidebar-user i {
+    font-size: 32px;
+    color: #c99a3d;
+}
+
+.sidebar-links {
+    display: grid;
+    gap: 10px;
+}
+
+.sidebar-links a,
+.sidebar-links button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    border: 0;
+    border-radius: 7px;
+    color: white;
+    background: transparent;
+    text-decoration: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sidebar-links a:hover,
+.sidebar-links button:hover {
+    background: #245c7c;
+}
+
+.sidebar-links button {
+    color: #f0c66e;
+}

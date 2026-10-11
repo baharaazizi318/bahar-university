@@ -1,612 +1,445 @@
 
-    
-     /*  JAVASCRIPT */
-
-
-    
-
-        /* =========================================================
-           LANGUAGE
-        ========================================================= */
-
-        const languageBtn =
-            document.getElementById("languageBtn");
-
-        const languageMenu =
-            document.getElementById("languageMenu");
-
-        const currentLanguage =
-            document.getElementById("currentLanguage");
-
-
-        /* Open / Close language menu */
-
-        languageBtn.addEventListener("click", function (event) {
-
-            event.stopPropagation();
-
-            languageMenu.classList.toggle("show");
-
-        });
-
-
-        /* Close when clicking outside */
-
-        document.addEventListener("click", function () {
-
-            languageMenu.classList.remove("show");
-
-        });
-
-
-        /* Language buttons */
-
-        document
-            .querySelectorAll("[data-lang]")
-            .forEach(function (button) {
-
-                button.addEventListener("click", function () {
-
-                    const lang = this.dataset.lang;
-
-                    setLanguage(lang);
-
-                    languageMenu.classList.remove("show");
-
-                });
-
-            });
-
-
-
-        function setLanguage(lang) {
-
-            const elements =
-                document.querySelectorAll("[data-en][data-fa]");
-
-
-            elements.forEach(function (element) {
-
-                element.textContent =
-                    lang === "fa"
-                        ? element.dataset.fa
-                        : element.dataset.en;
-
-            });
-
-
-            /* Change placeholders */
-
-            document
-                .querySelectorAll("[data-placeholder-en][data-placeholder-fa]")
-                .forEach(function (input) {
-
-                    input.placeholder =
-                        lang === "fa"
-                            ? input.dataset.placeholderFa
-                            : input.dataset.placeholderEn;
-
-                });
-
-
-            /* HTML direction */
-
-            document.documentElement.lang =
-                lang === "fa"
-                    ? "fa"
-                    : "en";
-
-
-            document.documentElement.dir =
-                lang === "fa"
-                    ? "rtl"
-                    : "ltr";
-
-
-            /* Current language */
-
-            currentLanguage.textContent =
-                lang === "fa"
-                    ? "دری"
-                    : "EN";
-
-
-            /* Save */
-
-            localStorage.setItem(
-                "baharLanguage",
-                lang
-            );
-
-        }
-
-
-
-        /* =========================================================
-           DARK MODE
-        ========================================================= */
-
-        const themeBtn =
-            document.getElementById("themeBtn");
-
-        const themeIcon =
-            document.getElementById("themeIcon");
-
-
-        function setTheme(theme) {
-
-            if (theme === "dark") {
-
-                document.documentElement.classList.add(
-                    "dark-mode"
-                );
-
-                themeIcon.className =
-                    "bi bi-sun";
-
-                themeBtn.title =
-                    "Light Mode";
-
-            } else {
-
-                document.documentElement.classList.remove(
-                    "dark-mode"
-                );
-
-                themeIcon.className =
-                    "bi bi-moon-stars";
-
-                themeBtn.title =
-                    "Dark Mode";
-
-            }
-
-
-            localStorage.setItem(
-                "baharTheme",
-                theme
-            );
-
-        }
-
-
-        themeBtn.addEventListener(
-            "click",
-            function () {
-
-                const isDark =
-                    document.documentElement.classList.contains(
-                        "dark-mode"
-                    );
-
-                setTheme(
-                    isDark
-                        ? "light"
-                        : "dark"
-                );
-
-            }
-        );
-
-
-
-        /* =========================================================
-           LOGIN MODAL
-        ========================================================= */
-
-        const loginBtn =
-            document.getElementById("loginBtn");
-
-        const loginModal =
-            document.getElementById("loginModal");
-
-        const loginClose =
-            document.getElementById("loginClose");
-
-        const loginOverlay =
-            document.getElementById("loginOverlay");
-
-
-        /* Open */
-
-        loginBtn.addEventListener(
-            "click",
-            function () {
-
-                loginModal.classList.add("show");
-
-                document.body.style.overflow = "hidden";
-
-            }
-        );
-
-
-        /* Close */
-
-        function closeLogin() {
-
-            loginModal.classList.remove("show");
-
-            document.body.style.overflow = "";
-
-        }
-
-
-        loginClose.addEventListener(
-            "click",
-            closeLogin
-        );
-
-
-        loginOverlay.addEventListener(
-            "click",
-            closeLogin
-        );
-
-
-        /* ESC */
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-                if (
-                    event.key === "Escape" &&
-                    loginModal.classList.contains("show")
-                ) {
-
-                    closeLogin();
-
-                }
-
-            }
-        );
-        
-        
-
-
-        /* =========================================================
-           SHOW / HIDE PASSWORD
-        ========================================================= */
-
-        const passwordToggle =
-            document.getElementById("passwordToggle");
-
-        const loginPassword =
-            document.getElementById("loginPassword");
-
-
-        passwordToggle.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    loginPassword.type === "password"
-                ) {
-
-                    loginPassword.type = "text";
-
-                    this.innerHTML =
-                        '<i class="bi bi-eye-slash"></i>';
-
-                } else {
-
-                    loginPassword.type = "password";
-
-                    this.innerHTML =
-                        '<i class="bi bi-eye"></i>';
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================================================
-           LOGIN FORM
-        ========================================================= */
-
-        const loginForm =
-            document.getElementById("loginForm");
-
-        const loginMessage =
-            document.getElementById("loginMessage");
-
-
-        loginForm.addEventListener(
-            "submit",
-            function (event) {
-
-                event.preventDefault();
-
-
-                const email =
-                    document.getElementById("loginEmail").value.trim();
-
-                const password =
-                    document.getElementById("loginPassword").value.trim();
-
-
-                if (
-                    email === "" ||
-                    password === ""
-                ) {
-
-                    loginMessage.textContent =
-                        document.documentElement.lang === "fa"
-                            ? "لطفاً ایمیل و رمز عبور را وارد کنید."
-                            : "Please enter your email and password.";
-
-                    return;
-
-                }
-
-
-                loginMessage.textContent =
-                    document.documentElement.lang === "fa"
-                        ? "ورود موفقانه انجام شد."
-                        : "Demo login successful.";
-
-
-                setTimeout(
-                    function () {
-
-                        closeLogin();
-
-                        loginForm.reset();
-
-                        loginMessage.textContent = "";
-
-                    },
-                    1200
-                );
-
-            }
-        );
-
-
-
-        /* =========================================================
-           MOBILE MENU
-        ========================================================= */
-
-        const hamburger =
-            document.getElementById("hamburger");
-
-        const mainNav =
-            document.getElementById("mainNav");
-
-
-        hamburger.addEventListener(
-            "click",
-            function () {
-
-                mainNav.classList.toggle("open");
-
-                const icon =
-                    hamburger.querySelector("i");
-
-
-                if (
-                    mainNav.classList.contains("open")
-                ) {
-
-                    icon.className =
-                        "bi bi-x-lg";
-
-                } else {
-
-                    icon.className =
-                        "bi bi-list";
-
-                }
-
-            }
-        );
-
-
-        /* Close mobile menu after clicking a link */
-
-        document
-            .querySelectorAll("#mainNav a")
-            .forEach(function (link) {
-
-                link.addEventListener(
-                    "click",
-                    function () {
-
-                        mainNav.classList.remove("open");
-
-                        hamburger
-                            .querySelector("i")
-                            .className = "bi bi-list";
-
-                    }
-                );
-
-            });
-
-
-
-        /* =========================================================
-           LOAD SAVED SETTINGS
-        ========================================================= */
-
-        const savedLanguage =
-            localStorage.getItem("baharLanguage")
-            || "en";
-
-
-        const savedTheme =
-            localStorage.getItem("baharTheme")
-            || "light";
-
-
-        setLanguage(savedLanguage);
-
-        setTheme(savedTheme);
-
-
-
-
-
-
+/* =========================================================
+   BAHAR UNIVERSITY - MAIN JAVASCRIPT
+   Language + Dark Mode + Login + Sidebar + Programs
+========================================================= */
+
+"use strict";
 
 /* =========================================================
-   BAHAR UNIVERSITY - PROGRAMS JS
-   Search + Faculty Filter + Load More
+   LANGUAGE
+========================================================= */
+
+const languageBtn = document.getElementById("languageBtn");
+const languageMenu = document.getElementById("languageMenu");
+const currentLanguage = document.getElementById("currentLanguage");
+
+function setLanguage(lang) {
+    document.querySelectorAll("[data-en][data-fa]").forEach(element => {
+        element.textContent =
+            lang === "fa" ? element.dataset.fa : element.dataset.en;
+    });
+
+    document.querySelectorAll(
+        "[data-placeholder-en][data-placeholder-fa]"
+    ).forEach(input => {
+        input.placeholder =
+            lang === "fa"
+                ? input.dataset.placeholderFa
+                : input.dataset.placeholderEn;
+    });
+
+    document.documentElement.lang = lang === "fa" ? "fa" : "en";
+    document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+
+    if (currentLanguage) {
+        currentLanguage.textContent = lang === "fa" ? "دری" : "EN";
+    }
+
+    localStorage.setItem("baharLanguage", lang);
+}
+
+languageBtn?.addEventListener("click", event => {
+    event.stopPropagation();
+    languageMenu?.classList.toggle("show");
+});
+
+document.addEventListener("click", () => {
+    languageMenu?.classList.remove("show");
+});
+
+document.querySelectorAll("[data-lang]").forEach(button => {
+    button.addEventListener("click", event => {
+        event.stopPropagation();
+        setLanguage(button.dataset.lang);
+        languageMenu?.classList.remove("show");
+    });
+});
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+const themeBtn = document.getElementById("themeBtn");
+const themeIcon = document.getElementById("themeIcon");
+
+function setTheme(theme) {
+    const dark = theme === "dark";
+
+    document.documentElement.classList.toggle("dark-mode", dark);
+
+    if (themeIcon) {
+        themeIcon.className = dark
+            ? "bi bi-sun"
+            : "bi bi-moon-stars";
+    }
+
+    if (themeBtn) {
+        themeBtn.title = dark ? "Light Mode" : "Dark Mode";
+    }
+
+    localStorage.setItem("baharTheme", theme);
+}
+
+themeBtn?.addEventListener("click", () => {
+    const isDark =
+        document.documentElement.classList.contains("dark-mode");
+
+    setTheme(isDark ? "light" : "dark");
+});
+
+/* =========================================================
+   LOGIN MODAL
+========================================================= */
+
+const loginBtn = document.getElementById("loginBtn");
+const loginModal = document.getElementById("loginModal");
+const loginClose = document.getElementById("loginClose");
+const loginOverlay = document.getElementById("loginOverlay");
+
+function openLogin() {
+    if (!loginModal) return;
+
+    loginModal.classList.add("show");
+    document.body.style.overflow = "hidden";
+}
+
+function closeLogin() {
+    if (!loginModal) return;
+
+    loginModal.classList.remove("show", "active", "open");
+    document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
+}
+
+loginClose?.addEventListener("click", closeLogin);
+loginOverlay?.addEventListener("click", closeLogin);
+
+/* =========================================================
+   SHOW / HIDE PASSWORD
+========================================================= */
+
+const passwordToggle = document.getElementById("passwordToggle");
+const loginPassword = document.getElementById("loginPassword");
+
+passwordToggle?.addEventListener("click", function () {
+    if (!loginPassword) return;
+
+    const showPassword = loginPassword.type === "password";
+
+    loginPassword.type = showPassword ? "text" : "password";
+
+    this.innerHTML = showPassword
+        ? '<i class="bi bi-eye-slash"></i>'
+        : '<i class="bi bi-eye"></i>';
+});
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const hamburger = document.getElementById("hamburger");
+const mainNav = document.getElementById("mainNav");
+
+hamburger?.addEventListener("click", () => {
+    if (!mainNav) return;
+
+    mainNav.classList.toggle("open");
+
+    const icon = hamburger.querySelector("i");
+
+    if (icon) {
+        icon.className = mainNav.classList.contains("open")
+            ? "bi bi-x-lg"
+            : "bi bi-list";
+    }
+});
+
+document.querySelectorAll("#mainNav a").forEach(link => {
+    link.addEventListener("click", () => {
+        mainNav?.classList.remove("open");
+
+        const icon = hamburger?.querySelector("i");
+        if (icon) icon.className = "bi bi-list";
+    });
+});
+
+/* =========================================================
+   PROGRAMS: SEARCH + FILTER + LOAD MORE
 ========================================================= */
 
 const searchInput = document.getElementById("programSearch");
 const filterButtons = document.querySelectorAll(".filter-btn");
-const cards = Array.from(document.querySelectorAll(".program-card"));
+const programCards = Array.from(document.querySelectorAll(".program-card"));
 const noResults = document.getElementById("noResults");
 const loadMoreButton = document.getElementById("loadMore");
 
 let activeFilter = "all";
 let visibleLimit = 6;
 
-
-/* =========================================
-   Filter Programs
-========================================= */
-
 function updatePrograms() {
+    if (!programCards.length) return;
 
-    const searchValue = searchInput.value
+    const searchValue = (searchInput?.value || "")
         .toLowerCase()
         .trim();
 
-    let matchedCards = [];
+    const matchedCards = programCards.filter(card => {
+        const category = card.dataset.category || "";
+        const searchableText = (
+            card.dataset.search || card.textContent || ""
+        ).toLowerCase();
 
-    cards.forEach(card => {
-
-        const category = card.dataset.category;
-
-        const searchableText =
-            card.dataset.search.toLowerCase();
-
-        const matchesSearch =
-            searchableText.includes(searchValue);
-
-        const matchesFilter =
-            activeFilter === "all" ||
-            category === activeFilter;
-
-
-        if (matchesSearch && matchesFilter) {
-            matchedCards.push(card);
-        }
-
-        card.classList.add("hidden");
-
+        return (
+            searchableText.includes(searchValue) &&
+            (activeFilter === "all" || category === activeFilter)
+        );
     });
 
+    programCards.forEach(card => card.classList.add("hidden"));
 
     matchedCards.forEach((card, index) => {
-
         if (index < visibleLimit) {
             card.classList.remove("hidden");
         }
-
     });
 
+    if (noResults) {
+        noResults.classList.toggle("show", matchedCards.length === 0);
+    }
 
-    /* No results message */
-
-    noResults.classList.toggle(
-        "show",
-        matchedCards.length === 0
-    );
-
-
-    /* Load More button */
-
-    loadMoreButton.style.display =
-        matchedCards.length > visibleLimit
-            ? "inline-flex"
-            : "none";
+    if (loadMoreButton) {
+        loadMoreButton.style.display =
+            matchedCards.length > visibleLimit ? "inline-flex" : "none";
+    }
 }
 
-
-/* =========================================
-   Search
-========================================= */
-
-searchInput.addEventListener("input", () => {
-
+searchInput?.addEventListener("input", () => {
     visibleLimit = 6;
-
     updatePrograms();
-
 });
 
-
-/* =========================================
-   Faculty Filter
-========================================= */
-
 filterButtons.forEach(button => {
-
     button.addEventListener("click", () => {
-
-        /* Remove active from all buttons */
-
-        filterButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-
-        /* Add active to clicked button */
-
+        filterButtons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
 
-
-        /* Get selected category */
-
-        activeFilter =
-            button.dataset.filter;
-
-
+        activeFilter = button.dataset.filter || "all";
         visibleLimit = 6;
 
         updatePrograms();
+    });
+});
 
+loadMoreButton?.addEventListener("click", () => {
+    visibleLimit += 6;
+    updatePrograms();
+});
+
+/* =========================================================
+   LOGIN + LOCAL STORAGE + SIDEBAR
+========================================================= */
+
+(() => {
+    const KEY = "baharUser";
+
+    const form = document.getElementById("loginForm");
+    const message = document.getElementById("loginMessage");
+    const emailInput = document.getElementById("loginEmail");
+    const passwordInput = document.getElementById("loginPassword");
+    const roleInput = document.getElementById("accountType");
+    const remember = document.getElementById("rememberMe");
+
+    const sidebar = document.getElementById("userSidebar");
+    const backdrop = document.getElementById("sidebarBackdrop");
+    const sidebarClose = document.getElementById("sidebarClose");
+    const sidebarLogout = document.getElementById("sidebarLogout");
+
+    const roleNames = {
+        student: "Student",
+        faculty: "Faculty / Professor",
+        administrator: "Administrator",
+        applicant: "Applicant"
+    };
+
+    function getUser() {
+        try {
+            return JSON.parse(
+                localStorage.getItem(KEY) ||
+                sessionStorage.getItem(KEY) ||
+                "null"
+            );
+        } catch {
+            return null;
+        }
+    }
+
+    function updateLoginButton() {
+        const user = getUser();
+        const label = loginBtn?.querySelector("span");
+
+        if (label) {
+            label.textContent = user?.isLoggedIn ? "My Dashboard" : "Login";
+        }
+
+        if (loginBtn) {
+            loginBtn.title = user?.isLoggedIn ? "Open your account" : "Login";
+        }
+    }
+
+    function openSidebar() {
+        const user = getUser();
+
+        if (!user?.isLoggedIn || !sidebar || !backdrop) return;
+
+        const nameElement = document.getElementById("sidebarName");
+        const emailElement = document.getElementById("sidebarEmail");
+        const roleElement = document.getElementById("sidebarRole");
+
+        if (nameElement) nameElement.textContent = user.name || "University User";
+        if (emailElement) emailElement.textContent = user.email || "";
+        if (roleElement) {
+            roleElement.textContent = roleNames[user.accountType] || "User";
+        }
+
+        sidebar.classList.add("open");
+        backdrop.classList.add("show");
+    }
+
+    function closeSidebar() {
+        sidebar?.classList.remove("open");
+        backdrop?.classList.remove("show");
+    }
+
+    /* Login button: open sidebar if already logged in */
+    loginBtn?.addEventListener("click", event => {
+        if (getUser()?.isLoggedIn) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            openSidebar();
+        } else {
+            openLogin();
+        }
+    }, true);
+
+    /* Submit login form */
+    form?.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const email = (emailInput?.value || "").trim().toLowerCase();
+        const password = passwordInput?.value || "";
+        const role = roleInput?.value || "";
+
+        if (!email || !password || !role) {
+            if (message) message.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        if (
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+            password.length < 6
+        ) {
+            if (message) {
+                message.textContent =
+                    "Enter a valid email and a password of at least 6 characters.";
+            }
+            return;
+        }
+
+        const name = email.split("@")[0]
+            .replace(/[._-]+/g, " ")
+            .replace(/\b\w/g, letter => letter.toUpperCase());
+
+        const user = {
+            name,
+            email,
+            accountType: role,
+            isLoggedIn: true,
+            rememberMe: !!remember?.checked,
+            loggedInAt: new Date().toISOString()
+        };
+
+        try {
+            localStorage.removeItem(KEY);
+            sessionStorage.removeItem(KEY);
+
+            const storage = remember?.checked ? localStorage : sessionStorage;
+            storage.setItem(KEY, JSON.stringify(user));
+
+            if (message) {
+                message.textContent = "Login successful!";
+                message.dataset.kind = "success";
+            }
+
+            if (passwordInput) passwordInput.value = "";
+
+            closeLogin();
+            updateLoginButton();
+            openSidebar();
+
+        } catch (error) {
+            console.error("Login storage error:", error);
+
+            if (message) {
+                message.textContent =
+                    "Could not save login information. Check browser storage.";
+            }
+        }
     });
 
-});
+    /* Sidebar close controls */
+    sidebarClose?.addEventListener("click", closeSidebar);
+    backdrop?.addEventListener("click", closeSidebar);
 
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeSidebar();
+            closeLogin();
+        }
+    });
 
-/* =========================================
-   Load More
-========================================= */
+    /* Logout */
+    sidebarLogout?.addEventListener("click", () => {
+        localStorage.removeItem(KEY);
+        sessionStorage.removeItem(KEY);
 
-loadMoreButton.addEventListener("click", () => {
+        closeSidebar();
+        closeLogin();
+        updateLoginButton();
 
-    visibleLimit += 6;
+        form?.reset();
 
-    updatePrograms();
+        if (message) message.textContent = "";
+    });
 
-});
+    /* Restore saved login */
+    const savedUser = getUser();
 
+    if (savedUser?.isLoggedIn) {
+        if (emailInput) emailInput.value = savedUser.email || "";
+        if (roleInput) roleInput.value = savedUser.accountType || "";
+        if (remember) remember.checked = !!savedUser.rememberMe;
+    }
 
-/* =========================================
-   First Load
-========================================= */
+    window.getBaharUser = getUser;
+    window.isBaharLoggedIn = () => !!getUser()?.isLoggedIn;
+    window.baharLogout = () => {
+        localStorage.removeItem(KEY);
+        sessionStorage.removeItem(KEY);
+        closeSidebar();
+        updateLoginButton();
+    };
+
+    updateLoginButton();
+})();
+
+/* =========================================================
+   RESTORE SAVED SETTINGS
+========================================================= */
+
+setLanguage(localStorage.getItem("baharLanguage") || "en");
+setTheme(localStorage.getItem("baharTheme") || "light");
 
 updatePrograms();
-   
 
 
-
-
-
-
-
-
-
-
-
-
-    

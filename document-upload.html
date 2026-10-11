@@ -1,46 +1,379 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document Upload | Bahar University</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="index.css">
-<link rel="stylesheet" href="document-upload.css">
-</head>
-<body class="du-page">
-<div class="du-mini"><div class="du-shell du-mini-inner"><div><a href="index.html">Student Portal</a><a href="index.html#academics">Academics</a><a href="index.html#contact">Contact</a></div><span><i class="bi bi-mortarboard-fill"></i> Admissions Portal</span></div></div>
-<header class="du-header"><div class="du-shell du-nav">
-<a class="du-brand" href="index.html"><span class="du-crest">B</span><span class="du-brand-copy">Bahar University<small>Knowledge • Excellence • Future</small></span></a>
-<nav><a href="index.html">Home</a><a href="admission.html">Admissions</a><a href="application-status.html">Application Status</a></nav>
-<a class="du-back" href="admission.html"><i class="bi bi-arrow-left"></i> Back to Application</a>
-</div></header>
-<section class="du-hero"><div class="du-shell du-hero-inner"><div><span class="du-eyebrow"><i class="bi bi-folder2-open"></i> APPLICANT SERVICES</span><h1>Document <em>Upload</em></h1><p>Submit the documents needed for your application. Return later to add or replace files on this device.</p><div class="du-points"><span><i class="bi bi-shield-check"></i> Guided submission</span><span><i class="bi bi-file-earmark-check"></i> Document checklist</span></div></div><div class="du-art" aria-hidden="true"><i class="bi bi-cloud-arrow-up"></i><span><i class="bi bi-file-earmark-pdf"></i></span><b>✦</b></div></div></section>
-<main class="du-shell du-layout"><div class="du-main">
-<div class="du-heading"><div><span class="du-eyebrow">STEP 02 OF ADMISSIONS</span><h2>Your supporting documents</h2><p>Enter your application details, then add each available document.</p></div><span class="du-local"><i class="bi bi-lock"></i> Local demo storage</span></div>
-<div class="du-notice"><i class="bi bi-info-circle-fill"></i><div><strong>Before you upload</strong><p>Accepted formats: PDF, JPG and PNG. Each file must be 2 MB or smaller. This demo stores files in this browser only; it does not send them to the university.</p></div></div>
-<form id="documentUploadForm" novalidate>
-<section class="du-card"><div class="du-card-title"><span class="du-icon"><i class="bi bi-person-vcard"></i></span><div><h3>Application details</h3><p>Use the reference number received after applying.</p></div></div>
-<div class="du-fields"><label class="du-field"><span>Application reference <b>*</b></span><input id="applicationReference" type="text" placeholder="e.g. BAHAR-MV21CCB8-UYLCK" required autocomplete="off"><small>Required to group your uploaded documents.</small></label><label class="du-field"><span>Email address <b>*</b></span><input id="applicantEmail" type="email" placeholder="you@example.com" required autocomplete="email"><small>Use the email address on your application.</small></label></div><div id="applicationMatch" class="du-match" hidden></div></section>
-<section class="du-card"><div class="du-card-title"><span class="du-icon"><i class="bi bi-files"></i></span><div><h3>Required documents</h3><p>Select a file for each category you are ready to submit.</p></div></div>
-<div class="du-doc-list">
-<article class="du-doc" data-document="identity"><span class="du-doc-icon"><i class="bi bi-person-badge"></i></span><div class="du-doc-info"><h4>Passport or national ID <small class="required">Required</small></h4><p>A clear, readable copy of your identity document.</p><span class="du-status" id="status-identity">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-identity" type="file" data-kind="identity" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-<article class="du-doc" data-document="transcript"><span class="du-doc-icon"><i class="bi bi-journal-text"></i></span><div class="du-doc-info"><h4>Academic transcripts <small class="required">Required</small></h4><p>Recent school or university grades and transcripts.</p><span class="du-status" id="status-transcript">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-transcript" type="file" data-kind="transcript" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-<article class="du-doc" data-document="certificate"><span class="du-doc-icon"><i class="bi bi-award"></i></span><div class="du-doc-info"><h4>Graduation certificate <small class="required">Required</small></h4><p>Your latest diploma or graduation certificate.</p><span class="du-status" id="status-certificate">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-certificate" type="file" data-kind="certificate" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-<article class="du-doc" data-document="english"><span class="du-doc-icon"><i class="bi bi-translate"></i></span><div class="du-doc-info"><h4>English proficiency <small class="optional">If available</small></h4><p>IELTS, TOEFL or another accepted language certificate.</p><span class="du-status" id="status-english">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-english" type="file" data-kind="english" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-<article class="du-doc" data-document="cv"><span class="du-doc-icon"><i class="bi bi-file-person"></i></span><div class="du-doc-info"><h4>CV or résumé <small class="optional">If available</small></h4><p>Include your education, experience and achievements.</p><span class="du-status" id="status-cv">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-cv" type="file" data-kind="cv" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-<article class="du-doc" data-document="other"><span class="du-doc-icon"><i class="bi bi-paperclip"></i></span><div class="du-doc-info"><h4>Additional document <small class="optional">Optional</small></h4><p>Any other supporting document relevant to your application.</p><span class="du-status" id="status-other">No file selected</span></div><label class="du-upload"><i class="bi bi-cloud-arrow-up"></i> Choose file<input id="file-other" type="file" data-kind="other" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"></label></article>
-</div><div class="du-upload-footer"><span><i class="bi bi-check2-circle"></i> <b id="uploadedCount">0</b> of 6 categories selected</span><button type="button" id="clearFilesButton">Clear selected files</button></div></section>
-<div class="du-consent"><input type="checkbox" id="confirmAccuracy"><label for="confirmAccuracy">I confirm that these documents are accurate and belong to me.</label></div>
-<p class="du-message" id="formMessage" role="status" aria-live="polite"></p><div class="du-actions"><button class="du-submit" type="submit"><i class="bi bi-cloud-check"></i> Save documents <i class="bi bi-arrow-right"></i></button><a class="du-secondary" href="application-status.html">Check application status</a></div>
-</form>
-<section class="du-card du-saved" id="savedDocumentsPanel" hidden><div class="du-card-title"><span class="du-icon"><i class="bi bi-folder-check"></i></span><div><h3>Saved documents on this device</h3><p>Latest saved list for this reference.</p></div></div><div id="savedDocumentsList" class="du-saved-list"></div><p class="du-storage-note"><i class="bi bi-exclamation-triangle"></i> These are browser-local demo records, not an official university submission.</p></section>
-</div>
-<aside class="du-sidebar"><section class="du-side-card"><span class="du-icon"><i class="bi bi-list-check"></i></span><h3>Submission checklist</h3><p>Complete these steps before saving.</p><ul class="du-checklist"><li id="check-reference"><i class="bi bi-circle"></i> Application reference entered</li><li id="check-email"><i class="bi bi-circle"></i> Email address entered</li><li id="check-identity"><i class="bi bi-circle"></i> Passport or national ID selected</li><li id="check-transcript"><i class="bi bi-circle"></i> Academic transcript selected</li><li id="check-certificate"><i class="bi bi-circle"></i> Graduation certificate selected</li><li id="check-confirm"><i class="bi bi-circle"></i> Accuracy confirmed</li></ul></section>
-<section class="du-side-card du-help"><span class="du-icon"><i class="bi bi-headset"></i></span><h3>Need assistance?</h3><p>If a file is rejected, check that it is a PDF, JPG or PNG and no larger than 2 MB.</p><a href="index.html#contact">Contact Admissions <i class="bi bi-arrow-up-right"></i></a></section>
-<div class="du-security"><i class="bi bi-shield-lock"></i><p><b>Privacy reminder</b><br>For a real website, store documents on a protected server with access controls. Browser storage is not suitable for sensitive official records.</p></div></aside></main>
-<footer class="du-footer"><div class="du-shell du-footer-inner"><a class="du-brand" href="index.html"><span class="du-crest">B</span><span class="du-brand-copy">Bahar University<small>Knowledge • Excellence • Future</small></span></a><p>© 2026 Bahar University. All rights reserved.</p><a href="index.html">University Home <i class="bi bi-arrow-up-right"></i></a></div></footer>
-<script src="document-upload.js"></script>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Upload | Bahar University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="document-upload.css" />
+  </head>
+  <body class="du-page">
+    <div class="du-mini">
+      <div class="du-shell du-mini-inner">
+        <div>
+          <a href="index.html">Student Portal</a
+          ><a href="index.html#academics">Academics</a
+          ><a href="index.html#contact">Contact</a>
+        </div>
+        <span><i class="bi bi-mortarboard-fill"></i> Admissions Portal</span>
+      </div>
+    </div>
+    <header class="du-header">
+      <div class="du-shell du-nav">
+        <a class="du-brand" href="index.html"
+          ><span class="du-crest">B</span
+          ><span class="du-brand-copy"
+            >Bahar University<small
+              >Knowledge • Excellence • Future</small
+            ></span
+          ></a
+        >
+        <nav>
+          <a href="index.html">Home</a><a href="admission.html">Admissions</a
+          ><a href="application-status.html">Application Status</a>
+        </nav>
+        <a class="du-back" href="admission.html"
+          ><i class="bi bi-arrow-left"></i> Back to Application</a
+        >
+      </div>
+    </header>
+    <section class="du-hero">
+      <div class="du-shell du-hero-inner">
+        <div>
+          <span class="du-eyebrow"
+            ><i class="bi bi-folder2-open"></i> APPLICANT SERVICES</span
+          >
+          <h1>Document <em>Upload</em></h1>
+          <p>
+            Submit the documents needed for your application. Return later to
+            add or replace files on this device.
+          </p>
+          <div class="du-points">
+            <span><i class="bi bi-shield-check"></i> Guided submission</span
+            ><span
+              ><i class="bi bi-file-earmark-check"></i> Document checklist</span
+            >
+          </div>
+        </div>
+        <div class="du-art" aria-hidden="true">
+          <i class="bi bi-cloud-arrow-up"></i
+          ><span><i class="bi bi-file-earmark-pdf"></i></span><b>✦</b>
+        </div>
+      </div>
+    </section>
+    <main class="du-shell du-layout">
+      <div class="du-main">
+        <div class="du-heading">
+          <div>
+            <span class="du-eyebrow">STEP 02 OF ADMISSIONS</span>
+            <h2>Your supporting documents</h2>
+            <p>
+              Enter your application details, then add each available document.
+            </p>
+          </div>
+          <span class="du-local"
+            ><i class="bi bi-lock"></i> Local demo storage</span
+          >
+        </div>
+        <div class="du-notice">
+          <i class="bi bi-info-circle-fill"></i>
+          <div>
+            <strong>Before you upload</strong>
+            <p>
+              Accepted formats: PDF, JPG and PNG. Each file must be 2 MB or
+              smaller. This demo stores files in this browser only; it does not
+              send them to the university.
+            </p>
+          </div>
+        </div>
+        <form id="documentUploadForm" novalidate>
+          <section class="du-card">
+            <div class="du-card-title">
+              <span class="du-icon"><i class="bi bi-person-vcard"></i></span>
+              <div>
+                <h3>Application details</h3>
+                <p>Use the reference number received after applying.</p>
+              </div>
+            </div>
+            <div class="du-fields">
+              <label class="du-field"
+                ><span>Application reference <b>*</b></span
+                ><input
+                  id="applicationReference"
+                  type="text"
+                  placeholder="e.g. BAHAR-MV21CCB8-UYLCK"
+                  required
+                  autocomplete="off"
+                /><small
+                  >Required to group your uploaded documents.</small
+                ></label
+              ><label class="du-field"
+                ><span>Email address <b>*</b></span
+                ><input
+                  id="applicantEmail"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                  autocomplete="email"
+                /><small
+                  >Use the email address on your application.</small
+                ></label
+              >
+            </div>
+            <div id="applicationMatch" class="du-match" hidden></div>
+          </section>
+          <section class="du-card">
+            <div class="du-card-title">
+              <span class="du-icon"><i class="bi bi-files"></i></span>
+              <div>
+                <h3>Required documents</h3>
+                <p>Select a file for each category you are ready to submit.</p>
+              </div>
+            </div>
+            <div class="du-doc-list">
+              <article class="du-doc" data-document="identity">
+                <span class="du-doc-icon"
+                  ><i class="bi bi-person-badge"></i
+                ></span>
+                <div class="du-doc-info">
+                  <h4>
+                    Passport or national ID
+                    <small class="required">Required</small>
+                  </h4>
+                  <p>A clear, readable copy of your identity document.</p>
+                  <span class="du-status" id="status-identity"
+                    >No file selected</span
+                  >
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-identity"
+                    type="file"
+                    data-kind="identity"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+              <article class="du-doc" data-document="transcript">
+                <span class="du-doc-icon"
+                  ><i class="bi bi-journal-text"></i
+                ></span>
+                <div class="du-doc-info">
+                  <h4>
+                    Academic transcripts
+                    <small class="required">Required</small>
+                  </h4>
+                  <p>Recent school or university grades and transcripts.</p>
+                  <span class="du-status" id="status-transcript"
+                    >No file selected</span
+                  >
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-transcript"
+                    type="file"
+                    data-kind="transcript"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+              <article class="du-doc" data-document="certificate">
+                <span class="du-doc-icon"><i class="bi bi-award"></i></span>
+                <div class="du-doc-info">
+                  <h4>
+                    Graduation certificate
+                    <small class="required">Required</small>
+                  </h4>
+                  <p>Your latest diploma or graduation certificate.</p>
+                  <span class="du-status" id="status-certificate"
+                    >No file selected</span
+                  >
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-certificate"
+                    type="file"
+                    data-kind="certificate"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+              <article class="du-doc" data-document="english">
+                <span class="du-doc-icon"><i class="bi bi-translate"></i></span>
+                <div class="du-doc-info">
+                  <h4>
+                    English proficiency
+                    <small class="optional">If available</small>
+                  </h4>
+                  <p>IELTS, TOEFL or another accepted language certificate.</p>
+                  <span class="du-status" id="status-english"
+                    >No file selected</span
+                  >
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-english"
+                    type="file"
+                    data-kind="english"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+              <article class="du-doc" data-document="cv">
+                <span class="du-doc-icon"
+                  ><i class="bi bi-file-person"></i
+                ></span>
+                <div class="du-doc-info">
+                  <h4>
+                    CV or résumé <small class="optional">If available</small>
+                  </h4>
+                  <p>Include your education, experience and achievements.</p>
+                  <span class="du-status" id="status-cv">No file selected</span>
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-cv"
+                    type="file"
+                    data-kind="cv"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+              <article class="du-doc" data-document="other">
+                <span class="du-doc-icon"><i class="bi bi-paperclip"></i></span>
+                <div class="du-doc-info">
+                  <h4>
+                    Additional document <small class="optional">Optional</small>
+                  </h4>
+                  <p>
+                    Any other supporting document relevant to your application.
+                  </p>
+                  <span class="du-status" id="status-other"
+                    >No file selected</span
+                  >
+                </div>
+                <label class="du-upload"
+                  ><i class="bi bi-cloud-arrow-up"></i> Choose file<input
+                    id="file-other"
+                    type="file"
+                    data-kind="other"
+                    accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                /></label>
+              </article>
+            </div>
+            <div class="du-upload-footer">
+              <span
+                ><i class="bi bi-check2-circle"></i>
+                <b id="uploadedCount">0</b> of 6 categories selected</span
+              ><button type="button" id="clearFilesButton">
+                Clear selected files
+              </button>
+            </div>
+          </section>
+          <div class="du-consent">
+            <input type="checkbox" id="confirmAccuracy" /><label
+              for="confirmAccuracy"
+              >I confirm that these documents are accurate and belong to
+              me.</label
+            >
+          </div>
+          <p
+            class="du-message"
+            id="formMessage"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="du-actions">
+            <button class="du-submit" type="submit">
+              <i class="bi bi-cloud-check"></i><a href="application-confirmation (2).html">Save documents</a> 
+              <i class="bi bi-arrow-right"></i></button
+            ><a class="du-secondary" href="application-status.html"
+              >Check application status</a
+            >
+          </div>
+        </form>
+        <section class="du-card du-saved" id="savedDocumentsPanel" hidden>
+          <div class="du-card-title">
+            <span class="du-icon"><i class="bi bi-folder-check"></i></span>
+            <div>
+              <h3>Saved documents on this device</h3>
+              <p>Latest saved list for this reference.</p>
+            </div>
+          </div>
+          <div id="savedDocumentsList" class="du-saved-list"></div>
+          <p class="du-storage-note">
+            <i class="bi bi-exclamation-triangle"></i> These are browser-local
+            demo records, not an official university submission.
+          </p>
+        </section>
+      </div>
+      <aside class="du-sidebar">
+        <section class="du-side-card">
+          <span class="du-icon"><i class="bi bi-list-check"></i></span>
+          <h3>Submission checklist</h3>
+          <p>Complete these steps before saving.</p>
+          <ul class="du-checklist">
+            <li id="check-reference">
+              <i class="bi bi-circle"></i> Application reference entered
+            </li>
+            <li id="check-email">
+              <i class="bi bi-circle"></i> Email address entered
+            </li>
+            <li id="check-identity">
+              <i class="bi bi-circle"></i> Passport or national ID selected
+            </li>
+            <li id="check-transcript">
+              <i class="bi bi-circle"></i> Academic transcript selected
+            </li>
+            <li id="check-certificate">
+              <i class="bi bi-circle"></i> Graduation certificate selected
+            </li>
+            <li id="check-confirm">
+              <i class="bi bi-circle"></i> Accuracy confirmed
+            </li>
+          </ul>
+        </section>
+        <section class="du-side-card du-help">
+          <span class="du-icon"><i class="bi bi-headset"></i></span>
+          <h3>Need assistance?</h3>
+          <p>
+            If a file is rejected, check that it is a PDF, JPG or PNG and no
+            larger than 2 MB.
+          </p>
+          <a href="index.html#contact"
+            >Contact Admissions <i class="bi bi-arrow-up-right"></i
+          ></a>
+        </section>
+        <div class="du-security">
+          <i class="bi bi-shield-lock"></i>
+          <p>
+            <b>Privacy reminder</b><br />For a real website, store documents on
+            a protected server with access controls. Browser storage is not
+            suitable for sensitive official records.
+          </p>
+        </div>
+      </aside>
+    </main>
+    <footer class="du-footer">
+      <div class="du-shell du-footer-inner">
+        <a class="du-brand" href="index.html"
+          ><span class="du-crest">B</span
+          ><span class="du-brand-copy"
+            >Bahar University<small
+              >Knowledge • Excellence • Future</small
+            ></span
+          ></a
+        >
+        <p>© 2026 Bahar University. All rights reserved.</p>
+        <a href="index.html"
+          >University Home <i class="bi bi-arrow-up-right"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="document-upload.js"></script>
+  </body>
+</html>
