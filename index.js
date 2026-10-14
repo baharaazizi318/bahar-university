@@ -170,7 +170,9 @@ document.querySelectorAll("#mainNav a").forEach(link => {
 
 const searchInput = document.getElementById("programSearch");
 const filterButtons = document.querySelectorAll(".filter-btn");
-const programCards = Array.from(document.querySelectorAll(".program-card"));
+const programCards = Array.from(
+    document.querySelectorAll(".program-card")
+);
 const noResults = document.getElementById("noResults");
 const loadMoreButton = document.getElementById("loadMore");
 
@@ -237,7 +239,7 @@ loadMoreButton?.addEventListener("click", () => {
 });
 
 /* =========================================================
-   LOGIN + LOCAL STORAGE + SIDEBAR
+   LOGIN + LOCAL STORAGE + SIDEBAR + LOGOUT
 ========================================================= */
 
 (() => {
@@ -254,6 +256,7 @@ loadMoreButton?.addEventListener("click", () => {
     const backdrop = document.getElementById("sidebarBackdrop");
     const sidebarClose = document.getElementById("sidebarClose");
     const sidebarLogout = document.getElementById("sidebarLogout");
+    const dashboardLogout = document.getElementById("dashboardLogout");
 
     const roleNames = {
         student: "Student",
@@ -264,12 +267,13 @@ loadMoreButton?.addEventListener("click", () => {
 
     function getUser() {
         try {
-            return JSON.parse(
-                localStorage.getItem(KEY) ||
-                sessionStorage.getItem(KEY) ||
-                "null"
+            const user = JSON.parse(
+                localStorage.getItem(KEY) || "null"
             );
-        } catch {
+
+            return user?.isLoggedIn ? user : null;
+        } catch (error) {
+            console.error("Unable to read user data:", error);
             return null;
         }
     }
@@ -279,27 +283,34 @@ loadMoreButton?.addEventListener("click", () => {
         const label = loginBtn?.querySelector("span");
 
         if (label) {
-            label.textContent = user?.isLoggedIn ? "My Dashboard" : "Login";
+            label.textContent = user ? "My Dashboard" : "Login";
         }
 
         if (loginBtn) {
-            loginBtn.title = user?.isLoggedIn ? "Open your account" : "Login";
+            loginBtn.title = user ? "Open your account" : "Login";
         }
     }
 
     function openSidebar() {
         const user = getUser();
 
-        if (!user?.isLoggedIn || !sidebar || !backdrop) return;
+        if (!user || !sidebar || !backdrop) return;
 
         const nameElement = document.getElementById("sidebarName");
         const emailElement = document.getElementById("sidebarEmail");
         const roleElement = document.getElementById("sidebarRole");
 
-        if (nameElement) nameElement.textContent = user.name || "University User";
-        if (emailElement) emailElement.textContent = user.email || "";
+        if (nameElement) {
+            nameElement.textContent = user.name || "University User";
+        }
+
+        if (emailElement) {
+            emailElement.textContent = user.email || "";
+        }
+
         if (roleElement) {
-            roleElement.textContent = roleNames[user.accountType] || "User";
+            roleElement.textContent =
+                roleNames[user.accountType] || "User";
         }
 
         sidebar.classList.add("open");
@@ -311,37 +322,49 @@ loadMoreButton?.addEventListener("click", () => {
         backdrop?.classList.remove("show");
     }
 
-    /* Login button: open sidebar if already logged in */
+    /* Login button */
     loginBtn?.addEventListener("click", event => {
-        if (getUser()?.isLoggedIn) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+        event.preventDefault();
+
+        if (getUser()) {
             openSidebar();
         } else {
             openLogin();
         }
-    }, true);
+    });
 
-    /* Submit login form */
+    /* Login form */
     form?.addEventListener("submit", event => {
         event.preventDefault();
 
-        const email = (emailInput?.value || "").trim().toLowerCase();
+        const email = (emailInput?.value || "")
+            .trim()
+            .toLowerCase();
+
         const password = passwordInput?.value || "";
         const role = roleInput?.value || "";
 
         if (!email || !password || !role) {
-            if (message) message.textContent = "Please fill in all fields.";
+            if (message) {
+                message.textContent = "Please fill in all fields.";
+                message.dataset.kind = "error";
+            }
             return;
         }
 
-        if (
-            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-            password.length < 6
-        ) {
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (message) {
+                message.textContent = "Please enter a valid email address.";
+                message.dataset.kind = "error";
+            }
+            return;
+        }
+
+        if (password.length < 6) {
             if (message) {
                 message.textContent =
-                    "Enter a valid email and a password of at least 6 characters.";
+                    "Password must contain at least 6 characters.";
+                message.dataset.kind = "error";
             }
             return;
         }
@@ -350,6 +373,7 @@ loadMoreButton?.addEventListener("click", () => {
             .replace(/[._-]+/g, " ")
             .replace(/\b\w/g, letter => letter.toUpperCase());
 
+        // Never save the password in browser storage.
         const user = {
             name,
             email,
@@ -360,18 +384,28 @@ loadMoreButton?.addEventListener("click", () => {
         };
 
         try {
-            localStorage.removeItem(KEY);
+            localStorage.setItem(KEY, JSON.stringify(user));
+
+            // Remove any old session-only login.
             sessionStorage.removeItem(KEY);
 
-            const storage = remember?.checked ? localStorage : sessionStorage;
-            storage.setItem(KEY, JSON.stringify(user));
+            // Verify that saving worked.
+            const savedUser = JSON.parse(
+                localStorage.getItem(KEY) || "null"
+            );
+
+            if (!savedUser || savedUser.email !== email) {
+                throw new Error("Saved user could not be verified.");
+            }
 
             if (message) {
                 message.textContent = "Login successful!";
                 message.dataset.kind = "success";
             }
 
-            if (passwordInput) passwordInput.value = "";
+            if (passwordInput) {
+                passwordInput.value = "";
+            }
 
             closeLogin();
             updateLoginButton();
@@ -383,14 +417,16 @@ loadMoreButton?.addEventListener("click", () => {
             if (message) {
                 message.textContent =
                     "Could not save login information. Check browser storage.";
+                message.dataset.kind = "error";
             }
         }
     });
 
-    /* Sidebar close controls */
+    /* Close sidebar */
     sidebarClose?.addEventListener("click", closeSidebar);
     backdrop?.addEventListener("click", closeSidebar);
 
+    /* Close overlays with Escape */
     document.addEventListener("keydown", event => {
         if (event.key === "Escape") {
             closeSidebar();
@@ -398,37 +434,60 @@ loadMoreButton?.addEventListener("click", () => {
         }
     });
 
-    /* Logout */
-    sidebarLogout?.addEventListener("click", () => {
+    /* Logout: remove user data from both storage locations */
+    function logoutUser(event) {
+        event?.preventDefault();
+
         localStorage.removeItem(KEY);
         sessionStorage.removeItem(KEY);
 
         closeSidebar();
         closeLogin();
+
+        document.getElementById("myDashboard")
+            ?.classList.remove("show", "active", "open");
+
         updateLoginButton();
 
         form?.reset();
 
-        if (message) message.textContent = "";
-    });
+        if (message) {
+            message.textContent = "";
+            delete message.dataset.kind;
+        }
 
-    /* Restore saved login */
-    const savedUser = getUser();
+        const storageMessage =
+            document.getElementById("loginStorageMessage");
 
-    if (savedUser?.isLoggedIn) {
-        if (emailInput) emailInput.value = savedUser.email || "";
-        if (roleInput) roleInput.value = savedUser.accountType || "";
-        if (remember) remember.checked = !!savedUser.rememberMe;
+        if (storageMessage) {
+            storageMessage.textContent = "";
+        }
     }
 
+    sidebarLogout?.addEventListener("click", logoutUser);
+    dashboardLogout?.addEventListener("click", logoutUser);
+
+    /* Restore saved account */
+    const savedUser = getUser();
+
+    if (savedUser) {
+        if (emailInput) {
+            emailInput.value = savedUser.email || "";
+        }
+
+        if (roleInput) {
+            roleInput.value = savedUser.accountType || "";
+        }
+
+        if (remember) {
+            remember.checked = !!savedUser.rememberMe;
+        }
+    }
+
+    // Optional helpers for other parts of the website.
     window.getBaharUser = getUser;
-    window.isBaharLoggedIn = () => !!getUser()?.isLoggedIn;
-    window.baharLogout = () => {
-        localStorage.removeItem(KEY);
-        sessionStorage.removeItem(KEY);
-        closeSidebar();
-        updateLoginButton();
-    };
+    window.isBaharLoggedIn = () => !!getUser();
+    window.baharLogout = logoutUser;
 
     updateLoginButton();
 })();
@@ -437,9 +496,11 @@ loadMoreButton?.addEventListener("click", () => {
    RESTORE SAVED SETTINGS
 ========================================================= */
 
-setLanguage(localStorage.getItem("baharLanguage") || "en");
-setTheme(localStorage.getItem("baharTheme") || "light");
+try {
+    setLanguage(localStorage.getItem("baharLanguage") || "en");
+    setTheme(localStorage.getItem("baharTheme") || "light");
+} catch (error) {
+    console.error("Unable to restore saved settings:", error);
+}
 
 updatePrograms();
-
-

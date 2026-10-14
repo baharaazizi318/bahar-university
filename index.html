@@ -23,126 +23,638 @@
     <link rel="stylesheet" href="index.css">
 
 
-<style>
-/* =========================================================
-   BAHAR UNIVERSITY - LOGIN ACCOUNT TYPE / STORAGE MESSAGE
-========================================================= */
-
-.login-field {
-    display: block;
-}
-
-#accountType {
-    width: 100%;
-    min-height: 42px;
-    border: 1px solid rgb(154, 152, 152);
-    outline: 0;
-    background: transparent;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    padding: 0 4px;
-}
-
-#accountType option {
-    background: #ffffff;
-    color: #142536;
-}
-
-html.dark-mode #accountType option {
-    background: #202020;
-    color: #ffffff;
-}
-
-.login-message,
-.login-storage-message {
-    min-height: 22px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.6;
-}
-
-.login-message.success,
-.login-storage-message.success {
-    color: #2f7d4a;
-}
-
-.login-message.error,
-.login-storage-message.error {
-    color: #b23a3a;
-}
-
-.login-btn.logged-in {
-    border-color: rgba(201, 154, 61, .55);
-}
-
-.login-btn.logged-in i {
-    color: #c99a3d;
-}
-
-.login-submit:disabled {
-    opacity: .65;
-    cursor: not-allowed;
-}
-
-html[dir="rtl"] .login-field .input-wrap {
-    direction: rtl;
-}
-
-html[dir="rtl"] #accountType {
-    text-align: right;
-}
-</style>
 
 
-<style id="bahar-sidebar-styles">
-.user-sidebar{position:fixed;top:0;right:0;width:285px;max-width:86vw;height:100vh;padding:24px 18px;background:#142536;color:#fff;z-index:2001;transform:translateX(105%);visibility:hidden;transition:transform .28s ease,visibility .28s;overflow-y:auto;box-shadow:-12px 0 35px rgba(0,0,0,.16)}
-.user-sidebar.open{transform:translateX(0);visibility:visible}
-.sidebar-backdrop{position:fixed;inset:0;background:rgba(7,18,28,.48);z-index:2000;display:none}
-.sidebar-backdrop.show{display:block}
-.sidebar-header,.sidebar-user{display:flex;align-items:center;gap:12px;margin-bottom:26px}
-.sidebar-header{justify-content:space-between;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.13)}
-.sidebar-header strong{font-family:'Playfair Display',serif;font-size:17px}
-.sidebar-header small,.sidebar-user small{display:block;margin-top:5px;color:#cbd5e1;font-size:12px;overflow-wrap:anywhere}
-#sidebarClose{background:transparent;color:#fff;border:0;font-size:28px;line-height:1;cursor:pointer}
-.sidebar-user{padding:15px 0}
-.sidebar-user>i{font-size:35px;color:#c99a3d}
-.sidebar-links{display:grid;gap:8px}
-.sidebar-links a,.sidebar-links button{display:flex;align-items:center;gap:12px;padding:13px 14px;border:0;border-radius:7px;background:transparent;color:#fff;text-decoration:none;font:inherit;text-align:left;cursor:pointer}
-.sidebar-links a:hover,.sidebar-links button:hover{background:#245c7c}
-.sidebar-links button{color:#f0c66e}
-html[dir="rtl"] .user-sidebar{right:auto;left:0;transform:translateX(-105%)}
-html[dir="rtl"] .user-sidebar.open{transform:translateX(0)}
-html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-align:right}
-@media(prefers-reduced-motion:reduce){.user-sidebar{transition:none}}
-</style>
+    <style id="bahar-sidebar-styles">
+        .user-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 285px;
+            max-width: 86vw;
+            height: 100vh;
+            padding: 24px 18px;
+            background: #142536;
+            color: #fff;
+            z-index: 2001;
+            transform: translateX(105%);
+            visibility: hidden;
+            transition: transform .28s ease, visibility .28s;
+            overflow-y: auto;
+            box-shadow: -12px 0 35px rgba(0, 0, 0, .16)
+        }
+
+        .user-sidebar.open {
+            transform: translateX(0);
+            visibility: visible
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 18, 28, .48);
+            z-index: 2000;
+            display: none
+        }
+
+        .sidebar-backdrop.show {
+            display: block
+        }
+
+        .sidebar-header,
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 26px
+        }
+
+        .sidebar-header {
+            justify-content: space-between;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, .13)
+        }
+
+        .sidebar-header strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 17px
+        }
+
+        .sidebar-header small,
+        .sidebar-user small {
+            display: block;
+            margin-top: 5px;
+            color: #cbd5e1;
+            font-size: 12px;
+            overflow-wrap: anywhere
+        }
+
+        #sidebarClose {
+            background: transparent;
+            color: #fff;
+            border: 0;
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer
+        }
+
+        .sidebar-user {
+            padding: 15px 0
+        }
+
+        .sidebar-user>i {
+            font-size: 35px;
+            color: #c99a3d
+        }
+
+        .sidebar-links {
+            display: grid;
+            gap: 8px
+        }
+
+        .sidebar-links a,
+        .sidebar-links button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 14px;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            font: inherit;
+            text-align: left;
+            cursor: pointer
+        }
+
+        .sidebar-links a:hover,
+        .sidebar-links button:hover {
+            background: #245c7c
+        }
+
+        .sidebar-links button {
+            color: #f0c66e
+        }
+
+        html[dir="rtl"] .user-sidebar {
+            right: auto;
+            left: 0;
+            transform: translateX(-105%)
+        }
+
+        html[dir="rtl"] .user-sidebar.open {
+            transform: translateX(0)
+        }
+
+        html[dir="rtl"] .sidebar-links a,
+        html[dir="rtl"] .sidebar-links button {
+            text-align: right
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            .user-sidebar {
+                transition: none
+            }
+        }
+    </style>
 
 
-<style id="bahar-dashboard-styles">
-  .my-dashboard{position:fixed;inset:0;z-index:1500;display:none;overflow-y:auto;background:#f7f4ed;color:#142536;padding:105px 24px 50px;box-sizing:border-box}
-  .my-dashboard.active{display:block}
-  .dashboard-top{max-width:1180px;margin:0 auto 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .dashboard-kicker{font-size:12px;font-weight:800;letter-spacing:2px;color:#a77b25}
-  .dashboard-top h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,44px);margin:10px 0}
-  .dashboard-top p{margin:0;color:#64748b}
-  .dashboard-close{border:1px solid #d6dce2;background:#fff;color:#142536;border-radius:9px;padding:11px 15px;cursor:pointer;font:inherit;white-space:nowrap}
-  .dashboard-grid{max-width:1180px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-  .dashboard-card{background:#fff;border:1px solid rgba(20,37,54,.07);border-radius:15px;padding:26px;box-shadow:0 8px 24px rgba(20,37,54,.07);min-width:0}
-  .dashboard-card>i{font-size:29px;color:#c99a3d}
-  .dashboard-card h2{font-size:19px;margin:15px 0 8px}
-  .dashboard-card p{color:#64748b;line-height:1.7;margin:0;overflow-wrap:anywhere}
-  .dashboard-card a{display:inline-flex;margin-top:18px;color:#245c7c;text-decoration:none;font-weight:700}
-  .dashboard-welcome{max-width:1180px;margin:0 auto 24px;padding:22px 25px;background:#142536;color:#fff;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:20px}
-  .dashboard-welcome strong{font-size:18px}.dashboard-welcome span{color:#d8e0e8;font-size:14px}
-  .dashboard-logout{border:0;border-radius:8px;background:#c99a3d;color:#142536;padding:10px 15px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap}
-  html.dark-mode .my-dashboard{background:#171717;color:#f5f5f5}
-  html.dark-mode .dashboard-card,html.dark-mode .dashboard-close{background:#202020;color:#f5f5f5;border-color:#333}
-  html.dark-mode .dashboard-card p,html.dark-mode .dashboard-top p{color:#c0c0c0}
-  @media(max-width:800px){.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.my-dashboard{padding-top:90px}}
-  @media(max-width:540px){.dashboard-grid{grid-template-columns:1fr}.dashboard-top{align-items:flex-start;flex-direction:column}.dashboard-welcome{align-items:flex-start;flex-direction:column}.my-dashboard{padding:85px 16px 30px}}
-</style>
+    <style id="bahar-dashboard-styles">
+        .my-dashboard {
+            position: fixed;
+            inset: 0;
+            z-index: 1500;
+            display: none;
+            overflow-y: auto;
+            background: #f7f4ed;
+            color: #142536;
+            padding: 105px 24px 50px;
+            box-sizing: border-box
+        }
+
+        .my-dashboard.active {
+            display: block
+        }
+
+        .dashboard-top {
+            max-width: 1180px;
+            margin: 0 auto 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .dashboard-kicker {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #a77b25
+        }
+
+        .dashboard-top h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 44px);
+            margin: 10px 0
+        }
+
+        .dashboard-top p {
+            margin: 0;
+            color: #64748b
+        }
+
+        .dashboard-close {
+            border: 1px solid #d6dce2;
+            background: #fff;
+            color: #142536;
+            border-radius: 9px;
+            padding: 11px 15px;
+            cursor: pointer;
+            font: inherit;
+            white-space: nowrap
+        }
+
+        .dashboard-grid {
+            max-width: 1180px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px
+        }
+
+        .dashboard-card {
+            background: #fff;
+            border: 1px solid rgba(20, 37, 54, .07);
+            border-radius: 15px;
+            padding: 26px;
+            box-shadow: 0 8px 24px rgba(20, 37, 54, .07);
+            min-width: 0
+        }
+
+        .dashboard-card>i {
+            font-size: 29px;
+            color: #c99a3d
+        }
+
+        .dashboard-card h2 {
+            font-size: 19px;
+            margin: 15px 0 8px
+        }
+
+        .dashboard-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0;
+            overflow-wrap: anywhere
+        }
+
+        .dashboard-card a {
+            display: inline-flex;
+            margin-top: 18px;
+            color: #245c7c;
+            text-decoration: none;
+            font-weight: 700
+        }
+
+        .dashboard-welcome {
+            max-width: 1180px;
+            margin: 0 auto 24px;
+            padding: 22px 25px;
+            background: #142536;
+            color: #fff;
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px
+        }
+
+        .dashboard-welcome strong {
+            font-size: 18px
+        }
+
+        .dashboard-welcome span {
+            color: #d8e0e8;
+            font-size: 14px
+        }
+
+        .dashboard-logout {
+            border: 0;
+            border-radius: 8px;
+            background: #c99a3d;
+            color: #142536;
+            padding: 10px 15px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap
+        }
+
+        html.dark-mode .my-dashboard {
+            background: #171717;
+            color: #f5f5f5
+        }
+
+        html.dark-mode .dashboard-card,
+        html.dark-mode .dashboard-close {
+            background: #202020;
+            color: #f5f5f5;
+            border-color: #333
+        }
+
+        html.dark-mode .dashboard-card p,
+        html.dark-mode .dashboard-top p {
+            color: #c0c0c0
+        }
+
+        @media(max-width:800px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .my-dashboard {
+                padding-top: 90px
+            }
+        }
+
+        @media(max-width:540px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr
+            }
+
+            .dashboard-top {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .dashboard-welcome {
+                align-items: flex-start;
+                flex-direction: column
+            }
+
+            .my-dashboard {
+                padding: 85px 16px 30px
+            }
+        }
+    </style>
+
+
+    <style id="dashboard-upgrade-styles">
+        .dashboard-layout {
+            max-width: 1180px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 230px minmax(0, 1fr);
+            gap: 22px;
+            align-items: start
+        }
+
+        .dashboard-nav {
+            background: #142536;
+            color: #fff;
+            border-radius: 16px;
+            padding: 14px;
+            display: grid;
+            gap: 7px;
+            position: sticky;
+            top: 18px
+        }
+
+        .dashboard-nav button {
+            font: inherit;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            border: 0;
+            background: transparent;
+            color: #dbe4ec;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer
+        }
+
+        .dashboard-nav button i {
+            font-size: 18px;
+            color: #c99a3d
+        }
+
+        .dashboard-nav button:hover,
+        .dashboard-nav button.active {
+            background: #245c7c;
+            color: #fff
+        }
+
+        .dashboard-main {
+            min-width: 0
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin-bottom: 18px
+        }
+
+        .dashboard-stat,
+        .dashboard-panel {
+            background: #fff;
+            border: 1px solid rgba(20, 37, 54, .08);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(20, 37, 54, .05)
+        }
+
+        .dashboard-stat {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .dashboard-stat-icon {
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #f7f0df;
+            color: #a77b25;
+            font-size: 21px
+        }
+
+        .dashboard-stat small {
+            display: block;
+            color: #64748b;
+            margin-bottom: 5px
+        }
+
+        .dashboard-stat strong {
+            font-size: 20px
+        }
+
+        .dashboard-panel {
+            margin-bottom: 18px
+        }
+
+        .dashboard-panel h2 {
+            font-size: 20px;
+            margin: 0 0 8px
+        }
+
+        .dashboard-panel-subtitle {
+            color: #64748b;
+            margin: 0 0 18px;
+            font-size: 14px
+        }
+
+        .dashboard-panel[hidden] {
+            display: none !important
+        }
+
+        .dashboard-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px
+        }
+
+        .dashboard-action-btn {
+            border: 1px solid #d7dde3;
+            border-radius: 9px;
+            background: #fff;
+            color: #142536;
+            padding: 10px 14px;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .dashboard-action-btn.primary {
+            background: #142536;
+            color: #fff;
+            border-color: #142536
+        }
+
+        .dashboard-action-btn:hover {
+            filter: brightness(.96)
+        }
+
+        .dashboard-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px
+        }
+
+        .dashboard-field label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px
+        }
+
+        .dashboard-field input,
+        .dashboard-field select,
+        .dashboard-search {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d7dde3;
+            border-radius: 9px;
+            background: #fff;
+            color: #142536;
+            font: inherit;
+            outline: none
+        }
+
+        .dashboard-field input:focus,
+        .dashboard-search:focus {
+            border-color: #c99a3d;
+            box-shadow: 0 0 0 3px rgba(201, 154, 61, .15)
+        }
+
+        .dashboard-table-wrap {
+            overflow-x: auto
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 470px
+        }
+
+        .dashboard-table th,
+        .dashboard-table td {
+            text-align: left;
+            padding: 13px 10px;
+            border-bottom: 1px solid #edf0f2;
+            font-size: 14px
+        }
+
+        .dashboard-table th {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .04em
+        }
+
+        .dashboard-pill {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 99px;
+            background: #e9f5ed;
+            color: #247044;
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .dashboard-empty {
+            padding: 22px;
+            border: 1px dashed #d5dce2;
+            border-radius: 12px;
+            color: #64748b;
+            text-align: center
+        }
+
+        .dashboard-notice {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid #edf0f2
+        }
+
+        .dashboard-notice:last-child {
+            border-bottom: 0
+        }
+
+        .dashboard-notice i {
+            font-size: 20px;
+            color: #c99a3d
+        }
+
+        .dashboard-notice p {
+            margin: 4px 0 0;
+            color: #64748b;
+            font-size: 14px
+        }
+
+        .dashboard-message {
+            min-height: 20px;
+            color: #247044;
+            font-size: 13px;
+            margin-top: 10px
+        }
+
+        html.dark-mode .dashboard-stat,
+        html.dark-mode .dashboard-panel {
+            background: #202020;
+            color: #f5f5f5;
+            border-color: #333
+        }
+
+        html.dark-mode .dashboard-stat small,
+        html.dark-mode .dashboard-panel-subtitle,
+        html.dark-mode .dashboard-notice p {
+            color: #c0c0c0
+        }
+
+        html.dark-mode .dashboard-field input,
+        html.dark-mode .dashboard-field select,
+        html.dark-mode .dashboard-search,
+        html.dark-mode .dashboard-action-btn {
+            background: #252525;
+            color: #f5f5f5;
+            border-color: #444
+        }
+
+        html.dark-mode .dashboard-table th,
+        html.dark-mode .dashboard-table td,
+        html.dark-mode .dashboard-notice {
+            border-color: #383838
+        }
+
+        @media(max-width:850px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr
+            }
+
+            .dashboard-nav {
+                position: static;
+                display: flex;
+                overflow-x: auto
+            }
+
+            .dashboard-nav button {
+                white-space: nowrap
+            }
+
+            .dashboard-stats {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+        }
+
+        @media(max-width:580px) {
+            .dashboard-stats {
+                grid-template-columns: 1fr
+            }
+
+            .dashboard-form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .dashboard-panel {
+                padding: 16px
+            }
+
+            .dashboard-nav button {
+                padding: 10px
+            }
+
+            .dashboard-nav button span {
+                font-size: 13px
+            }
+        }
+    </style>
 
 </head>
 
@@ -595,8 +1107,6 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
 
 
             <div class="section-top">
-
-                
 
                 <div>
 
@@ -1990,42 +2500,177 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
 
 
 
-<!-- DASHBOARD: overlays the original homepage without deleting any original sections -->
-<section class="my-dashboard" id="myDashboard" aria-label="My Dashboard" aria-hidden="true">
-  <div class="dashboard-top">
-    <div><div class="dashboard-kicker">BAHAR UNIVERSITY</div><h1 data-en="My Dashboard" data-fa="داشبورد من">My Dashboard</h1><p data-en="Your university account at a glance." data-fa="خلاصه‌ای از حساب دانشگاهی شما.">Your university account at a glance.</p></div>
-    <button type="button" class="dashboard-close" id="dashboardClose"><i class="bi bi-arrow-left"></i> <span data-en="Back to Website" data-fa="بازگشت به سایت">Back to Website</span></button>
-  </div>
-  <div class="dashboard-welcome">
-    <div><strong><span data-en="Welcome," data-fa="خوش آمدید،">Welcome,</span> <span id="dashboardName">University User</span></strong><br><span id="dashboardRoleText">Student account</span></div>
-    <button type="button" class="dashboard-logout" id="dashboardLogout"><i class="bi bi-box-arrow-right"></i> <span data-en="Log out" data-fa="خروج">Log out</span></button>
-  </div>
-  <div class="dashboard-grid">
-    <article class="dashboard-card"><i class="bi bi-book"></i><h2 data-en="My Courses" data-fa="درس‌های من">My Courses</h2><p data-en="Your courses and learning activities will appear here when connected to the university system." data-fa="پس از اتصال به سیستم دانشگاه، درس‌ها و فعالیت‌های آموزشی شما در این بخش نمایش داده می‌شود.">Your courses and learning activities will appear here when connected to the university system.</p><a href="#programs" class="dashboard-home-link" data-en="Explore programs →" data-fa="مشاهده برنامه‌ها ←">Explore programs →</a></article>
-    <article class="dashboard-card"><i class="bi bi-person-circle"></i><h2 data-en="My Profile" data-fa="پروفایل من">My Profile</h2><p id="dashboardEmail">Your account email will appear here.</p><a href="#contact" class="dashboard-home-link" data-en="Contact university →" data-fa="تماس با دانشگاه ←">Contact university →</a></article>
-    <article class="dashboard-card"><i class="bi bi-bell"></i><h2 data-en="Notifications" data-fa="اعلان‌ها">Notifications</h2><p data-en="University announcements and important updates will appear here." data-fa="اعلان‌های دانشگاه و خبرهای مهم در این بخش نمایش داده می‌شود.">University announcements and important updates will appear here.</p></article>
-  </div>
-</section>
+    <!-- DASHBOARD: overlays the original homepage without deleting any original sections -->
+    <section class="my-dashboard" id="myDashboard" aria-label="My Dashboard" aria-hidden="true">
+        <div class="dashboard-top">
+            <div>
+                <div class="dashboard-kicker">BAHAR UNIVERSITY</div>
+                <h1 data-en="My Dashboard" data-fa="داشبورد من">My Dashboard</h1>
+                <p data-en="Your university account at a glance." data-fa="خلاصه‌ای از حساب دانشگاهی شما.">Your
+                    university account at a glance.</p>
+            </div>
+            <button type="button" class="dashboard-close" id="dashboardClose"><i class="bi bi-arrow-left"></i> <span
+                    data-en="Back to Website" data-fa="بازگشت به سایت">Back to Website</span></button>
+        </div>
+        <div class="dashboard-welcome">
+            <span id="dashboardEmail" hidden></span>
+            <div><strong><span data-en="Welcome," data-fa="خوش آمدید،">Welcome,</span> <span
+                        id="dashboardName">University User</span></strong><br><span id="dashboardRoleText">Student
+                    account</span>
+                <div id="dashboardToday" style="margin-top:7px;font-size:13px;opacity:.8"></div>
+            </div>
+            <button type="button" class="dashboard-logout" id="dashboardLogout"><i class="bi bi-box-arrow-right"></i>
+                <span data-en="Log out" data-fa="خروج">Log out</span></button>
+        </div>
+        <div class="dashboard-layout">
+            <nav class="dashboard-nav" aria-label="Dashboard sections">
+                <button type="button" class="active" data-dashboard-tab="overview"><i
+                        class="bi bi-grid-1x2"></i><span>Overview</span></button>
+                <button type="button" data-dashboard-tab="profile"><i class="bi bi-person-circle"></i><span>My
+                        Profile</span></button>
+                <button type="button" data-dashboard-tab="courses"><i class="bi bi-journal-bookmark"></i><span>Courses &
+                        Programs</span></button>
+                <button type="button" data-dashboard-tab="notifications"><i
+                        class="bi bi-bell"></i><span>Notifications</span></button>
+                <button type="button" data-dashboard-tab="settings"><i
+                        class="bi bi-gear"></i><span>Settings</span></button>
+            </nav>
+            <div class="dashboard-main">
+                <div class="dashboard-stats">
+                    <div class="dashboard-stat">
+                        <div class="dashboard-stat-icon"><i class="bi bi-person-check"></i></div>
+                        <div><small>Account status</small><strong>Active</strong></div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="dashboard-stat-icon"><i class="bi bi-mortarboard"></i></div>
+                        <div><small>Account type</small><strong id="dashboardStatRole">Student</strong></div>
+                    </div>
+                    <div class="dashboard-stat">
+                        <div class="dashboard-stat-icon"><i class="bi bi-bell"></i></div>
+                        <div><small>New updates</small><strong id="dashboardUnreadCount">2</strong></div>
+                    </div>
+                </div>
+                <section class="dashboard-panel" data-dashboard-panel="overview">
+                    <h2>Welcome to your university portal</h2>
+                    <p class="dashboard-panel-subtitle">Use this space to manage your account and quickly access
+                        university information.</p>
+                    <div class="dashboard-welcome-card"><i class="bi bi-mortarboard"></i>
+                        <div>
+                            <h4 id="dashboardWelcomeTitle">Your academic journey starts here</h4>
+                            <p id="dashboardWelcomeText">Review your profile, explore programs and keep up with
+                                university announcements.</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-actions"><button type="button" class="dashboard-action-btn primary"
+                            data-open-dashboard-tab="profile">Review profile</button><button type="button"
+                            class="dashboard-action-btn" data-open-dashboard-tab="courses">Explore
+                            courses</button><button type="button" class="dashboard-action-btn"
+                            data-open-dashboard-tab="notifications">View notifications</button></div>
+                </section>
+                <section class="dashboard-panel" data-dashboard-panel="profile" hidden>
+                    <h2>My Profile</h2>
+                    <p class="dashboard-panel-subtitle">Review and update the basic details saved in this browser.</p>
+                    <form id="dashboardProfileForm">
+                        <div class="dashboard-form-grid">
+                            <div class="dashboard-field"><label for="dashboardEditName">Full name</label><input
+                                    id="dashboardEditName" name="name" type="text" required maxlength="80"
+                                    placeholder="Your full name"></div>
+                            <div class="dashboard-field"><label for="dashboardEditEmail">Email address</label><input
+                                    id="dashboardEditEmail" name="email" type="email" readonly></div>
+                            <div class="dashboard-field"><label for="dashboardEditRole">Account type</label><input
+                                    id="dashboardEditRole" type="text" readonly></div>
+                            <div class="dashboard-field"><label for="dashboardMemberSince">Last login</label><input
+                                    id="dashboardMemberSince" type="text" readonly></div>
+                        </div>
+                        <div class="dashboard-actions"><button class="dashboard-action-btn primary" type="submit">Save
+                                profile</button></div>
+                        <div class="dashboard-message" id="dashboardProfileMessage" role="status"></div>
+                    </form>
+                </section>
+                <section class="dashboard-panel" data-dashboard-panel="courses" hidden>
+                    <h2 id="dashboardCoursesTitle">Courses & Programs</h2>
+                    <p class="dashboard-panel-subtitle" id="dashboardCoursesDescription">Explore academic programs
+                        offered by Bahar University.</p>
+                    <input class="dashboard-search" id="dashboardCourseSearch" type="search"
+                        placeholder="Search programs..." aria-label="Search programs">
+                    <div class="dashboard-table-wrap" style="margin-top:14px">
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>School</th>
+                                    <th>Availability</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardCourseRows"></tbody>
+                        </table>
+                    </div>
+                    <p class="dashboard-panel-subtitle" style="margin-top:12px">Program information is illustrative;
+                        actual enrolments and grades require a university database.</p>
+                </section>
+                <section class="dashboard-panel" data-dashboard-panel="notifications" hidden>
+                    <h2>Notifications</h2>
+                    <p class="dashboard-panel-subtitle">General announcements for your university account.</p>
+                    <div id="dashboardNotificationList">
+                        <article class="dashboard-notice"><i class="bi bi-calendar-event"></i>
+                            <div><strong>Academic calendar</strong>
+                                <p>Please check the university website for upcoming academic dates and deadlines.</p>
+                            </div>
+                        </article>
+                        <article class="dashboard-notice"><i class="bi bi-megaphone"></i>
+                            <div><strong>Admissions information</strong>
+                                <p>Admission information and program requirements are available in the admissions
+                                    section.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="dashboard-actions"><button type="button" class="dashboard-action-btn"
+                            id="dashboardMarkRead">Mark all as read</button></div>
+                    <div class="dashboard-message" id="dashboardNotificationMessage" role="status"></div>
+                </section>
+                <section class="dashboard-panel" data-dashboard-panel="settings" hidden>
+                    <h2>Settings</h2>
+                    <p class="dashboard-panel-subtitle">Choose how the dashboard appears on this device.</p>
+                    <div class="dashboard-field"><label for="dashboardThemeSelect">Appearance</label><select
+                            id="dashboardThemeSelect">
+                            <option value="light">Light mode</option>
+                            <option value="dark">Dark mode</option>
+                        </select></div>
+                    <div class="dashboard-actions"><button type="button" class="dashboard-action-btn primary"
+                            id="dashboardSaveSettings">Save settings</button><button type="button"
+                            class="dashboard-action-btn" id="dashboardResetSettings">Reset settings</button></div>
+                    <div class="dashboard-message" id="dashboardSettingsMessage" role="status"></div>
+                    <p class="dashboard-panel-subtitle" style="margin-top:18px">Note: this demonstration stores settings
+                        in your browser only. Real account security requires a server and database.</p>
+                </section>
+            </div>
+        </div>
+    </section>
 
-<!-- USER SIDEBAR: opens after successful login -->
-<aside class="user-sidebar" id="userSidebar" aria-label="User menu" aria-hidden="true">
-  <div class="sidebar-header">
-    <div><strong>Bahar University</strong><small id="sidebarRole">Student</small></div>
-    <button type="button" id="sidebarClose" aria-label="Close sidebar">&times;</button>
-  </div>
-  <div class="sidebar-user">
-    <i class="bi bi-person-circle" aria-hidden="true"></i>
-    <div><strong id="sidebarName">University User</strong><small id="sidebarEmail"></small></div>
-  </div>
-  <nav class="sidebar-links" aria-label="Account navigation">
-    <a href="#myDashboard" id="myDashboardLink" data-en="Dashboard" data-fa="داشبورد"><i class="bi bi-grid"></i><span>Dashboard</span></a>
-    <a href="#programs" data-en="My Courses" data-fa="درس‌های من"><i class="bi bi-book"></i><span>My Courses</span></a>
-    <a href="#contact" data-en="My Profile" data-fa="پروفایل من"><i class="bi bi-person"></i><span>My Profile</span></a>
-    <a href="#" id="sidebarSettings" data-en="Settings" data-fa="تنظیمات"><i class="bi bi-gear"></i><span>Settings</span></a>
-    <button type="button" id="sidebarLogout"><i class="bi bi-box-arrow-right"></i><span data-en="Logout" data-fa="خروج">Logout</span></button>
-  </nav>
-</aside>
-<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <!-- USER SIDEBAR: opens after successful login -->
+    <aside class="user-sidebar" id="userSidebar" aria-label="User menu" aria-hidden="true">
+        <div class="sidebar-header">
+            <div><strong>Bahar University</strong><small id="sidebarRole">Student</small></div>
+            <button type="button" id="sidebarClose" aria-label="Close sidebar">&times;</button>
+        </div>
+        <div class="sidebar-user">
+            <i class="bi bi-person-circle" aria-hidden="true"></i>
+            <div><strong id="sidebarName">University User</strong><small id="sidebarEmail"></small></div>
+        </div>
+        <nav class="sidebar-links" aria-label="Account navigation">
+            <a href="#myDashboard" id="myDashboardLink" data-en="Dashboard" data-fa="داشبورد"><i
+                    class="bi bi-grid"></i><span>Dashboard</span></a>
+            <a href="#programs" data-en="My Courses" data-fa="درس‌های من"><i class="bi bi-book"></i><span>My
+                    Courses</span></a>
+            <a href="#contact" data-en="My Profile" data-fa="پروفایل من"><i class="bi bi-person"></i><span>My
+                    Profile</span></a>
+            <a href="#" id="sidebarSettings" data-en="Settings" data-fa="تنظیمات"><i
+                    class="bi bi-gear"></i><span>Settings</span></a>
+            <button type="button" id="sidebarLogout"><i class="bi bi-box-arrow-right"></i><span data-en="Logout"
+                    data-fa="خروج">Logout</span></button>
+        </nav>
+    </aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- =====================================================
      LOGIN MODAL
@@ -2077,31 +2722,6 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
 
             <form id="loginForm">
 
-                 <!-- Account Type -->
-
-                <label class="login-field">
-
-                    <span data-en="Account Type" data-fa="نوع حساب">
-                        Account Type
-                    </span>
-
-                    <div class="input-wrap">
-
-                       
-
-                        <select id="accountType" required>
-                            <option value="">Select account type</option>
-                            <option value="student">Student</option>
-                            <option value="faculty">Faculty / Professor</option>
-                            <option value="administrator">Administrator</option>
-                            <option value="applicant">Applicant</option>
-                        </select>
-
-                    </div>
-
-                </label>
-
-
 
                 <!-- Email -->
 
@@ -2125,7 +2745,30 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
                 </label>
 
 
-               
+                <!-- Account Type -->
+
+                <label class="login-field">
+
+                    <span data-en="Account Type" data-fa="نوع حساب">
+                        Account Type
+                    </span>
+
+                    <div class="input-wrap">
+
+                        <i class="bi bi-person-badge"></i>
+
+                        <select id="accountType" required>
+                            <option value="">Select account type</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty / Professor</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="applicant">Applicant</option>
+                        </select>
+
+                    </div>
+
+                </label>
+
                 <!-- Password -->
 
                 <label>
@@ -2193,7 +2836,7 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
 
 
                 <div class="login-message" id="loginMessage"></div>
-                    <div id="loginStorageMessage" class="login-storage-message" role="status"></div>
+                <div id="loginStorageMessage" class="login-storage-message" role="status"></div>
 
             </form>
 
@@ -2217,74 +2860,225 @@ html[dir="rtl"] .sidebar-links a,html[dir="rtl"] .sidebar-links button{text-alig
 
     <script src="index.js"></script>
 
-<script id="bahar-dashboard-script">
-document.addEventListener('DOMContentLoaded', function () {
-  const dashboard = document.getElementById('myDashboard');
-  const dashboardLink = document.getElementById('myDashboardLink');
-  const dashboardClose = document.getElementById('dashboardClose');
-  const dashboardLogout = document.getElementById('dashboardLogout');
-  const sidebar = document.getElementById('userSidebar');
-  const backdrop = document.getElementById('sidebarBackdrop');
-  const roleLabels = {student:'Student', faculty:'Faculty / Professor', administrator:'Administrator', applicant:'Applicant'};
+    <script id="bahar-dashboard-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const dashboard = document.getElementById('myDashboard');
+            const dashboardLink = document.getElementById('myDashboardLink');
+            const dashboardClose = document.getElementById('dashboardClose');
+            const dashboardLogout = document.getElementById('dashboardLogout');
+            const sidebar = document.getElementById('userSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            const roleLabels = { student: 'Student', faculty: 'Faculty / Professor', administrator: 'Administrator', applicant: 'Applicant' };
 
-  function currentUser() {
-    try {
-      const raw = localStorage.getItem('baharUser') || sessionStorage.getItem('baharUser');
-      const user = raw ? JSON.parse(raw) : null;
-      return user && user.isLoggedIn ? user : null;
-    } catch (error) { return null; }
-  }
-  function closeAccountSidebar() {
-    sidebar?.classList.remove('open');
-    sidebar?.setAttribute('aria-hidden', 'true');
-    backdrop?.classList.remove('show');
-  }
-  function showDashboard() {
-    const user = currentUser();
-    if (!user) {
-      document.getElementById('loginModal')?.classList.add('show');
-      closeAccountSidebar();
-      return;
-    }
-    document.getElementById('dashboardName').textContent = user.name || user.email || 'University User';
-    document.getElementById('dashboardEmail').textContent = user.email || 'No email available';
-    document.getElementById('dashboardRoleText').textContent = roleLabels[user.accountType] || 'University account';
-    dashboard.classList.add('active');
-    dashboard.setAttribute('aria-hidden', 'false');
-    closeAccountSidebar();
-    document.body.style.overflow = 'hidden';
-  }
-  function hideDashboard() {
-    dashboard.classList.remove('active');
-    dashboard.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-  function logoutFromDashboard() {
-    localStorage.removeItem('baharUser');
-    sessionStorage.removeItem('baharUser');
-    hideDashboard();
-    closeAccountSidebar();
-    document.getElementById('loginForm')?.reset();
-    const loginButton = document.getElementById('loginBtn');
-    const label = loginButton?.querySelector('span');
-    if (label) label.textContent = document.documentElement.lang === 'fa' ? 'ورود' : 'Login';
-    loginButton?.classList.remove('logged-in');
-    if (typeof window.updateLoginButton === 'function') window.updateLoginButton();
-  }
-  dashboardLink?.addEventListener('click', function (event) {
-    event.preventDefault();
-    showDashboard();
-  });
-  dashboardClose?.addEventListener('click', hideDashboard);
-  dashboardLogout?.addEventListener('click', logoutFromDashboard);
-  document.querySelectorAll('.dashboard-home-link').forEach(link => {
-    link.addEventListener('click', function () { hideDashboard(); });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && dashboard.classList.contains('active')) hideDashboard();
-  });
-});
-</script>
+            function currentUser() {
+                try {
+                    const raw = localStorage.getItem('baharUser') || sessionStorage.getItem('baharUser');
+                    const user = raw ? JSON.parse(raw) : null;
+                    return user && user.isLoggedIn ? user : null;
+                } catch (error) { return null; }
+            }
+            function closeAccountSidebar() {
+                sidebar?.classList.remove('open');
+                sidebar?.setAttribute('aria-hidden', 'true');
+                backdrop?.classList.remove('show');
+            }
+            function showDashboard() {
+                const user = currentUser();
+                if (!user) {
+                    document.getElementById('loginModal')?.classList.add('show');
+                    closeAccountSidebar();
+                    return;
+                }
+                updateDashboardDetails(user);
+                dashboard.classList.add('active');
+                dashboard.setAttribute('aria-hidden', 'false');
+                closeAccountSidebar();
+                document.body.style.overflow = 'hidden';
+            }
+            function hideDashboard() {
+                dashboard.classList.remove('active');
+                dashboard.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+            function logoutFromDashboard() {
+                localStorage.removeItem('baharUser');
+                sessionStorage.removeItem('baharUser');
+                hideDashboard();
+                closeAccountSidebar();
+                document.getElementById('loginForm')?.reset();
+                const loginButton = document.getElementById('loginBtn');
+                const label = loginButton?.querySelector('span');
+                if (label) label.textContent = document.documentElement.lang === 'fa' ? 'ورود' : 'Login';
+                loginButton?.classList.remove('logged-in');
+                if (typeof window.updateLoginButton === 'function') window.updateLoginButton();
+            }
+            const roleNamesForDashboard = { student: 'Student', faculty: 'Faculty / Professor', administrator: 'Administrator', applicant: 'Applicant' };
+            const roleCourseData = {
+                student: {
+                    title: 'My Courses', description: 'Review your enrolled courses, current progress, and class schedule.',
+                    search: 'Search my courses...', columns: ['Course', 'School', 'Schedule / Progress'],
+                    rows: [
+                        ['Introduction to Computer Science', 'School of Computing', 'Schedule to be confirmed'],
+                        ['Academic Writing', 'School of Humanities', 'Schedule to be confirmed'],
+                        ['Mathematics I', 'School of Computing', 'Schedule to be confirmed']
+                    ], note: 'Course enrolments, grades, and official schedules will appear here when connected to the university database.'
+                },
+                faculty: {
+                    title: 'My Classes', description: 'Review the classes assigned to you and the school responsible for each course.',
+                    search: 'Search my classes...', columns: ['Class / Course', 'School', 'Teaching status'],
+                    rows: [
+                        ['Introduction to Computer Science', 'School of Computing', 'Assignment data not connected'],
+                        ['Information Technology', 'School of Computing', 'Assignment data not connected']
+                    ], note: 'Student lists, attendance, and grade entry require authenticated faculty records on the university server.'
+                },
+                administrator: {
+                    title: 'Manage Programs', description: 'Review the academic programs listed for Bahar University.',
+                    search: 'Search programs or schools...', columns: ['Program', 'School', 'Record status'],
+                    rows: [
+                        ['Computer Science', 'School of Computing', 'Demo record'],
+                        ['Information Technology', 'School of Computing', 'Demo record'],
+                        ['Civil Engineering', 'School of Engineering', 'Demo record'],
+                        ['Business Administration', 'School of Business', 'Demo record'],
+                        ['Economics', 'School of Economics', 'Demo record'],
+                        ['Public Health', 'School of Health Sciences', 'Demo record'],
+                        ['Humanities', 'School of Humanities', 'Demo record']
+                    ], note: 'This front-end demo displays program information only. Creating, editing, or deleting official records needs a secure backend.'
+                },
+                applicant: {
+                    title: 'Explore Programs', description: 'Search available academic areas and review which school offers each program.',
+                    search: 'Search programs...', columns: ['Program', 'School', 'Next step'],
+                    rows: [
+                        ['Computer Science', 'School of Computing', 'Review admission requirements'],
+                        ['Information Technology', 'School of Computing', 'Review admission requirements'],
+                        ['Civil Engineering', 'School of Engineering', 'Review admission requirements'],
+                        ['Business Administration', 'School of Business', 'Review admission requirements'],
+                        ['Economics', 'School of Economics', 'Review admission requirements'],
+                        ['Public Health', 'School of Health Sciences', 'Review admission requirements'],
+                        ['Humanities', 'School of Humanities', 'Review admission requirements']
+                    ], note: 'This list is informational. Submit and track an official application through the university admissions process.'
+                }
+            };
+            let activeDashboardRole = 'applicant';
+            function savedUser() { return currentUser(); }
+            function saveUser(user) {
+                try {
+                    if (localStorage.getItem('baharUser')) localStorage.setItem('baharUser', JSON.stringify(user));
+                    else sessionStorage.setItem('baharUser', JSON.stringify(user));
+                    return true;
+                } catch (e) { return false; }
+            }
+            function setDashboardTab(tab) {
+                document.querySelectorAll('[data-dashboard-panel]').forEach(panel => { panel.hidden = panel.dataset.dashboardPanel !== tab; });
+                document.querySelectorAll('[data-dashboard-tab]').forEach(button => button.classList.toggle('active', button.dataset.dashboardTab === tab));
+            }
+            function renderPrograms(filter = '') {
+                const body = document.getElementById('dashboardCourseRows');
+                if (!body) return;
+                const data = roleCourseData[activeDashboardRole] || roleCourseData.applicant;
+                const q = filter.trim().toLowerCase();
+                const matches = data.rows.filter(row => row.join(' ').toLowerCase().includes(q));
+                const headRow = document.querySelector('[data-dashboard-panel="courses"] .dashboard-table thead tr');
+                if (headRow) {
+                    headRow.replaceChildren();
+                    data.columns.forEach(label => { const th = document.createElement('th'); th.textContent = label; headRow.appendChild(th); });
+                }
+                body.replaceChildren();
+                if (!matches.length) {
+                    const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = data.columns.length;
+                    const empty = document.createElement('div'); empty.className = 'dashboard-empty'; empty.textContent = 'No matching items found.'; td.appendChild(empty); tr.appendChild(td); body.appendChild(tr);
+                } else {
+                    matches.forEach(row => {
+                        const tr = document.createElement('tr');
+                        row.forEach((value, index) => {
+                            const td = document.createElement('td');
+                            if (index === row.length - 1) { const pill = document.createElement('span'); pill.className = 'dashboard-pill'; pill.textContent = value; td.appendChild(pill); }
+                            else td.textContent = value;
+                            tr.appendChild(td);
+                        });
+                        body.appendChild(tr);
+                    });
+                }
+                const note = document.querySelector('[data-dashboard-panel="courses"] .dashboard-panel-subtitle[style*="margin-top:12px"]');
+                if (note) note.textContent = data.note;
+            }
+            function updateDashboardDetails(user) {
+                if (!user) return;
+                const role = roleLabels[user.accountType] || roleNamesForDashboard[user.accountType] || 'University account';
+                const name = user.name || user.fullName || (user.email ? user.email.split('@')[0] : 'University User');
+                document.getElementById('dashboardName').textContent = name;
+                document.getElementById('dashboardEmail').textContent = user.email || 'No email available';
+                document.getElementById('dashboardRoleText').textContent = role;
+                document.getElementById('dashboardStatRole').textContent = role;
+                document.getElementById('dashboardEditName').value = name;
+                document.getElementById('dashboardEditEmail').value = user.email || '';
+                document.getElementById('dashboardEditRole').value = role;
+                document.getElementById('dashboardMemberSince').value = user.loggedInAt ? new Date(user.loggedInAt).toLocaleDateString() : 'Not available';
+                document.getElementById('dashboardToday').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                const welcome = {
+                    student: ['Your learning journey starts here', 'Review your profile, explore degree programs and keep up with university announcements.'],
+                    faculty: ['Welcome to your faculty portal', 'Use this dashboard to review your account and explore the university academic programs.'],
+                    administrator: ['Welcome to the administration portal', 'Review your account and explore program information. Administrative records need a secure server system.'],
+                    applicant: ['Welcome, future student', 'Explore programs and check the university website for admission requirements and deadlines.']
+                }[user.accountType] || ['Your university account', 'Review your profile, explore programs and keep up with university announcements.'];
+                document.getElementById('dashboardWelcomeTitle').textContent = welcome[0];
+                document.getElementById('dashboardWelcomeText').textContent = welcome[1];
+                activeDashboardRole = roleCourseData[user.accountType] ? user.accountType : 'applicant';
+                const roleCourseView = roleCourseData[activeDashboardRole];
+                document.getElementById('dashboardCoursesTitle').textContent = roleCourseView.title;
+                document.getElementById('dashboardCoursesDescription').textContent = roleCourseView.description;
+                const courseSearch = document.getElementById('dashboardCourseSearch');
+                courseSearch.placeholder = roleCourseView.search;
+                courseSearch.setAttribute('aria-label', roleCourseView.search);
+                const coursesNavLabel = document.querySelector('[data-dashboard-tab="courses"] span');
+                if (coursesNavLabel) coursesNavLabel.textContent = roleCourseView.title;
+                const exploreAction = document.querySelector('[data-open-dashboard-tab="courses"]');
+                if (exploreAction) exploreAction.textContent = activeDashboardRole === 'student' ? 'View my courses' : activeDashboardRole === 'faculty' ? 'View my classes' : activeDashboardRole === 'administrator' ? 'Manage programs' : 'Explore programs';
+                renderPrograms(courseSearch.value || '');
+            }
+            document.querySelectorAll('[data-dashboard-tab]').forEach(button => button.addEventListener('click', () => setDashboardTab(button.dataset.dashboardTab)));
+            document.querySelectorAll('[data-open-dashboard-tab]').forEach(button => button.addEventListener('click', () => setDashboardTab(button.dataset.openDashboardTab)));
+            document.getElementById('dashboardCourseSearch')?.addEventListener('input', event => renderPrograms(event.target.value));
+            document.getElementById('dashboardProfileForm')?.addEventListener('submit', event => {
+                event.preventDefault(); const user = savedUser(); if (!user) { return; }
+                const newName = document.getElementById('dashboardEditName').value.trim();
+                if (!newName) { document.getElementById('dashboardProfileMessage').textContent = 'Please enter your full name.'; return; }
+                user.name = newName;
+                if (saveUser(user)) { updateDashboardDetails(user); document.getElementById('dashboardProfileMessage').textContent = 'Profile updated in this browser.'; }
+                else document.getElementById('dashboardProfileMessage').textContent = 'Could not save changes. Check your browser storage settings.';
+            });
+            document.getElementById('dashboardMarkRead')?.addEventListener('click', () => {
+                document.getElementById('dashboardUnreadCount').textContent = '0';
+                document.getElementById('dashboardNotificationMessage').textContent = 'All visible notifications marked as read for this session.';
+            });
+            document.getElementById('dashboardSaveSettings')?.addEventListener('click', () => {
+                const mode = document.getElementById('dashboardThemeSelect').value;
+                document.documentElement.classList.toggle('dark-mode', mode === 'dark');
+                try { localStorage.setItem('baharDashboardTheme', mode); } catch (e) { }
+                document.getElementById('dashboardSettingsMessage').textContent = 'Appearance setting saved.';
+            });
+            document.getElementById('dashboardResetSettings')?.addEventListener('click', () => {
+                document.getElementById('dashboardThemeSelect').value = 'light';
+                document.documentElement.classList.remove('dark-mode');
+                try { localStorage.removeItem('baharDashboardTheme'); } catch (e) { }
+                document.getElementById('dashboardSettingsMessage').textContent = 'Settings reset.';
+            });
+            renderPrograms();
+            try { const theme = localStorage.getItem('baharDashboardTheme'); if (theme) { document.getElementById('dashboardThemeSelect').value = theme; document.documentElement.classList.toggle('dark-mode', theme === 'dark'); } } catch (e) { }
+
+            dashboardLink?.addEventListener('click', function (event) {
+                event.preventDefault();
+                showDashboard();
+            });
+            dashboardClose?.addEventListener('click', hideDashboard);
+            dashboardLogout?.addEventListener('click', logoutFromDashboard);
+            document.querySelectorAll('.dashboard-home-link').forEach(link => {
+                link.addEventListener('click', function () { hideDashboard(); });
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && dashboard.classList.contains('active')) hideDashboard();
+            });
+        });
+    </script>
 
 
 
