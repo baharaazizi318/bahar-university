@@ -1,0 +1,1556 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Partners | Bahar University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        :root {
+            --navy: #142536;
+            --blue: #245c7c;
+            --gold: #c99a3d;
+            --cream: #f7f4ed;
+            --white: #ffffff;
+            --text: #647181;
+            --border: #e5e5e2;
+            --shadow: 0 12px 35px rgba(20, 37, 54, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 30px;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--navy);
+            background: #fff;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .topbar {
+            padding: 11px 6%;
+            background: var(--navy);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .topbar p,
+        .topbar a {
+            font-size: 12px;
+        }
+
+        .topbar p {
+            color: #e0e7ee;
+        }
+
+        .topbar a {
+            color: #e6c77e;
+        }
+
+        header {
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .brand p {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .language-btn {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 5px;
+            padding: 8px 12px;
+            color: var(--navy);
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #142536 0%, #245c7c 100%);
+            color: white;
+            padding: 85px 6% 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(230, 199, 126, .25);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 390px;
+            height: 390px;
+            right: -120px;
+            top: -180px;
+        }
+
+        .hero::after {
+            width: 290px;
+            height: 290px;
+            right: -70px;
+            top: -130px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .hero .eyebrow {
+            color: #e6c77e;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #e0e8ef;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 13px 21px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .primary-btn:hover {
+            background: #e5bd61;
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            width: min(1000px, 90%);
+            margin: -38px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            padding: 24px 15px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 31px;
+            color: var(--blue);
+            line-height: 1.3;
+        }
+
+        .stat-card span {
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .section {
+            padding: 75px 6%;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            text-align: center;
+            margin: 0 auto 40px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(27px, 3vw, 37px);
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .partner-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 9px 17px;
+            color: var(--text);
+            font-size: 12px;
+            transition: .2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--navy);
+            color: white;
+            border-color: var(--navy);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .partner-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: .25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #d7c08f;
+        }
+
+        .partner-banner {
+            height: 120px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #f7f4ed, #e9eff2);
+            color: var(--blue);
+            font-size: 42px;
+        }
+
+        .partner-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-type {
+            align-self: flex-start;
+            color: #946d23;
+            background: #faf3e2;
+            padding: 4px 9px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .partner-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .partner-location {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .partner-description {
+            color: var(--text);
+            font-size: 13px;
+            flex: 1;
+            margin-bottom: 22px;
+        }
+
+        .partner-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .partner-bottom span {
+            font-size: 11px;
+            color: var(--text);
+        }
+
+        .details-btn {
+            border: none;
+            background: transparent;
+            color: #a57a25;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .details-btn:hover {
+            color: var(--navy);
+        }
+
+        .collaboration {
+            background: var(--cream);
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .collab-card {
+            background: white;
+            border: 1px solid #e9e2d3;
+            border-radius: 7px;
+            padding: 26px 20px;
+            transition: .2s;
+        }
+
+        .collab-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .collab-card i {
+            color: var(--gold);
+            font-size: 29px;
+            display: block;
+            margin-bottom: 17px;
+        }
+
+        .collab-card h3 {
+            font-size: 16px;
+            margin-bottom: 9px;
+        }
+
+        .collab-card p {
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .join-section {
+            background: white;
+        }
+
+        .join-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .join-info {
+            background: var(--navy);
+            color: white;
+            border-radius: 8px;
+            padding: 32px;
+        }
+
+        .join-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .join-info > p {
+            color: #d4dee6;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .join-info ul {
+            list-style: none;
+            display: grid;
+            gap: 17px;
+        }
+
+        .join-info li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 13px;
+            color: #edf1f4;
+        }
+
+        .join-info li i {
+            color: #e6c77e;
+            font-size: 18px;
+        }
+
+        .partner-form {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .partner-form h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .form-intro {
+            color: var(--text);
+            font-size: 13px;
+            margin-bottom: 23px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 12px;
+            outline: none;
+            color: var(--navy);
+            background: white;
+            font-size: 13px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 115px;
+        }
+
+        .form-message {
+            display: none;
+            margin-top: 15px;
+            padding: 13px;
+            border-radius: 5px;
+            background: #edf6ee;
+            color: #245b35;
+            font-size: 13px;
+        }
+
+        .form-note {
+            font-size: 11px;
+            color: var(--text);
+            margin-top: 12px;
+        }
+
+        footer {
+            padding: 35px 6%;
+            background: var(--navy);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer h3 {
+            font-family: "Playfair Display", serif;
+            margin-bottom: 5px;
+        }
+
+        footer p,
+        footer a {
+            font-size: 12px;
+            color: #d4dee6;
+        }
+
+        footer a {
+            color: #e6c77e;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(8, 19, 29, .7);
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal {
+            width: min(540px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border: none;
+            background: transparent;
+            font-size: 26px;
+            color: var(--text);
+        }
+
+        .modal-icon {
+            color: var(--gold);
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .modal h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 10px;
+            padding-right: 20px;
+        }
+
+        .modal p {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .modal .modal-category {
+            color: #946d23;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        html[dir="rtl"] .partner-note {
+            text-align: right;
+        }
+
+        html[dir="rtl"] .join-info li {
+            text-align: right;
+        }
+
+        @media (max-width: 950px) {
+            .partners-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .collab-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .join-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            .brand h2 {
+                font-size: 17px;
+            }
+
+            .brand p {
+                font-size: 8px;
+            }
+
+            .brand-mark {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+
+            .back-link {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 60px 6% 75px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .partners-grid,
+            .collab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .join-info,
+            .partner-form {
+                padding: 23px;
+            }
+
+            footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <p data-en="Bahar University · Global Engagement"
+           data-fa="دانشگاه بهار · همکاری‌های جهانی">
+            Bahar University · Global Engagement
+        </p>
+        <a href="index.html#research"
+           data-en="← Back to University"
+           data-fa="بازگشت به دانشگاه ←">
+            ← Back to University
+        </a>
+    </div>
+
+    <header>
+       <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        <div class="header-actions">
+            <a href="#partnerships" class="back-link"
+               data-en="Our Partners"
+               data-fa="همکاران ما">
+                Our Partners
+            </a>
+            <button class="language-btn" id="languageBtn" type="button">
+                دری
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow"
+                   data-en="Connecting Knowledge Worldwide"
+                   data-fa="پیوند دانش در سراسر جهان">
+                    Connecting Knowledge Worldwide
+                </p>
+
+                <h1 data-en="International Partnerships"
+                    data-fa="همکاری‌های بین‌المللی"; style="color: #ffffff;">
+                    International Partnerships
+                </h1>
+
+                <p class="hero-description"
+                   data-en="Building meaningful academic relationships that create opportunities for research, student development, knowledge exchange, and global collaboration."
+                   data-fa="ایجاد روابط ارزشمند دانشگاهی برای فراهم‌سازی فرصت‌های تحقیقاتی، رشد دانشجویان، تبادل دانش و همکاری جهانی.">
+                    Building meaningful academic relationships that create opportunities for research, student development, knowledge exchange, and global collaboration.
+                </p>
+
+                <a href="#partnerships" class="primary-btn">
+                    <span data-en="Explore Partnerships"
+                          data-fa="بررسی همکاری‌ها">
+                        Explore Partnerships
+                    </span>
+                    <i class="bi bi-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <strong>18+</strong>
+                <span data-en="International Partners"
+                      data-fa="همکاران بین‌المللی">
+                    International Partners
+                </span>
+            </div>
+            <div class="stat-card">
+                <strong>6</strong>
+                <span data-en="Collaboration Areas"
+                      data-fa="حوزه‌های همکاری">
+                    Collaboration Areas
+                </span>
+            </div>
+            <div class="stat-card">
+                <strong>Global</strong>
+                <span data-en="Academic Vision"
+                      data-fa="چشم‌انداز دانشگاهی">
+                    Academic Vision
+                </span>
+            </div>
+        </section>
+
+        <section class="section" id="partnerships">
+            <div class="section-heading">
+                <p class="eyebrow"
+                   data-en="Our Network"
+                   data-fa="شبکه همکاری ما">
+                    Our Network
+                </p>
+
+                <h2 data-en="Explore Our Partner Network"
+                    data-fa="شبکه همکاران ما را بررسی کنید">
+                    Explore Our Partner Network
+                </h2>
+
+                <p data-en="Discover different types of institutions that can work with Bahar University to advance education and research."
+                   data-fa="با انواع مؤسساتی آشنا شوید که می‌توانند برای پیشرفت آموزش و تحقیقات با دانشگاه بهار همکاری کنند.">
+                    Discover different types of institutions that can work with Bahar University to advance education and research.
+                </p>
+            </div>
+
+            <div class="partner-filters">
+                <button class="filter-btn active" data-filter="all"
+                        data-en="All Partners" data-fa="تمام همکاران">
+                    All Partners
+                </button>
+                <button class="filter-btn" data-filter="university"
+                        data-en="Universities" data-fa="دانشگاه‌ها">
+                    Universities
+                </button>
+                <button class="filter-btn" data-filter="research"
+                        data-en="Research Institutions" data-fa="مؤسسات تحقیقاتی">
+                    Research Institutions
+                </button>
+                <button class="filter-btn" data-filter="organization"
+                        data-en="Organizations" data-fa="سازمان‌ها">
+                    Organizations
+                </button>
+            </div>
+
+            <div class="partners-grid">
+
+                <article class="partner-card"
+                         data-type="university"
+                         data-name-en="Academic Exchange Network"
+                         data-name-fa="شبکه تبادل دانشگاهی"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="University Network"
+                         data-category-fa="شبکه دانشگاهی"
+                         data-description-en="A sample partnership profile for academic exchange, joint learning activities, and sharing teaching practices between institutions."
+                         data-description-fa="نمونه‌ای از همکاری دانشگاهی برای تبادل علمی، فعالیت‌های آموزشی مشترک و به‌اشتراک‌گذاری روش‌های تدریس میان مؤسسات.">
+                    <div class="partner-banner">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="University Network"
+                              data-fa="شبکه دانشگاهی">
+                            University Network
+                        </span>
+                        <h3 data-en="Academic Exchange Network"
+                            data-fa="شبکه تبادل دانشگاهی">
+                            Academic Exchange Network
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Academic exchange, shared learning, and cooperation between higher education institutions."
+                           data-fa="تبادل دانشگاهی، یادگیری مشترک و همکاری میان مؤسسات آموزش عالی.">
+                            Academic exchange, shared learning, and cooperation between higher education institutions.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Academic Collaboration"
+                                  data-fa="همکاری دانشگاهی">
+                                Academic Collaboration
+                            </span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="partner-card"
+                         data-type="research"
+                         data-name-en="Applied Research Initiative"
+                         data-name-fa="ابتکار تحقیقات کاربردی"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="Research Institution"
+                         data-category-fa="مؤسسه تحقیقاتی"
+                         data-description-en="A sample research partnership focused on exchanging ideas, sharing research methods, and developing joint research proposals."
+                         data-description-fa="نمونه‌ای از همکاری تحقیقاتی با تمرکز بر تبادل ایده‌ها، روش‌های تحقیق و توسعه پیشنهادهای پژوهشی مشترک.">
+                    <div class="partner-banner">
+                        <i class="bi bi-search"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="Research Institution"
+                              data-fa="مؤسسه تحقیقاتی">
+                            Research Institution
+                        </span>
+                        <h3 data-en="Applied Research Initiative"
+                            data-fa="ابتکار تحقیقات کاربردی">
+                            Applied Research Initiative
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Research collaboration, academic publications, and exchange of scientific knowledge."
+                           data-fa="همکاری تحقیقاتی، انتشار مقالات دانشگاهی و تبادل دانش علمی.">
+                            Research collaboration, academic publications, and exchange of scientific knowledge.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Research Cooperation"
+                                  data-fa="همکاری تحقیقاتی">
+                                Research Cooperation
+                            </span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="partner-card"
+                         data-type="organization"
+                         data-name-en="Student Development Initiative"
+                         data-name-fa="ابتکار رشد دانشجویان"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="Educational Organization"
+                         data-category-fa="سازمان آموزشی"
+                         data-description-en="A sample collaboration profile for student development activities, educational workshops, and professional skills programs."
+                         data-description-fa="نمونه‌ای از همکاری برای رشد دانشجویان، کارگاه‌های آموزشی و برنامه‌های مهارت‌های حرفه‌ای.">
+                    <div class="partner-banner">
+                        <i class="bi bi-people"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="Educational Organization"
+                              data-fa="سازمان آموزشی">
+                            Educational Organization
+                        </span>
+                        <h3 data-en="Student Development Initiative"
+                            data-fa="ابتکار رشد دانشجویان">
+                            Student Development Initiative
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Student workshops, career development, and academic skills support."
+                           data-fa="کارگاه‌های دانشجویی، توسعه شغلی و پشتیبانی از مهارت‌های دانشگاهی.">
+                            Student workshops, career development, and academic skills support.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Student Development"
+                                  data-fa="رشد دانشجویان">
+                                Student Development
+                            </span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="partner-card"
+                         data-type="university"
+                         data-name-en="Global Learning Partnership"
+                         data-name-fa="مشارکت جهانی در یادگیری"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="University Partnership"
+                         data-category-fa="مشارکت دانشگاهی"
+                         data-description-en="A sample university partnership concept for collaborative academic events, guest lectures, and knowledge-sharing sessions."
+                         data-description-fa="نمونه‌ای از مشارکت دانشگاهی برای رویدادهای علمی مشترک، سخنرانی‌های مهمان و نشست‌های تبادل دانش.">
+                    <div class="partner-banner">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="University Partnership"
+                              data-fa="مشارکت دانشگاهی">
+                            University Partnership
+                        </span>
+                        <h3 data-en="Global Learning Partnership"
+                            data-fa="مشارکت جهانی در یادگیری">
+                            Global Learning Partnership
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Guest lectures, academic events, and cross-institution learning opportunities."
+                           data-fa="سخنرانی‌های مهمان، رویدادهای دانشگاهی و فرصت‌های یادگیری مشترک.">
+                            Guest lectures, academic events, and cross-institution learning opportunities.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Knowledge Exchange"
+                                  data-fa="تبادل دانش">
+                                Knowledge Exchange
+                            </span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="partner-card"
+                         data-type="research"
+                         data-name-en="Innovation and Technology Forum"
+                         data-name-fa="انجمن نوآوری و تکنالوژی"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="Innovation Network"
+                         data-category-fa="شبکه نوآوری"
+                         data-description-en="A sample collaboration profile for innovation projects, technology discussions, and applied problem-solving activities."
+                         data-description-fa="نمونه‌ای از همکاری در پروژه‌های نوآوری، بحث‌های تکنالوژیکی و فعالیت‌های حل مسائل کاربردی.">
+                    <div class="partner-banner">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="Innovation Network"
+                              data-fa="شبکه نوآوری">
+                            Innovation Network
+                        </span>
+                        <h3 data-en="Innovation and Technology Forum"
+                            data-fa="انجمن نوآوری و تکنالوژی">
+                            Innovation and Technology Forum
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Technology knowledge exchange, innovation activities, and research-led solutions."
+                           data-fa="تبادل دانش تکنالوژی، فعالیت‌های نوآوری و راه‌حل‌های مبتنی بر تحقیق.">
+                            Technology knowledge exchange, innovation activities, and research-led solutions.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Innovation"
+                                  data-fa="نوآوری">Innovation</span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="partner-card"
+                         data-type="organization"
+                         data-name-en="Community Development Network"
+                         data-name-fa="شبکه توسعه جامعه"
+                         data-location-en="International"
+                         data-location-fa="بین‌المللی"
+                         data-category-en="Development Organization"
+                         data-category-fa="سازمان توسعه"
+                         data-description-en="A sample partnership concept for community-focused learning, educational outreach, and sustainable development initiatives."
+                         data-description-fa="نمونه‌ای از همکاری برای آموزش جامعه‌محور، گسترش فعالیت‌های آموزشی و ابتکارات توسعه پایدار.">
+                    <div class="partner-banner">
+                        <i class="bi bi-diagram-3"></i>
+                    </div>
+                    <div class="partner-content">
+                        <span class="partner-type"
+                              data-en="Development Organization"
+                              data-fa="سازمان توسعه">
+                            Development Organization
+                        </span>
+                        <h3 data-en="Community Development Network"
+                            data-fa="شبکه توسعه جامعه">
+                            Community Development Network
+                        </h3>
+                        <p class="partner-location">
+                            <i class="bi bi-geo-alt"></i>
+                            <span data-en="International"
+                                  data-fa="بین‌المللی">International</span>
+                        </p>
+                        <p class="partner-description"
+                           data-en="Community learning, educational outreach, and sustainable development projects."
+                           data-fa="یادگیری اجتماعی، گسترش فعالیت‌های آموزشی و پروژه‌های توسعه پایدار.">
+                            Community learning, educational outreach, and sustainable development projects.
+                        </p>
+                        <div class="partner-bottom">
+                            <span data-en="Community Engagement"
+                                  data-fa="مشارکت اجتماعی">
+                                Community Engagement
+                            </span>
+                            <button class="details-btn" data-en="Learn More →"
+                                    data-fa="بیشتر بدانید ←">
+                                Learn More →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="section collaboration">
+            <div class="section-heading">
+                <p class="eyebrow"
+                   data-en="Working Together"
+                   data-fa="همکاری مشترک">
+                    Working Together
+                </p>
+                <h2 data-en="Areas of Collaboration"
+                    data-fa="حوزه‌های همکاری">
+                    Areas of Collaboration
+                </h2>
+                <p data-en="Partnerships can support a variety of educational and research activities."
+                   data-fa="مشارکت‌ها می‌توانند از فعالیت‌های مختلف آموزشی و تحقیقاتی پشتیبانی کنند.">
+                    Partnerships can support a variety of educational and research activities.
+                </p>
+            </div>
+
+            <div class="collab-grid">
+                <div class="collab-card">
+                    <i class="bi bi-journal-richtext"></i>
+                    <h3 data-en="Joint Research"
+                        data-fa="تحقیقات مشترک">Joint Research</h3>
+                    <p data-en="Collaborate on research questions, projects, and academic publications."
+                       data-fa="همکاری در موضوعات تحقیقاتی، پروژه‌ها و مقالات علمی.">
+                        Collaborate on research questions, projects, and academic publications.
+                    </p>
+                </div>
+
+                <div class="collab-card">
+                    <i class="bi bi-mortarboard"></i>
+                    <h3 data-en="Student Exchange"
+                        data-fa="تبادل دانشجو">Student Exchange</h3>
+                    <p data-en="Explore learning opportunities and academic exchange programs."
+                       data-fa="بررسی فرصت‌های یادگیری و برنامه‌های تبادل دانشگاهی.">
+                        Explore learning opportunities and academic exchange programs.
+                    </p>
+                </div>
+
+                <div class="collab-card">
+                    <i class="bi bi-person-video3"></i>
+                    <h3 data-en="Faculty Development"
+                        data-fa="رشد اعضای هیئت علمی">Faculty Development</h3>
+                    <p data-en="Support academic workshops, guest lectures, and professional development."
+                       data-fa="پشتیبانی از کارگاه‌های علمی، سخنرانی‌های مهمان و رشد حرفه‌ای.">
+                        Support academic workshops, guest lectures, and professional development.
+                    </p>
+                </div>
+
+                <div class="collab-card">
+                    <i class="bi bi-globe"></i>
+                    <h3 data-en="Global Events"
+                        data-fa="رویدادهای جهانی">Global Events</h3>
+                    <p data-en="Participate in academic conferences, seminars, and knowledge-sharing events."
+                       data-fa="شرکت در کنفرانس‌ها، سمینارها و رویدادهای تبادل دانش.">
+                        Participate in academic conferences, seminars, and knowledge-sharing events.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section join-section" id="join">
+            <div class="join-container">
+
+                <div class="join-info">
+                    <p class="eyebrow"
+                       data-en="Start a Conversation"
+                       data-fa="آغاز همکاری">
+                        Start a Conversation
+                    </p>
+
+                    <h2 data-en="Let's Build Something Meaningful Together"
+                        data-fa="بیایید باهم همکاری ارزشمندی ایجاد کنیم">
+                        Let's Build Something Meaningful Together
+                    </h2>
+
+                    <p data-en="Bahar University welcomes inquiries from academic institutions, research groups, and organizations interested in exploring potential collaboration."
+                       data-fa="دانشگاه بهار از درخواست‌های مؤسسات دانشگاهی، گروه‌های تحقیقاتی و سازمان‌هایی که علاقه‌مند به بررسی همکاری هستند، استقبال می‌کند.">
+                        Bahar University welcomes inquiries from academic institutions, research groups, and organizations interested in exploring potential collaboration.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <i class="bi bi-check-circle"></i>
+                            <span data-en="Discuss shared academic interests"
+                                  data-fa="بررسی علایق مشترک دانشگاهی">
+                                Discuss shared academic interests
+                            </span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle"></i>
+                            <span data-en="Explore research and exchange opportunities"
+                                  data-fa="بررسی فرصت‌های تحقیقاتی و تبادل">
+                                Explore research and exchange opportunities
+                            </span>
+                        </li>
+                        <li>
+                            <i class="bi bi-check-circle"></i>
+                            <span data-en="Develop potential collaboration proposals"
+                                  data-fa="تهیه پیشنهادهای احتمالی همکاری">
+                                Develop potential collaboration proposals
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="partner-form" id="partnerForm">
+                    <h3 data-en="Partnership Inquiry"
+                        data-fa="درخواست همکاری">
+                        Partnership Inquiry
+                    </h3>
+
+                    <p class="form-intro"
+                       data-en="Share your details and the type of collaboration you would like to explore."
+                       data-fa="مشخصات و نوع همکاری مورد نظر خود را وارد کنید.">
+                        Share your details and the type of collaboration you would like to explore.
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="contactName"
+                                   data-en="Contact Person *"
+                                   data-fa="نام شخص تماس‌گیرنده *">
+                                Contact Person *
+                            </label>
+                            <input id="contactName" name="contactName"
+                                   type="text" required
+                                   autocomplete="name"
+                                   placeholder="Full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail"
+                                   data-en="Email Address *"
+                                   data-fa="آدرس ایمیل *">
+                                Email Address *
+                            </label>
+                            <input id="contactEmail" name="contactEmail"
+                                   type="email" required
+                                   autocomplete="email"
+                                   placeholder="name@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="institution"
+                               data-en="Institution / Organization *"
+                               data-fa="نام دانشگاه یا سازمان *">
+                            Institution / Organization *
+                        </label>
+                        <input id="institution" name="institution"
+                               type="text" required
+                               placeholder="Institution name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country"
+                                   data-en="Country"
+                                   data-fa="کشور">
+                                Country
+                            </label>
+                            <input id="country" name="country"
+                                   type="text" placeholder="Country">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="collaborationType"
+                                   data-en="Collaboration Type *"
+                                   data-fa="نوع همکاری *">
+                                Collaboration Type *
+                            </label>
+                            <select id="collaborationType"
+                                    name="collaborationType" required>
+                                <option value=""
+                                        data-en="Select an option"
+                                        data-fa="یک گزینه انتخاب کنید">
+                                    Select an option
+                                </option>
+                                <option value="research"
+                                        data-en="Joint Research"
+                                        data-fa="تحقیقات مشترک">
+                                    Joint Research
+                                </option>
+                                <option value="exchange"
+                                        data-en="Student Exchange"
+                                        data-fa="تبادل دانشجو">
+                                    Student Exchange
+                                </option>
+                                <option value="faculty"
+                                        data-en="Faculty Development"
+                                        data-fa="رشد اعضای هیئت علمی">
+                                    Faculty Development
+                                </option>
+                                <option value="events"
+                                        data-en="Academic Events"
+                                        data-fa="رویدادهای دانشگاهی">
+                                    Academic Events
+                                </option>
+                                <option value="other"
+                                        data-en="Other"
+                                        data-fa="سایر">
+                                    Other
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message"
+                               data-en="Message *"
+                               data-fa="پیام *">
+                            Message *
+                        </label>
+                        <textarea id="message" name="message" required
+                                  placeholder="Tell us about your proposal..."></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-btn">
+                        <span data-en="Prepare Inquiry"
+                              data-fa="آماده‌سازی درخواست">
+                            Prepare Inquiry
+                        </span>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+
+                    <p class="form-note"
+                       data-en="This demo form does not send information to the university. It prepares a draft email in your email application."
+                       data-fa="این فرم آزمایشی اطلاعات را مستقیماً به دانشگاه نمی‌فرستد؛ بلکه پیش‌نویس ایمیل را در برنامه ایمیل شما آماده می‌کند.">
+                        This demo form does not send information to the university. It prepares a draft email in your email application.
+                    </p>
+
+                    <div class="form-message" id="formMessage" role="status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h3>Bahar University</h3>
+            <p data-en="Knowledge • Excellence • Future"
+               data-fa="دانش • برتری • آینده">
+                Knowledge • Excellence • Future
+            </p>
+        </div>
+
+        <a href="index.html#research"
+           data-en="Back to Research Section"
+           data-fa="بازگشت به بخش تحقیقات">
+            Back to Research Section
+        </a>
+
+        <p>© <span id="currentYear"></span> Bahar University</p>
+    </footer>
+
+    <div class="modal-backdrop" id="partnerModal"
+         role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal-close" id="modalClose"
+                    type="button" aria-label="Close">&times;</button>
+            <div class="modal-icon">
+                <i class="bi bi-globe2"></i>
+            </div>
+            <span class="modal-category" id="modalCategory"></span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalLocation"></p>
+            <p id="modalDescription"></p>
+            <a href="#join" class="primary-btn" id="modalContact">
+                <span data-en="Discuss Collaboration"
+                      data-fa="بررسی همکاری">
+                    Discuss Collaboration
+                </span>
+                <i class="bi bi-arrow-down"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Partner category filters
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const partnerCards = document.querySelectorAll(".partner-card");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach(item => item.classList.remove("active"));
+                button.classList.add("active");
+
+                const filter = button.dataset.filter;
+
+                partnerCards.forEach(card => {
+                    card.style.display =
+                        filter === "all" || card.dataset.type === filter
+                            ? "flex"
+                            : "none";
+                });
+            });
+        });
+
+        // Partner details modal
+        const partnerModal = document.getElementById("partnerModal");
+        const modalClose = document.getElementById("modalClose");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalCategory = document.getElementById("modalCategory");
+        const modalLocation = document.getElementById("modalLocation");
+        const modalDescription = document.getElementById("modalDescription");
+
+        let currentLanguage = "en";
+
+        partnerCards.forEach(card => {
+            card.querySelector(".details-btn").addEventListener("click", () => {
+                modalTitle.textContent = card.dataset["name" + (currentLanguage === "fa" ? "Fa" : "En")];
+                modalCategory.textContent = card.dataset["category" + (currentLanguage === "fa" ? "Fa" : "En")];
+                modalLocation.textContent = card.dataset["location" + (currentLanguage === "fa" ? "Fa" : "En")];
+                modalDescription.textContent = card.dataset["description" + (currentLanguage === "fa" ? "Fa" : "En")];
+
+                partnerModal.classList.add("show");
+                document.body.style.overflow = "hidden";
+                modalClose.focus();
+            });
+        });
+
+        function closeModal() {
+            partnerModal.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        modalClose.addEventListener("click", closeModal);
+
+        partnerModal.addEventListener("click", event => {
+            if (event.target === partnerModal) closeModal();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeModal();
+        });
+
+        document.getElementById("modalContact").addEventListener("click", closeModal);
+
+        // English / Dari language toggle
+        const languageBtn = document.getElementById("languageBtn");
+
+        function setLanguage(language) {
+            currentLanguage = language;
+
+            document.documentElement.lang = language === "fa" ? "fa" : "en";
+            document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
+
+            document.querySelectorAll("[data-en][data-fa]").forEach(element => {
+                element.textContent = element.dataset[language];
+            });
+
+            languageBtn.textContent = language === "en" ? "دری" : "English";
+
+            document.title = language === "fa"
+                ? "همکاران بین‌المللی | دانشگاه بهار"
+                : "International Partners | Bahar University";
+        }
+
+        languageBtn.addEventListener("click", () => {
+            setLanguage(currentLanguage === "en" ? "fa" : "en");
+        });
+
+        // Demo inquiry form: prepare an email draft
+        const partnerForm = document.getElementById("partnerForm");
+        const formMessage = document.getElementById("formMessage");
+
+        partnerForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            if (!partnerForm.reportValidity()) return;
+
+            const data = new FormData(partnerForm);
+
+            const subject = encodeURIComponent(
+                "International Partnership Inquiry - " + data.get("institution")
+            );
+
+            const body = encodeURIComponent(
+                "Contact Person: " + data.get("contactName") + "\n" +
+                "Email: " + data.get("contactEmail") + "\n" +
+                "Institution: " + data.get("institution") + "\n" +
+                "Country: " + data.get("country") + "\n" +
+                "Collaboration Type: " + data.get("collaborationType") + "\n\n" +
+                "Message:\n" + data.get("message")
+            );
+
+            formMessage.style.display = "block";
+            formMessage.textContent = currentLanguage === "fa"
+                ? "پیش‌نویس ایمیل آماده می‌شود. برای ارسال واقعی، برنامه ایمیل شما باید تنظیم شده باشد."
+                : "Your email draft is being prepared. Your email application must be configured to send it.";
+
+            window.location.href =
+                "mailto:info@baharuniversity.edu?subject=" + subject +
+                "&body=" + body;
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>

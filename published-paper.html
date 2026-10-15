@@ -1,0 +1,1192 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Published Papers | Bahar University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        :root {
+            --navy: #142536;
+            --blue: #245c7c;
+            --gold: #c99a3d;
+            --cream: #f7f4ed;
+            --white: #ffffff;
+            --text: #536171;
+            --border: #e6e4df;
+            --shadow: 0 12px 35px rgba(20, 37, 54, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--navy);
+            background: #fff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        .topbar {
+            background: var(--navy);
+            color: #fff;
+            padding: 12px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .topbar p {
+            font-size: 13px;
+            color: #e5eaf0;
+        }
+
+        .topbar a {
+            color: #e6c77e;
+            font-size: 13px;
+        }
+
+        header {
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .language-btn {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            color: var(--navy);
+        }
+
+        .hero {
+            padding: 75px 6% 80px;
+            background:
+                linear-gradient(110deg, rgba(20, 37, 54, .97), rgba(36, 92, 124, .91));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            width: 340px;
+            height: 340px;
+            border: 1px solid rgba(201, 154, 61, .35);
+            border-radius: 50%;
+            position: absolute;
+            right: -100px;
+            top: -100px;
+            box-shadow: 0 0 0 35px rgba(201,154,61,.04),
+                        0 0 0 70px rgba(201,154,61,.04);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: #e6c77e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(35px, 5vw, 56px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #e0e8ef;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 21px;
+            border-radius: 4px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .hero-button:hover {
+            background: #e2b85c;
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 950px;
+            margin: -32px auto 0;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 25px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-card strong {
+            display: block;
+            color: var(--blue);
+            font-size: 30px;
+            line-height: 1.3;
+        }
+
+        .stat-card span {
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        .section {
+            padding: 70px 6%;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 35px;
+        }
+
+        .section-heading .eyebrow {
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(27px, 3vw, 37px);
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1 1 270px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #84909c;
+        }
+
+        .search-box input,
+        .filters select {
+            width: 100%;
+            min-height: 48px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 11px 15px;
+            outline: none;
+            background: #fff;
+            color: var(--navy);
+        }
+
+        .search-box input {
+            padding-left: 43px;
+        }
+
+        .search-box input:focus,
+        .filters select:focus {
+            border-color: var(--gold);
+        }
+
+        .filters select {
+            flex: 0 1 190px;
+            cursor: pointer;
+        }
+
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .paper-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 26px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 315px;
+            transition: .25s;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #d8c18f;
+        }
+
+        .paper-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .paper-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            background: var(--cream);
+            color: var(--gold);
+            font-size: 23px;
+        }
+
+        .paper-year {
+            color: var(--blue);
+            background: #eef4f7;
+            border-radius: 30px;
+            padding: 5px 11px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .paper-card h3 {
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .paper-card .authors {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .paper-card .abstract {
+            font-size: 13px;
+            color: var(--text);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .paper-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            font-size: 11px;
+            color: var(--blue);
+            background: #f0f5f8;
+            border-radius: 4px;
+            padding: 5px 9px;
+        }
+
+        .details-btn {
+            background: none;
+            border: none;
+            color: #a57a25;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .details-btn:hover {
+            color: var(--navy);
+        }
+
+        .no-results {
+            display: none;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .no-results i {
+            display: block;
+            font-size: 35px;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .publication-note {
+            margin-top: 35px;
+            padding: 22px 25px;
+            background: var(--cream);
+            border-left: 4px solid var(--gold);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        .publication-note strong {
+            color: var(--navy);
+        }
+
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 35px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer p {
+            color: #d0d9e1;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #e6c77e;
+            font-size: 13px;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 19, 29, .7);
+            z-index: 1000;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal {
+            width: min(620px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 9px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 17px;
+            top: 12px;
+            border: none;
+            background: transparent;
+            font-size: 25px;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .modal h2 {
+            padding-right: 20px;
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin: 15px 0;
+        }
+
+        .modal p {
+            color: var(--text);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .modal-label {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        html[dir="rtl"] body {
+            font-family: "DM Sans", sans-serif;
+        }
+
+        html[dir="rtl"] .search-box i {
+            left: auto;
+            right: 15px;
+        }
+
+        html[dir="rtl"] .search-box input {
+            padding-left: 15px;
+            padding-right: 43px;
+        }
+
+        html[dir="rtl"] .publication-note {
+            border-left: none;
+            border-right: 4px solid var(--gold);
+        }
+
+        @media (max-width: 950px) {
+            .papers-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 16px 5%;
+                align-items: flex-start;
+            }
+
+            .brand h2 {
+                font-size: 18px;
+            }
+
+            .brand-mark {
+                width: 42px;
+                height: 42px;
+            }
+
+            .header-actions {
+                gap: 10px;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .back-link {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 55px 6% 65px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .papers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters select {
+                flex-basis: 100%;
+            }
+
+            footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <p data-en="Bahar University · Research & Innovation"
+           data-fa="دانشگاه بهار · تحقیق و نوآوری">
+            Bahar University · Research & Innovation
+        </p>
+
+        <a href="index.html#research"
+           data-en="← Back to University"
+           data-fa="بازگشت به دانشگاه ←">
+            ← Back to University
+        </a>
+    </div>
+
+    <header>
+         <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        <div class="header-actions">
+            <a class="back-link" href="index.html#research"
+               data-en="Research Center"
+               data-fa="مرکز تحقیقات">
+                Research Center
+            </a>
+
+            <button class="language-btn" id="languageBtn" type="button">
+                دری
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow"
+                   data-en="Knowledge in Action"
+                   data-fa="دانش در عمل">
+                    Knowledge in Action
+                </p>
+
+                <h1 data-en="Published Research Papers"
+                    data-fa="مقالات علمی منتشرشده"; style="color: #ffffff;">
+                    Published Research Papers
+                </h1>
+
+                <p class="hero-description"
+                   data-en="Explore academic research, scholarly ideas, and scientific contributions from the Bahar University research community."
+                   data-fa="پژوهش‌های علمی، ایده‌های دانشگاهی و دستاوردهای علمی جامعه تحقیقاتی دانشگاه بهار را بررسی کنید.">
+                    Explore academic research, scholarly ideas, and scientific contributions from the Bahar University research community.
+                </p>
+
+                <a href="#papers" class="hero-button">
+                    <span data-en="Explore Publications"
+                          data-fa="مشاهده مقالات">
+                        Explore Publications
+                    </span>
+                    <i class="bi bi-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="Publication statistics">
+            <div class="stat-card">
+                <strong>120+</strong>
+                <span data-en="Published Papers"
+                      data-fa="مقالات منتشرشده">
+                    Published Papers
+                </span>
+            </div>
+
+            <div class="stat-card">
+                <strong>6</strong>
+                <span data-en="Research Fields"
+                      data-fa="حوزه‌های تحقیقاتی">
+                    Research Fields
+                </span>
+            </div>
+
+            <div class="stat-card">
+                <strong>18+</strong>
+                <span data-en="Research Collaborations"
+                      data-fa="همکاری‌های تحقیقاتی">
+                    Research Collaborations
+                </span>
+            </div>
+        </section>
+
+        <section class="section" id="papers">
+            <div class="section-heading">
+                <p class="eyebrow"
+                   data-en="Academic Excellence"
+                   data-fa="برتری علمی">
+                    Academic Excellence
+                </p>
+
+                <h2 data-en="Explore Our Publications"
+                    data-fa="مقالات علمی ما را بررسی کنید">
+                    Explore Our Publications
+                </h2>
+
+                <p data-en="Search and filter research papers by title, author, or academic field."
+                   data-fa="مقالات را بر اساس عنوان، نویسنده یا حوزه علمی جستجو و فیلتر کنید.">
+                    Search and filter research papers by title, author, or academic field.
+                </p>
+            </div>
+
+            <div class="filters">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="search" id="paperSearch"
+                           placeholder="Search papers, authors..."
+                           aria-label="Search papers">
+                </div>
+
+                <select id="fieldFilter" aria-label="Filter by research field">
+                    <option value="all"
+                            data-en="All Research Fields"
+                            data-fa="تمام حوزه‌های تحقیقاتی">
+                        All Research Fields
+                    </option>
+                    <option value="technology"
+                            data-en="Technology"
+                            data-fa="تکنالوژی">
+                        Technology
+                    </option>
+                    <option value="business"
+                            data-en="Business & Economics"
+                            data-fa="تجارت و اقتصاد">
+                        Business & Economics
+                    </option>
+                    <option value="engineering"
+                            data-en="Engineering"
+                            data-fa="انجنیری">
+                        Engineering
+                    </option>
+                    <option value="health"
+                            data-en="Public Health"
+                            data-fa="صحت عامه">
+                        Public Health
+                    </option>
+                    <option value="education"
+                            data-en="Education"
+                            data-fa="آموزش">
+                        Education
+                    </option>
+                    <option value="environment"
+                            data-en="Environment"
+                            data-fa="محیط زیست">
+                        Environment
+                    </option>
+                </select>
+
+                <select id="yearFilter" aria-label="Filter by year">
+                    <option value="all"
+                            data-en="All Years"
+                            data-fa="تمام سال‌ها">
+                        All Years
+                    </option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+
+            <div class="papers-grid" id="papersGrid">
+
+                <article class="paper-card"
+                         data-field="technology"
+                         data-year="2026"
+                         data-search="artificial intelligence education digital learning technology">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-cpu"></i></div>
+                        <span class="paper-year">2026</span>
+                    </div>
+                    <h3 data-en="Artificial Intelligence in Modern Education"
+                        data-fa="هوش مصنوعی در آموزش مدرن">
+                        Artificial Intelligence in Modern Education
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Computing"
+                       data-fa="گروه تحقیقاتی · علوم کامپیوتر">
+                        Research Group · Computing
+                    </p>
+                    <p class="abstract"
+                       data-en="An overview of how intelligent digital tools may support learning, assessment, and educational access."
+                       data-fa="مروری بر چگونگی کمک ابزارهای هوشمند دیجیتالی به یادگیری، ارزیابی و دسترسی آموزشی.">
+                        An overview of how intelligent digital tools may support learning, assessment, and educational access.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Technology"
+                              data-fa="تکنالوژی">Technology</span>
+                        <button class="details-btn" data-paper="0"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="paper-card"
+                         data-field="business"
+                         data-year="2025"
+                         data-search="digital transformation small business economics">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <span class="paper-year">2025</span>
+                    </div>
+                    <h3 data-en="Digital Transformation and Small Business Growth"
+                        data-fa="تحول دیجیتالی و رشد تجارت‌های کوچک">
+                        Digital Transformation and Small Business Growth
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Business"
+                       data-fa="گروه تحقیقاتی · تجارت">
+                        Research Group · Business
+                    </p>
+                    <p class="abstract"
+                       data-en="A study framework for understanding the role of digital tools in business development and productivity."
+                       data-fa="چارچوبی پژوهشی برای درک نقش ابزارهای دیجیتالی در توسعه تجارت و افزایش بهره‌وری.">
+                        A study framework for understanding the role of digital tools in business development and productivity.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Business & Economics"
+                              data-fa="تجارت و اقتصاد">Business & Economics</span>
+                        <button class="details-btn" data-paper="1"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="paper-card"
+                         data-field="engineering"
+                         data-year="2025"
+                         data-search="sustainable building engineering energy efficiency">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-buildings"></i></div>
+                        <span class="paper-year">2025</span>
+                    </div>
+                    <h3 data-en="Sustainable Building Design and Energy Efficiency"
+                        data-fa="طراحی ساختمان پایدار و بهره‌وری انرژی">
+                        Sustainable Building Design and Energy Efficiency
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Engineering"
+                       data-fa="گروه تحقیقاتی · انجنیری">
+                        Research Group · Engineering
+                    </p>
+                    <p class="abstract"
+                       data-en="An exploration of sustainable design principles and approaches to reducing energy use in buildings."
+                       data-fa="بررسی اصول طراحی پایدار و روش‌های کاهش مصرف انرژی در ساختمان‌ها.">
+                        An exploration of sustainable design principles and approaches to reducing energy use in buildings.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Engineering"
+                              data-fa="انجنیری">Engineering</span>
+                        <button class="details-btn" data-paper="2"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="paper-card"
+                         data-field="health"
+                         data-year="2024"
+                         data-search="public health community healthcare access">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-heart-pulse"></i></div>
+                        <span class="paper-year">2024</span>
+                    </div>
+                    <h3 data-en="Community Health and Access to Healthcare Services"
+                        data-fa="صحت جامعه و دسترسی به خدمات صحی">
+                        Community Health and Access to Healthcare Services
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Public Health"
+                       data-fa="گروه تحقیقاتی · صحت عامه">
+                        Research Group · Public Health
+                    </p>
+                    <p class="abstract"
+                       data-en="A research overview of community health needs and factors affecting access to essential healthcare."
+                       data-fa="مروری پژوهشی بر نیازهای صحی جامعه و عوامل مؤثر بر دسترسی به خدمات ضروری صحی.">
+                        A research overview of community health needs and factors affecting access to essential healthcare.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Public Health"
+                              data-fa="صحت عامه">Public Health</span>
+                        <button class="details-btn" data-paper="3"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="paper-card"
+                         data-field="education"
+                         data-year="2024"
+                         data-search="student engagement digital learning education">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-mortarboard"></i></div>
+                        <span class="paper-year">2024</span>
+                    </div>
+                    <h3 data-en="Student Engagement in Digital Learning Environments"
+                        data-fa="مشارکت دانشجویان در محیط‌های یادگیری دیجیتالی">
+                        Student Engagement in Digital Learning Environments
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Education"
+                       data-fa="گروه تحقیقاتی · آموزش">
+                        Research Group · Education
+                    </p>
+                    <p class="abstract"
+                       data-en="An examination of learning participation, online interaction, and student-centered educational strategies."
+                       data-fa="بررسی مشارکت در یادگیری، تعامل آنلاین و راهبردهای آموزشی دانشجومحور.">
+                        An examination of learning participation, online interaction, and student-centered educational strategies.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Education"
+                              data-fa="آموزش">Education</span>
+                        <button class="details-btn" data-paper="4"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+                <article class="paper-card"
+                         data-field="environment"
+                         data-year="2023"
+                         data-search="environment water conservation sustainable development">
+                    <div class="paper-top">
+                        <div class="paper-icon"><i class="bi bi-globe-asia-australia"></i></div>
+                        <span class="paper-year">2023</span>
+                    </div>
+                    <h3 data-en="Water Conservation and Sustainable Development"
+                        data-fa="حفاظت از آب و توسعه پایدار">
+                        Water Conservation and Sustainable Development
+                    </h3>
+                    <p class="authors"
+                       data-en="Research Group · Environment"
+                       data-fa="گروه تحقیقاتی · محیط زیست">
+                        Research Group · Environment
+                    </p>
+                    <p class="abstract"
+                       data-en="A discussion of water conservation practices and their importance for long-term environmental sustainability."
+                       data-fa="بررسی روش‌های حفاظت از آب و اهمیت آن‌ها برای پایداری درازمدت محیط زیست.">
+                        A discussion of water conservation practices and their importance for long-term environmental sustainability.
+                    </p>
+                    <div class="paper-footer">
+                        <span class="category"
+                              data-en="Environment"
+                              data-fa="محیط زیست">Environment</span>
+                        <button class="details-btn" data-paper="5"
+                                data-en="Read Abstract →"
+                                data-fa="مشاهده چکیده ←">
+                            Read Abstract →
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="no-results" id="noResults">
+                <i class="bi bi-search"></i>
+                <h3 data-en="No papers found"
+                    data-fa="مقاله‌ای پیدا نشد">
+                    No papers found
+                </h3>
+                <p data-en="Try a different keyword or change the filters."
+                   data-fa="یک کلمه دیگر جستجو کنید یا فیلترها را تغییر دهید.">
+                    Try a different keyword or change the filters.
+                </p>
+            </div>
+
+            <div class="publication-note">
+                <strong data-en="Academic integrity notice"
+                        data-fa="یادداشت اعتبار علمی">
+                    Academic integrity notice
+                </strong>
+                <p data-en="The paper titles and descriptions on this demonstration page are sample content. Replace them with verified publications, author names, journal details, and DOI links before publishing."
+                   data-fa="عنوان‌ها و توضیحات این صفحه نمونه هستند. پیش از انتشار سایت، آن‌ها را با مقالات واقعی، نام نویسندگان، مشخصات مجله و لینک DOI معتبر جایگزین کنید.">
+                    The paper titles and descriptions on this demonstration page are sample content. Replace them with verified publications, author names, journal details, and DOI links before publishing.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h3>Bahar University</h3>
+            <p data-en="Knowledge • Excellence • Future"
+               data-fa="دانش • برتری • آینده">
+                Knowledge • Excellence • Future
+            </p>
+        </div>
+
+        <a href="index.html#research"
+           data-en="Back to Research Section"
+           data-fa="بازگشت به بخش تحقیقات">
+            Back to Research Section
+        </a>
+
+        <p>© <span id="currentYear"></span> Bahar University</p>
+    </footer>
+
+    <div class="modal-backdrop" id="paperModal" role="dialog"
+         aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <button class="modal-close" id="modalClose"
+                    aria-label="Close dialog">&times;</button>
+            <span class="modal-label"
+                  data-en="Publication Abstract"
+                  data-fa="چکیده مقاله">
+                Publication Abstract
+            </span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalAuthors"></p>
+            <p id="modalAbstract"></p>
+            <p id="modalNotice"></p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            0: {
+                title: "Artificial Intelligence in Modern Education",
+                authors: "Research Group · Computing",
+                abstract: "This sample abstract describes a possible research topic: how artificial intelligence may support personalized learning, educational assessment, and access to learning resources. Replace this text with the verified abstract of the actual publication."
+            },
+            1: {
+                title: "Digital Transformation and Small Business Growth",
+                authors: "Research Group · Business",
+                abstract: "This sample abstract introduces the relationship between digital tools, business operations, and productivity. Replace it with the real paper's abstract and verified publication information."
+            },
+            2: {
+                title: "Sustainable Building Design and Energy Efficiency",
+                authors: "Research Group · Engineering",
+                abstract: "This sample abstract discusses sustainable building design and energy efficiency. Replace it with the actual abstract and confirmed details of the published research."
+            },
+            3: {
+                title: "Community Health and Access to Healthcare Services",
+                authors: "Research Group · Public Health",
+                abstract: "This sample abstract introduces community healthcare needs and barriers to essential services. Replace it with the verified abstract from the relevant publication."
+            },
+            4: {
+                title: "Student Engagement in Digital Learning Environments",
+                authors: "Research Group · Education",
+                abstract: "This sample abstract explores student participation and online learning experiences. Replace it with the actual research abstract and publication details."
+            },
+            5: {
+                title: "Water Conservation and Sustainable Development",
+                authors: "Research Group · Environment",
+                abstract: "This sample abstract discusses water conservation and environmental sustainability. Replace it with the verified abstract of the actual publication."
+            }
+        };
+
+        const paperSearch = document.getElementById("paperSearch");
+        const fieldFilter = document.getElementById("fieldFilter");
+        const yearFilter = document.getElementById("yearFilter");
+        const paperCards = [...document.querySelectorAll(".paper-card")];
+        const noResults = document.getElementById("noResults");
+
+        function filterPapers() {
+            const keyword = paperSearch.value.trim().toLowerCase();
+            const selectedField = fieldFilter.value;
+            const selectedYear = yearFilter.value;
+            let visibleCount = 0;
+
+            paperCards.forEach(card => {
+                const searchableText =
+                    (card.innerText + " " + card.dataset.search).toLowerCase();
+
+                const matchesKeyword = searchableText.includes(keyword);
+                const matchesField =
+                    selectedField === "all" ||
+                    card.dataset.field === selectedField;
+                const matchesYear =
+                    selectedYear === "all" ||
+                    card.dataset.year === selectedYear;
+
+                const visible =
+                    matchesKeyword && matchesField && matchesYear;
+
+                card.style.display = visible ? "flex" : "none";
+
+                if (visible) visibleCount++;
+            });
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+        }
+
+        paperSearch.addEventListener("input", filterPapers);
+        fieldFilter.addEventListener("change", filterPapers);
+        yearFilter.addEventListener("change", filterPapers);
+
+        const modal = document.getElementById("paperModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalAuthors = document.getElementById("modalAuthors");
+        const modalAbstract = document.getElementById("modalAbstract");
+        const modalNotice = document.getElementById("modalNotice");
+        const modalClose = document.getElementById("modalClose");
+
+        document.querySelectorAll(".details-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const paper = translations[button.dataset.paper];
+
+                modalTitle.textContent = paper.title;
+                modalAuthors.textContent = paper.authors;
+                modalAbstract.textContent = paper.abstract;
+                modalNotice.textContent =
+                    "Demo content: add the verified publication abstract before using this as an official academic record.";
+
+                modal.classList.add("show");
+                document.body.style.overflow = "hidden";
+                modalClose.focus();
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        modalClose.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", event => {
+            if (event.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeModal();
+        });
+
+        const languageBtn = document.getElementById("languageBtn");
+        let currentLanguage = "en";
+
+        function setLanguage(language) {
+            currentLanguage = language;
+
+            document.documentElement.lang =
+                language === "fa" ? "fa" : "en";
+            document.documentElement.dir =
+                language === "fa" ? "rtl" : "ltr";
+
+            document.querySelectorAll("[data-en][data-fa]").forEach(element => {
+                element.textContent = element.dataset[language];
+            });
+
+            paperSearch.placeholder = language === "fa"
+                ? "جستجوی مقالات و نویسندگان..."
+                : "Search papers, authors...";
+
+            languageBtn.textContent =
+                language === "en" ? "دری" : "English";
+
+            document.title = language === "fa"
+                ? "مقالات منتشرشده | دانشگاه بهار"
+                : "Published Papers | Bahar University";
+        }
+
+        languageBtn.addEventListener("click", () => {
+            setLanguage(currentLanguage === "en" ? "fa" : "en");
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>

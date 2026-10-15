@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scholarships & Financial Aid | Bahar University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="scholarship.css">
+</head>
+
+<body class="scholarship-page">
+
+    <!-- HEADER -->
+    <header class="scholarship-header">
+        <div class="container scholarship-nav">
+
+            <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+            <nav class="scholarship-nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#academics">Academics</a>
+                <a href="index.html#programs">Programs</a>
+                <a href="scholarships.html" class="current">Scholarships</a>
+            </nav>
+
+            <a href="admission.html" class="scholarship-header-btn">
+                Apply for Admission
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
+
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="scholarship-hero">
+            <div class="container scholarship-hero-grid">
+
+                <div class="scholarship-hero-copy">
+
+                    <span class="scholarship-eyebrow">
+                        <i class="bi bi-stars"></i>
+                        INVEST IN YOUR FUTURE
+                    </span>
+
+                    <h1>
+                        Your potential.
+                        <span>Your opportunity.</span>
+                    </h1>
+
+                    <p>
+                        Explore scholarship and financial aid opportunities
+                        that can help make your educational journey at
+                        Bahar University more accessible.
+                    </p>
+
+                    <div class="scholarship-hero-actions">
+                        <a href="#available-scholarships"
+                           class="scholarship-btn scholarship-btn-gold">
+                            Explore Scholarships
+                            <i class="bi bi-arrow-down"></i>
+                        </a>
+
+                        <a href="#how-to-apply"
+                           class="scholarship-text-link">
+                            How to apply
+                            <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="scholarship-hero-note">
+                        <i class="bi bi-info-circle"></i>
+                        <span>
+                            Awards, eligibility and deadlines are subject
+                            to official university policies.
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="scholarship-hero-visual">
+                    <img src="../university2/images/scholarship1.PNG"
+                         alt="Bahar University campus">
+
+                    <div class="scholarship-image-card">
+                        <i class="bi bi-mortarboard"></i>
+                        <div>
+                            <strong>Build your future</strong>
+                            <span>Start exploring your options</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="scholarship-intro">
+            <div class="container scholarship-intro-grid">
+
+                <div>
+                    <span class="scholarship-label">FINANCIAL SUPPORT</span>
+                    <h2>Find support for your academic journey.</h2>
+                </div>
+
+                <p>
+                    Every student's journey is different. Explore the
+                    funding categories below to understand which type
+                    of financial support may suit your circumstances.
+                    Each opportunity has its own eligibility criteria.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- SCHOLARSHIPS -->
+        <section class="scholarship-catalog" id="available-scholarships">
+            <div class="container">
+
+                <div class="scholarship-section-heading">
+                    <div>
+                        <span class="scholarship-label">EXPLORE YOUR OPTIONS</span>
+                        <h2>Scholarship opportunities</h2>
+                        <p>Discover the types of support you may be eligible for.</p>
+                    </div>
+
+                    <span class="scholarship-result-count"
+                          id="scholarshipCount">
+                        6 opportunities
+                    </span>
+                </div>
+
+                <!-- SEARCH AND FILTER -->
+                <div class="scholarship-filters">
+
+                    <div class="scholarship-search">
+                        <i class="bi bi-search"></i>
+                        <input type="search"
+                               id="scholarshipSearch"
+                               placeholder="Search scholarships..."
+                               aria-label="Search scholarships">
+                    </div>
+
+                    <select id="scholarshipType"
+                            aria-label="Filter by scholarship type">
+                        <option value="all">All categories</option>
+                        <option value="merit">Merit-based</option>
+                        <option value="need">Financial need</option>
+                        <option value="leadership">Leadership</option>
+                        <option value="research">Research</option>
+                        <option value="admission">New applicants</option>
+                    </select>
+
+                    <button type="button"
+                            id="clearScholarshipFilters"
+                            class="scholarship-clear">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                        Reset
+                    </button>
+
+                </div>
+
+                <!-- CARD GRID -->
+                <div class="scholarship-card-grid" id="scholarshipGrid">
+
+                    <article class="funding-card"
+                             data-type="merit"
+                             data-search="merit academic achievement grades excellence">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon gold-icon">
+                                <i class="bi bi-award"></i>
+                            </div>
+                            <span class="funding-category">ACADEMIC</span>
+                        </div>
+
+                        <h3>Merit-Based Scholarship</h3>
+
+                        <p>
+                            Intended for students who demonstrate strong
+                            academic performance and outstanding potential.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Academic records</li>
+                            <li><i class="bi bi-check2"></i> Consistent achievement</li>
+                            <li><i class="bi bi-check2"></i> Academic review</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="#how-to-apply" class="funding-link">
+                                Learn more <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="funding-card"
+                             data-type="need"
+                             data-search="financial need assistance family income support">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon blue-icon">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <span class="funding-category">FINANCIAL AID</span>
+                        </div>
+
+                        <h3>Need-Based Financial Aid</h3>
+
+                        <p>
+                            Intended for eligible students who need financial
+                            assistance to pursue or continue their education.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Financial information</li>
+                            <li><i class="bi bi-check2"></i> Supporting documents</li>
+                            <li><i class="bi bi-check2"></i> Individual assessment</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="#how-to-apply" class="funding-link">
+                                Learn more <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="funding-card"
+                             data-type="leadership"
+                             data-search="leadership community volunteering service activities">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon green-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <span class="funding-category">LEADERSHIP</span>
+                        </div>
+
+                        <h3>Leadership Scholarship</h3>
+
+                        <p>
+                            Designed to recognize eligible applicants who
+                            demonstrate leadership, initiative and community
+                            involvement.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Leadership experience</li>
+                            <li><i class="bi bi-check2"></i> Community participation</li>
+                            <li><i class="bi bi-check2"></i> Personal statement</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="#how-to-apply" class="funding-link">
+                                Learn more <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="funding-card"
+                             data-type="research"
+                             data-search="research innovation science projects academic investigation">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon purple-icon">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <span class="funding-category">INNOVATION</span>
+                        </div>
+
+                        <h3>Research Support</h3>
+
+                        <p>
+                            A potential support category for eligible students
+                            involved in approved academic research or
+                            innovation projects.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Research proposal</li>
+                            <li><i class="bi bi-check2"></i> Project objectives</li>
+                            <li><i class="bi bi-check2"></i> Faculty review</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="#how-to-apply" class="funding-link">
+                                Learn more <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="funding-card"
+                             data-type="admission"
+                             data-search="new applicant entrance incoming first year admission">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon blue-icon">
+                                <i class="bi bi-mortarboard"></i>
+                            </div>
+                            <span class="funding-category">NEW STUDENTS</span>
+                        </div>
+
+                        <h3>Entrance Scholarship</h3>
+
+                        <p>
+                            A potential opportunity for new applicants,
+                            subject to available university funding and
+                            admission requirements.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Admission application</li>
+                            <li><i class="bi bi-check2"></i> Previous academic records</li>
+                            <li><i class="bi bi-check2"></i> Program eligibility</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="admission.html" class="funding-link">
+                                Admission <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                    <article class="funding-card"
+                             data-type="merit"
+                             data-search="special scholarship academic excellence achievement talent">
+
+                        <div class="funding-card-top">
+                            <div class="funding-icon gold-icon">
+                                <i class="bi bi-stars"></i>
+                            </div>
+                            <span class="funding-category">SPECIAL</span>
+                        </div>
+
+                        <h3>Special Achievement Award</h3>
+
+                        <p>
+                            A potential award category for exceptional
+                            academic, creative or extracurricular
+                            achievements, if offered by the university.
+                        </p>
+
+                        <ul>
+                            <li><i class="bi bi-check2"></i> Evidence of achievement</li>
+                            <li><i class="bi bi-check2"></i> Supporting portfolio</li>
+                            <li><i class="bi bi-check2"></i> Selection review</li>
+                        </ul>
+
+                        <div class="funding-card-bottom">
+                            <span><i class="bi bi-file-earmark-text"></i> Eligibility review</span>
+                            <a href="#how-to-apply" class="funding-link">
+                                Learn more <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="scholarship-empty" id="scholarshipEmpty" hidden>
+                    <i class="bi bi-search"></i>
+                    <h3>No scholarships found</h3>
+                    <p>Try another search term or select a different category.</p>
+                </div>
+
+                <p class="scholarship-disclaimer">
+                    <i class="bi bi-info-circle"></i>
+                    These are illustrative scholarship categories for the
+                    website design. They are not confirmation that these
+                    awards are currently offered by Bahar University.
+                    Funding amounts and deadlines must be added after
+                    official confirmation.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- ELIGIBILITY -->
+        <section class="scholarship-eligibility">
+            <div class="container scholarship-eligibility-grid">
+
+                <div>
+                    <span class="scholarship-label">BEFORE YOU APPLY</span>
+                    <h2>Are you ready to apply?</h2>
+                    <p>
+                        Requirements differ by award. Prepare your
+                        information and check the official criteria
+                        before submitting an application.
+                    </p>
+
+                    <a href="admission.html" class="scholarship-btn scholarship-btn-dark">
+                        Explore Admission
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <div class="eligibility-list">
+
+                    <div>
+                        <span class="eligibility-number">01</span>
+                        <div>
+                            <h3>Academic records</h3>
+                            <p>Prepare transcripts or previous educational records.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="eligibility-number">02</span>
+                        <div>
+                            <h3>Personal information</h3>
+                            <p>Provide accurate contact and applicant details.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="eligibility-number">03</span>
+                        <div>
+                            <h3>Supporting documents</h3>
+                            <p>Prepare financial evidence or achievement records if required.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="eligibility-number">04</span>
+                        <div>
+                            <h3>Official requirements</h3>
+                            <p>Confirm eligibility and application deadlines with the university.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- HOW TO APPLY -->
+        <section class="scholarship-steps" id="how-to-apply">
+            <div class="container">
+
+                <div class="scholarship-section-heading centered">
+                    <div>
+                        <span class="scholarship-label">THE APPLICATION PROCESS</span>
+                        <h2>How to apply</h2>
+                        <p>Follow these steps to prepare your scholarship application.</p>
+                    </div>
+                </div>
+
+                <div class="scholarship-step-grid">
+
+                    <article>
+                        <span>01</span>
+                        <i class="bi bi-search"></i>
+                        <h3>Explore</h3>
+                        <p>Review the available funding categories and their requirements.</p>
+                    </article>
+
+                    <article>
+                        <span>02</span>
+                        <i class="bi bi-folder2-open"></i>
+                        <h3>Prepare</h3>
+                        <p>Gather the documents requested for your selected opportunity.</p>
+                    </article>
+
+                    <article>
+                        <span>03</span>
+                        <i class="bi bi-file-earmark-check"></i>
+                        <h3>Apply</h3>
+                        <p>Complete the official application process when available.</p>
+                    </article>
+
+                    <article>
+                        <span>04</span>
+                        <i class="bi bi-envelope-check"></i>
+                        <h3>Follow Up</h3>
+                        <p>Check official communications for decisions or further instructions.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="scholarship-cta">
+            <div class="container scholarship-cta-inner">
+
+                <div>
+                    <span>YOUR NEXT CHAPTER STARTS HERE</span>
+                    <h2>Ready to take the next step?</h2>
+                    <p>
+                        Explore academic programs and learn more about
+                        joining the Bahar University community.
+                    </p>
+                </div>
+
+                <a href="admission.html" class="scholarship-btn scholarship-btn-gold">
+                    Explore Admission
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="scholarship-footer">
+        <div class="container scholarship-footer-inner">
+
+            <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+            <p>
+                © 2026 Bahar University. All rights reserved.
+            </p>
+
+            <a href="index.html">
+                Back to homepage
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
+
+        </div>
+    </footer>
+
+    <script src="scholarships.js"></script>
+</body>
+</html>

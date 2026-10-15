@@ -1,0 +1,1481 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Researchers | Bahar University</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        :root {
+            --navy: #142536;
+            --blue: #245c7c;
+            --gold: #c99a3d;
+            --cream: #f7f4ed;
+            --white: #ffffff;
+            --text: #647181;
+            --border: #e5e5e2;
+            --shadow: 0 12px 35px rgba(20, 37, 54, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 30px;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--navy);
+            background: white;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .topbar {
+            background: var(--navy);
+            color: white;
+            padding: 11px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .topbar p,
+        .topbar a {
+            font-size: 12px;
+        }
+
+        .topbar p {
+            color: #e0e7ee;
+        }
+
+        .topbar a {
+            color: #e6c77e;
+        }
+
+        header {
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .brand h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .brand p {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: var(--text);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .back-link {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .language-btn {
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 5px;
+            padding: 8px 12px;
+            color: var(--navy);
+        }
+
+        .hero {
+            padding: 82px 6% 95px;
+            background: linear-gradient(120deg, #142536, #245c7c);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(230, 199, 126, .25);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero::before {
+            width: 420px;
+            height: 420px;
+            right: -130px;
+            top: -200px;
+        }
+
+        .hero::after {
+            width: 310px;
+            height: 310px;
+            right: -75px;
+            top: -145px;
+        }
+
+        .hero-content {
+            max-width: 820px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        .hero .eyebrow {
+            color: #e6c77e;
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #e0e8ef;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 21px;
+            border: none;
+            border-radius: 4px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .primary-btn:hover {
+            background: #e5bd61;
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            width: min(1000px, 90%);
+            margin: -38px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            padding: 24px 15px;
+            text-align: center;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 31px;
+            color: var(--blue);
+            line-height: 1.3;
+        }
+
+        .stat-card span {
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .section {
+            padding: 75px 6%;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            text-align: center;
+            margin: 0 auto 38px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(27px, 3vw, 37px);
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .research-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            flex: 1 1 260px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8994a0;
+        }
+
+        .search-box input,
+        .research-toolbar select {
+            width: 100%;
+            min-height: 47px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 11px 14px;
+            outline: none;
+            background: white;
+            color: var(--navy);
+            font-size: 13px;
+        }
+
+        .search-box input {
+            padding-left: 42px;
+        }
+
+        .search-box input:focus,
+        .research-toolbar select:focus {
+            border-color: var(--gold);
+        }
+
+        .research-toolbar select {
+            flex: 0 1 205px;
+            cursor: pointer;
+        }
+
+        .research-count {
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .researchers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .researcher-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            transition: .25s;
+        }
+
+        .researcher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #d8c18f;
+        }
+
+        .researcher-top {
+            min-height: 110px;
+            background: linear-gradient(135deg, #f7f4ed, #e8eff3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .researcher-avatar {
+            width: 76px;
+            height: 76px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: var(--navy);
+            color: #e6c77e;
+            font-family: "Playfair Display", serif;
+            font-size: 27px;
+            box-shadow: 0 4px 14px rgba(20, 37, 54, .12);
+        }
+
+        .researcher-content {
+            padding: 23px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .researcher-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #34744b;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #4a9a66;
+        }
+
+        .researcher-card h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .researcher-role {
+            color: var(--blue);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .researcher-bio {
+            color: var(--text);
+            font-size: 13px;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .specialty-label {
+            font-size: 10px;
+            color: var(--text);
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+        }
+
+        .specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 20px;
+        }
+
+        .specialty {
+            font-size: 10px;
+            color: var(--blue);
+            background: #eff4f7;
+            border-radius: 4px;
+            padding: 5px 8px;
+        }
+
+        .researcher-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .project-count {
+            font-size: 11px;
+            color: var(--text);
+        }
+
+        .profile-btn {
+            border: none;
+            background: transparent;
+            color: #a57a25;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .profile-btn:hover {
+            color: var(--navy);
+        }
+
+        .no-results {
+            display: none;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            color: var(--text);
+        }
+
+        .no-results i {
+            display: block;
+            color: var(--gold);
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .join-banner {
+            background: var(--cream);
+            padding: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .join-banner h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .join-banner p {
+            color: var(--text);
+            font-size: 13px;
+            max-width: 620px;
+        }
+
+        .research-areas {
+            background: var(--cream);
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .area-card {
+            background: white;
+            border: 1px solid #e9e2d3;
+            border-radius: 7px;
+            padding: 25px 20px;
+            transition: .2s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .area-card i {
+            display: block;
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .area-card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .area-card p {
+            color: var(--text);
+            font-size: 12px;
+        }
+
+        footer {
+            padding: 35px 6%;
+            background: var(--navy);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        footer h3 {
+            font-family: "Playfair Display", serif;
+            margin-bottom: 5px;
+        }
+
+        footer p,
+        footer a {
+            font-size: 12px;
+            color: #d4dee6;
+        }
+
+        footer a {
+            color: #e6c77e;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            padding: 20px;
+            background: rgba(8, 19, 29, .72);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal {
+            width: min(570px, 100%);
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            font-size: 26px;
+        }
+
+        .modal-avatar {
+            width: 65px;
+            height: 65px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #e6c77e;
+            font-family: "Playfair Display", serif;
+            font-size: 24px;
+            margin-bottom: 17px;
+        }
+
+        .modal h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 25px;
+            margin-bottom: 5px;
+            padding-right: 20px;
+        }
+
+        .modal-role {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .modal p {
+            color: var(--text);
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .modal h4 {
+            margin: 20px 0 8px;
+        }
+
+        .modal ul {
+            padding-left: 20px;
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        html[dir="rtl"] .search-box i {
+            left: auto;
+            right: 15px;
+        }
+
+        html[dir="rtl"] .search-box input {
+            padding-left: 14px;
+            padding-right: 42px;
+        }
+
+        html[dir="rtl"] .modal ul {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 950px) {
+            .researchers-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .areas-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 5%;
+            }
+
+            .brand h2 {
+                font-size: 17px;
+            }
+
+            .brand p {
+                font-size: 8px;
+            }
+
+            .brand-mark {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 8px;
+            }
+
+            .back-link {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 58px 6% 72px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .researchers-grid,
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-toolbar select {
+                flex-basis: 100%;
+            }
+
+            .join-banner {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 25px;
+            }
+
+            footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <p data-en="Bahar University · Research Community"
+           data-fa="دانشگاه بهار · جامعه تحقیقاتی">
+            Bahar University · Research Community
+        </p>
+
+        <a href="index.html#research"
+           data-en="← Back to University"
+           data-fa="بازگشت به دانشگاه ←">
+            ← Back to University
+        </a>
+    </div>
+
+    <header>
+       <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        <div class="header-actions">
+            <a href="#researchers" class="back-link"
+               data-en="Meet Our Researchers"
+               data-fa="آشنایی با پژوهشگران">
+                Meet Our Researchers
+            </a>
+
+            <button class="language-btn" id="languageBtn" type="button">
+                دری
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <p class="eyebrow"
+                   data-en="People Behind Discovery"
+                   data-fa="پژوهشگران پشت دستاوردها">
+                    People Behind Discovery
+                </p>
+
+                <h1 data-en="Meet Our Active Researchers"
+                    data-fa="با پژوهشگران فعال ما آشنا شوید"; style="color: #ffffff;">
+                    Meet Our Active Researchers
+                </h1>
+
+                <p class="hero-description"
+                   data-en="Discover the researchers and academic professionals working across disciplines to advance knowledge, explore new ideas, and contribute to meaningful research."
+                   data-fa="با پژوهشگران و متخصصان دانشگاهی آشنا شوید که در حوزه‌های گوناگون برای گسترش دانش، بررسی ایده‌های تازه و پیشبرد تحقیقات ارزشمند فعالیت می‌کنند.">
+                    Discover the researchers and academic professionals working across disciplines to advance knowledge, explore new ideas, and contribute to meaningful research.
+                </p>
+
+                <a href="#researchers" class="primary-btn">
+                    <span data-en="Explore Researchers"
+                          data-fa="مشاهده پژوهشگران">
+                        Explore Researchers
+                    </span>
+                    <i class="bi bi-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <strong>30+</strong>
+                <span data-en="Active Researchers"
+                      data-fa="پژوهشگران فعال">
+                    Active Researchers
+                </span>
+            </div>
+
+            <div class="stat-card">
+                <strong>6</strong>
+                <span data-en="Research Fields"
+                      data-fa="حوزه‌های تحقیقاتی">
+                    Research Fields
+                </span>
+            </div>
+
+            <div class="stat-card">
+                <strong>45+</strong>
+                <span data-en="Research Projects"
+                      data-fa="پروژه‌های تحقیقاتی">
+                    Research Projects
+                </span>
+            </div>
+        </section>
+
+        <section class="section" id="researchers">
+            <div class="section-heading">
+                <p class="eyebrow"
+                   data-en="Our Academic Community"
+                   data-fa="جامعه دانشگاهی ما">
+                    Our Academic Community
+                </p>
+
+                <h2 data-en="Meet the People Behind Our Research"
+                    data-fa="با پژوهشگران ما آشنا شوید">
+                    Meet the People Behind Our Research
+                </h2>
+
+                <p data-en="Search researcher profiles and explore their academic specialties and research interests."
+                   data-fa="پروفایل پژوهشگران را جستجو کنید و با تخصص‌ها و علایق تحقیقاتی آن‌ها آشنا شوید.">
+                    Search researcher profiles and explore their academic specialties and research interests.
+                </p>
+            </div>
+
+            <div class="research-toolbar">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="search" id="researcherSearch"
+                           placeholder="Search name, specialty..."
+                           aria-label="Search researchers">
+                </div>
+
+                <select id="fieldFilter" aria-label="Filter researchers by field">
+                    <option value="all" data-en="All Research Fields"
+                            data-fa="تمام حوزه‌های تحقیقاتی">
+                        All Research Fields
+                    </option>
+                    <option value="technology" data-en="Technology"
+                            data-fa="تکنالوژی">Technology</option>
+                    <option value="business" data-en="Business & Economics"
+                            data-fa="تجارت و اقتصاد">Business & Economics</option>
+                    <option value="engineering" data-en="Engineering"
+                            data-fa="انجنیری">Engineering</option>
+                    <option value="health" data-en="Public Health"
+                            data-fa="صحت عامه">Public Health</option>
+                    <option value="education" data-en="Education"
+                            data-fa="آموزش">Education</option>
+                    <option value="environment" data-en="Environment"
+                            data-fa="محیط زیست">Environment</option>
+                </select>
+            </div>
+
+            <p class="research-count" id="researcherCount"
+               aria-live="polite">Showing 6 researchers</p>
+
+            <div class="researchers-grid" id="researchersGrid">
+
+                <article class="researcher-card"
+                         data-field="technology"
+                         data-name="alex morgan"
+                         data-specialty="artificial intelligence machine learning computer science"
+                         data-initials="AM"
+                         data-name-en="Dr. Alex Morgan"
+                         data-name-fa="دکتر الکس مورگان"
+                         data-role-en="Senior Researcher · Computing"
+                         data-role-fa="پژوهشگر ارشد · علوم کامپیوتر"
+                         data-bio-en="Research profile focused on artificial intelligence, machine learning, and the use of technology to solve practical problems."
+                         data-bio-fa="پروفایل پژوهشی با تمرکز بر هوش مصنوعی، یادگیری ماشین و استفاده از تکنالوژی برای حل مسائل کاربردی."
+                         data-projects-en="Intelligent Learning Systems; Applied AI Research"
+                         data-projects-fa="سیستم‌های یادگیری هوشمند؛ تحقیقات کاربردی هوش مصنوعی">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">AM</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. Alex Morgan"
+                            data-fa="دکتر الکس مورگان">Dr. Alex Morgan</h3>
+                        <p class="researcher-role"
+                           data-en="Senior Researcher · Computing"
+                           data-fa="پژوهشگر ارشد · علوم کامپیوتر">
+                            Senior Researcher · Computing
+                        </p>
+                        <p class="researcher-bio"
+                           data-en="Exploring artificial intelligence, machine learning, and emerging digital technologies."
+                           data-fa="بررسی هوش مصنوعی، یادگیری ماشین و تکنالوژی‌های دیجیتالی نوظهور.">
+                            Exploring artificial intelligence, machine learning, and emerging digital technologies.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="AI" data-fa="هوش مصنوعی">AI</span>
+                            <span class="specialty" data-en="Machine Learning"
+                                  data-fa="یادگیری ماشین">Machine Learning</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Computing"
+                                  data-fa="علوم کامپیوتر">Computing</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="researcher-card"
+                         data-field="business"
+                         data-name="sarah bennett"
+                         data-specialty="economics business management entrepreneurship"
+                         data-initials="SB"
+                         data-name-en="Dr. Sarah Bennett"
+                         data-name-fa="دکتر سارا بنت"
+                         data-role-en="Research Fellow · Business"
+                         data-role-fa="همکار پژوهشی · تجارت"
+                         data-bio-en="Research interests include entrepreneurship, business development, organizational strategy, and economic growth."
+                         data-bio-fa="علایق تحقیقاتی شامل کارآفرینی، توسعه تجارت، راهبرد سازمانی و رشد اقتصادی است."
+                         data-projects-en="Entrepreneurship and Growth; Digital Business Development"
+                         data-projects-fa="کارآفرینی و رشد؛ توسعه تجارت دیجیتالی">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">SB</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. Sarah Bennett"
+                            data-fa="دکتر سارا بنت">Dr. Sarah Bennett</h3>
+                        <p class="researcher-role"
+                           data-en="Research Fellow · Business"
+                           data-fa="همکار پژوهشی · تجارت">
+                            Research Fellow · Business
+                        </p>
+                        <p class="researcher-bio"
+                           data-en="Studying entrepreneurship, economic growth, and sustainable business practices."
+                           data-fa="مطالعه کارآفرینی، رشد اقتصادی و روش‌های پایدار تجارت.">
+                            Studying entrepreneurship, economic growth, and sustainable business practices.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="Economics"
+                                  data-fa="اقتصاد">Economics</span>
+                            <span class="specialty" data-en="Management"
+                                  data-fa="مدیریت">Management</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Business"
+                                  data-fa="تجارت">Business</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="researcher-card"
+                         data-field="engineering"
+                         data-name="daniel reed"
+                         data-specialty="civil engineering sustainable buildings energy"
+                         data-initials="DR"
+                         data-name-en="Dr. Daniel Reed"
+                         data-name-fa="دکتر دنیل رید"
+                         data-role-en="Researcher · Engineering"
+                         data-role-fa="پژوهشگر · انجنیری"
+                         data-bio-en="Research interests include sustainable construction, infrastructure development, and energy-efficient building design."
+                         data-bio-fa="علایق تحقیقاتی شامل ساختمان‌سازی پایدار، توسعه زیرساخت‌ها و طراحی ساختمان‌های کم‌مصرف است."
+                         data-projects-en="Sustainable Infrastructure; Energy-Efficient Buildings"
+                         data-projects-fa="زیرساخت پایدار؛ ساختمان‌های کم‌مصرف">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">DR</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. Daniel Reed"
+                            data-fa="دکتر دنیل رید">Dr. Daniel Reed</h3>
+                        <p class="researcher-role"
+                           data-en="Researcher · Engineering"
+                           data-fa="پژوهشگر · انجنیری">
+                            Researcher · Engineering
+                        </p>
+                        <p class="researcher-bio"
+                           data-en="Investigating sustainable construction, infrastructure, and energy efficiency."
+                           data-fa="تحقیق درباره ساختمان‌سازی پایدار، زیرساخت‌ها و بهره‌وری انرژی.">
+                            Investigating sustainable construction, infrastructure, and energy efficiency.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="Civil Engineering"
+                                  data-fa="انجنیری عمران">Civil Engineering</span>
+                            <span class="specialty" data-en="Sustainability"
+                                  data-fa="پایداری">Sustainability</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Engineering"
+                                  data-fa="انجنیری">Engineering</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="researcher-card"
+                         data-field="health"
+                         data-name="maria williams"
+                         data-specialty="public health community health health services"
+                         data-initials="MW"
+                         data-name-en="Dr. Maria Williams"
+                         data-name-fa="دکتر ماریا ویلیامز"
+                         data-role-en="Researcher · Public Health"
+                         data-role-fa="پژوهشگر · صحت عامه"
+                         data-bio-en="Focuses on public health research, community health education, and access to essential health services."
+                         data-bio-fa="تمرکز بر تحقیقات صحت عامه، آموزش صحی جامعه و دسترسی به خدمات ضروری صحی."
+                         data-projects-en="Community Health Access; Public Health Education"
+                         data-projects-fa="دسترسی به خدمات صحی جامعه؛ آموزش صحت عامه">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">MW</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. Maria Williams"
+                            data-fa="دکتر ماریا ویلیامز">Dr. Maria Williams</h3>
+                        <p class="researcher-role"
+                           data-en="Researcher · Public Health"
+                           data-fa="پژوهشگر · صحت عامه">
+                            Researcher · Public Health
+                        </p>
+                        <p class="researcher-bio"
+                           data-en="Exploring community health, health education, and access to essential services."
+                           data-fa="بررسی صحت جامعه، آموزش صحی و دسترسی به خدمات ضروری.">
+                            Exploring community health, health education, and access to essential services.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="Public Health"
+                                  data-fa="صحت عامه">Public Health</span>
+                            <span class="specialty" data-en="Community Health"
+                                  data-fa="صحت جامعه">Community Health</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Health"
+                                  data-fa="صحت">Health</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="researcher-card"
+                         data-field="education"
+                         data-name="james parker"
+                         data-specialty="education digital learning curriculum development"
+                         data-initials="JP"
+                         data-name-en="Dr. James Parker"
+                         data-name-fa="دکتر جیمز پارکر"
+                         data-role-en="Researcher · Education"
+                         data-role-fa="پژوهشگر · آموزش"
+                         data-bio-en="Studies teaching methods, digital learning environments, curriculum development, and student engagement."
+                         data-bio-fa="مطالعه روش‌های تدریس، محیط‌های یادگیری دیجیتالی، توسعه نصاب و مشارکت دانشجویان."
+                         data-projects-en="Digital Learning Methods; Student Engagement"
+                         data-projects-fa="روش‌های یادگیری دیجیتالی؛ مشارکت دانشجویان">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">JP</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. James Parker"
+                            data-fa="دکتر جیمز پارکر">Dr. James Parker</h3>
+                        <p class="researcher-role"
+                           data-en="Researcher · Education"
+                           data-fa="پژوهشگر · آموزش">Researcher · Education</p>
+                        <p class="researcher-bio"
+                           data-en="Investigating digital learning, curriculum design, and student-centered education."
+                           data-fa="تحقیق درباره یادگیری دیجیتالی، طراحی نصاب و آموزش دانشجومحور.">
+                            Investigating digital learning, curriculum design, and student-centered education.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="Education"
+                                  data-fa="آموزش">Education</span>
+                            <span class="specialty" data-en="Digital Learning"
+                                  data-fa="یادگیری دیجیتالی">Digital Learning</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Education"
+                                  data-fa="آموزش">Education</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="researcher-card"
+                         data-field="environment"
+                         data-name="olivia clark"
+                         data-specialty="environment sustainability water conservation climate"
+                         data-initials="OC"
+                         data-name-en="Dr. Olivia Clark"
+                         data-name-fa="دکتر اولیویا کلارک"
+                         data-role-en="Researcher · Environment"
+                         data-role-fa="پژوهشگر · محیط زیست"
+                         data-bio-en="Research interests include environmental sustainability, water conservation, and community-based environmental solutions."
+                         data-bio-fa="علایق تحقیقاتی شامل پایداری محیط زیست، حفاظت از آب و راه‌حل‌های محیط زیستی جامعه‌محور است."
+                         data-projects-en="Water Conservation; Sustainable Communities"
+                         data-projects-fa="حفاظت از آب؛ جوامع پایدار">
+                    <div class="researcher-top">
+                        <div class="researcher-avatar">OC</div>
+                    </div>
+                    <div class="researcher-content">
+                        <span class="researcher-status">
+                            <span class="status-dot"></span>
+                            <span data-en="Research Profile"
+                                  data-fa="پروفایل پژوهشی">Research Profile</span>
+                        </span>
+                        <h3 data-en="Dr. Olivia Clark"
+                            data-fa="دکتر اولیویا کلارک">Dr. Olivia Clark</h3>
+                        <p class="researcher-role"
+                           data-en="Researcher · Environment"
+                           data-fa="پژوهشگر · محیط زیست">
+                            Researcher · Environment
+                        </p>
+                        <p class="researcher-bio"
+                           data-en="Studying environmental sustainability, water conservation, and climate-related challenges."
+                           data-fa="مطالعه پایداری محیط زیست، حفاظت از آب و چالش‌های مرتبط با اقلیم.">
+                            Studying environmental sustainability, water conservation, and climate-related challenges.
+                        </p>
+                        <p class="specialty-label"
+                           data-en="Research Interests"
+                           data-fa="علایق تحقیقاتی">Research Interests</p>
+                        <div class="specialties">
+                            <span class="specialty" data-en="Environment"
+                                  data-fa="محیط زیست">Environment</span>
+                            <span class="specialty" data-en="Sustainability"
+                                  data-fa="پایداری">Sustainability</span>
+                        </div>
+                        <div class="researcher-footer">
+                            <span class="project-count"
+                                  data-en="Environment"
+                                  data-fa="محیط زیست">Environment</span>
+                            <button class="profile-btn" data-en="View Profile →"
+                                    data-fa="مشاهده پروفایل ←">View Profile →</button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="no-results" id="noResults">
+                <i class="bi bi-search"></i>
+                <h3 data-en="No researchers found"
+                    data-fa="پژوهشگری پیدا نشد">
+                    No researchers found
+                </h3>
+                <p data-en="Try another keyword or choose a different research field."
+                   data-fa="کلمه دیگری جستجو کنید یا حوزه تحقیقاتی را تغییر دهید.">
+                    Try another keyword or choose a different research field.
+                </p>
+            </div>
+
+            <div class="join-banner">
+                <div>
+                    <h3 data-en="Interested in Academic Collaboration?"
+                        data-fa="به همکاری دانشگاهی علاقه‌مند هستید؟">
+                        Interested in Academic Collaboration?
+                    </h3>
+                    <p data-en="Explore opportunities to work with our research community on academic projects and knowledge exchange."
+                       data-fa="فرصت‌های همکاری با جامعه تحقیقاتی ما را در پروژه‌های علمی و تبادل دانش بررسی کنید.">
+                        Explore opportunities to work with our research community on academic projects and knowledge exchange.
+                    </p>
+                </div>
+
+                <a href="international-partners.html" class="primary-btn">
+                    <span data-en="Explore Partnerships"
+                          data-fa="بررسی همکاری‌ها">
+                        Explore Partnerships
+                    </span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="section research-areas">
+            <div class="section-heading">
+                <p class="eyebrow"
+                   data-en="Our Expertise"
+                   data-fa="تخصص‌های ما">Our Expertise</p>
+
+                <h2 data-en="Research Across Disciplines"
+                    data-fa="تحقیقات در حوزه‌های مختلف">
+                    Research Across Disciplines
+                </h2>
+
+                <p data-en="Our research community explores questions across a range of academic fields."
+                   data-fa="جامعه تحقیقاتی ما موضوعات گوناگونی را در حوزه‌های علمی مختلف بررسی می‌کند.">
+                    Our research community explores questions across a range of academic fields.
+                </p>
+            </div>
+
+            <div class="areas-grid">
+                <div class="area-card">
+                    <i class="bi bi-cpu"></i>
+                    <h3 data-en="Technology & Computing"
+                        data-fa="تکنالوژی و کامپیوتر">Technology & Computing</h3>
+                    <p data-en="Artificial intelligence, software, and digital innovation."
+                       data-fa="هوش مصنوعی، نرم‌افزار و نوآوری دیجیتالی.">
+                        Artificial intelligence, software, and digital innovation.
+                    </p>
+                </div>
+
+                <div class="area-card">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h3 data-en="Business & Economics"
+                        data-fa="تجارت و اقتصاد">Business & Economics</h3>
+                    <p data-en="Business development, entrepreneurship, and economic analysis."
+                       data-fa="توسعه تجارت، کارآفرینی و تحلیل اقتصادی.">
+                        Business development, entrepreneurship, and economic analysis.
+                    </p>
+                </div>
+
+                <div class="area-card">
+                    <i class="bi bi-buildings"></i>
+                    <h3 data-en="Engineering"
+                        data-fa="انجنیری">Engineering</h3>
+                    <p data-en="Infrastructure, sustainable construction, and design."
+                       data-fa="زیرساخت‌ها، ساختمان‌سازی پایدار و طراحی.">
+                        Infrastructure, sustainable construction, and design.
+                    </p>
+                </div>
+
+                <div class="area-card">
+                    <i class="bi bi-heart-pulse"></i>
+                    <h3 data-en="Health & Society"
+                        data-fa="صحت و جامعه">Health & Society</h3>
+                    <p data-en="Community health, education, and social development."
+                       data-fa="صحت جامعه، آموزش و توسعه اجتماعی.">
+                        Community health, education, and social development.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>
+            <h3>Bahar University</h3>
+            <p data-en="Knowledge • Excellence • Future"
+               data-fa="دانش • برتری • آینده">
+                Knowledge • Excellence • Future
+            </p>
+        </div>
+
+        <a href="index.html#research"
+           data-en="Back to Research Section"
+           data-fa="بازگشت به بخش تحقیقات">
+            Back to Research Section
+        </a>
+
+        <p>© <span id="currentYear"></span> Bahar University</p>
+    </footer>
+
+    <div class="modal-backdrop" id="researcherModal"
+         role="dialog" aria-modal="true" aria-labelledby="modalName">
+        <div class="modal">
+            <button class="modal-close" id="modalClose"
+                    type="button" aria-label="Close">&times;</button>
+
+            <div class="modal-avatar" id="modalAvatar">AM</div>
+            <h2 id="modalName"></h2>
+            <p class="modal-role" id="modalRole"></p>
+            <p id="modalBio"></p>
+
+            <h4 data-en="Research Projects"
+                data-fa="پروژه‌های تحقیقاتی">Research Projects</h4>
+            <ul id="modalProjects"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Search and filter researcher cards
+        const searchInput = document.getElementById("researcherSearch");
+        const fieldFilter = document.getElementById("fieldFilter");
+        const researcherCards = [
+            ...document.querySelectorAll(".researcher-card")
+        ];
+        const researcherCount = document.getElementById("researcherCount");
+        const noResults = document.getElementById("noResults");
+
+        let currentLanguage = "en";
+
+        function filterResearchers() {
+            const keyword = searchInput.value.trim().toLowerCase();
+            const field = fieldFilter.value;
+            let visible = 0;
+
+            researcherCards.forEach(card => {
+                const searchableText = (
+                    card.dataset.name + " " +
+                    card.dataset.specialty + " " +
+                    card.innerText
+                ).toLowerCase();
+
+                const matchesKeyword = searchableText.includes(keyword);
+                const matchesField =
+                    field === "all" || card.dataset.field === field;
+
+                const show = matchesKeyword && matchesField;
+
+                card.style.display = show ? "flex" : "none";
+
+                if (show) visible++;
+            });
+
+            researcherCount.textContent = currentLanguage === "fa"
+                ? "تعداد پژوهشگران نمایش‌داده‌شده: " + visible
+                : "Showing " + visible + " researchers";
+
+            noResults.style.display = visible === 0 ? "block" : "none";
+        }
+
+        searchInput.addEventListener("input", filterResearchers);
+        fieldFilter.addEventListener("change", filterResearchers);
+
+        // Researcher profile modal
+        const modal = document.getElementById("researcherModal");
+        const modalClose = document.getElementById("modalClose");
+        const modalAvatar = document.getElementById("modalAvatar");
+        const modalName = document.getElementById("modalName");
+        const modalRole = document.getElementById("modalRole");
+        const modalBio = document.getElementById("modalBio");
+        const modalProjects = document.getElementById("modalProjects");
+
+        researcherCards.forEach(card => {
+            card.querySelector(".profile-btn").addEventListener("click", () => {
+                const suffix = currentLanguage === "fa" ? "Fa" : "En";
+
+                modalAvatar.textContent = card.dataset.initials;
+                modalName.textContent = card.dataset["name" + suffix];
+                modalRole.textContent = card.dataset["role" + suffix];
+                modalBio.textContent = card.dataset["bio" + suffix];
+
+                modalProjects.innerHTML = "";
+
+                card.dataset["projects" + suffix]
+                    .split(";")
+                    .forEach(project => {
+                        const item = document.createElement("li");
+                        item.textContent = project;
+                        modalProjects.appendChild(item);
+                    });
+
+                modal.classList.add("show");
+                document.body.style.overflow = "hidden";
+                modalClose.focus();
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove("show");
+            document.body.style.overflow = "";
+        }
+
+        modalClose.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", event => {
+            if (event.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeModal();
+        });
+
+        // English / Dari language toggle
+        const languageBtn = document.getElementById("languageBtn");
+
+        function setLanguage(language) {
+            currentLanguage = language;
+
+            document.documentElement.lang =
+                language === "fa" ? "fa" : "en";
+
+            document.documentElement.dir =
+                language === "fa" ? "rtl" : "ltr";
+
+            document.querySelectorAll("[data-en][data-fa]").forEach(element => {
+                element.textContent = element.dataset[language];
+            });
+
+            searchInput.placeholder = language === "fa"
+                ? "جستجوی نام یا تخصص..."
+                : "Search name, specialty...";
+
+            languageBtn.textContent =
+                language === "en" ? "دری" : "English";
+
+            document.title = language === "fa"
+                ? "پژوهشگران فعال | دانشگاه بهار"
+                : "Active Researchers | Bahar University";
+
+            filterResearchers();
+        }
+
+        languageBtn.addEventListener("click", () => {
+            setLanguage(currentLanguage === "en" ? "fa" : "en");
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        filterResearchers();
+    </script>
+
+</body>
+</html>

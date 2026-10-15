@@ -1,0 +1,1369 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Research Projects | Bahar University</title>
+    <meta name="description" content="Explore research and innovation projects at Bahar University.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main Website CSS -->
+    <link rel="stylesheet" href="index.css">
+
+    <style>
+        /* ======================================
+           RESEARCH PROJECTS PAGE
+        ====================================== */
+
+        .research-page {
+            min-height: 100vh;
+            background: var(--cream, #f7f4ed);
+            color: var(--ink, #142536);
+        }
+
+        .research-page * {
+            box-sizing: border-box;
+        }
+
+        .research-page a {
+            text-decoration: none;
+        }
+
+        .rp-container {
+            width: min(1180px, 92%);
+            margin-inline: auto;
+        }
+
+        /* Header */
+
+        .rp-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid rgba(20, 37, 54, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        .rp-nav {
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .rp-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #142536;
+            font-weight: 800;
+            font-size: 19px;
+        }
+
+        .rp-crest {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: #142536;
+            color: #e5c16b;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            border: 2px solid #c99a3d;
+        }
+
+        .rp-brand small {
+            display: block;
+            margin-top: 3px;
+            font-size: 10px;
+            font-weight: 500;
+            color: #647487;
+            letter-spacing: 0.4px;
+        }
+
+        .rp-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .rp-nav-links a {
+            color: #425466;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .rp-nav-links a:hover,
+        .rp-nav-links a.active {
+            color: #b1842e;
+        }
+
+        .rp-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rp-control-btn {
+            min-height: 40px;
+            padding: 0 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border: 1px solid #e1e5e9;
+            border-radius: 9px;
+            background: white;
+            color: #142536;
+            cursor: pointer;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .rp-control-btn:hover {
+            border-color: #c99a3d;
+        }
+
+        /* Hero */
+
+        .rp-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 85px 0 80px;
+            color: white;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(201, 154, 61, 0.22), transparent 30%),
+                linear-gradient(125deg, #142536 0%, #1c4058 65%, #245c7c 100%);
+        }
+
+        .rp-hero::after {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            right: -100px;
+            bottom: -180px;
+            border: 1px solid rgba(229, 193, 107, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 0 35px rgba(229, 193, 107, 0.04),
+                        0 0 0 70px rgba(229, 193, 107, 0.03);
+        }
+
+        html[dir="rtl"] .rp-hero::after {
+            right: auto;
+            left: -100px;
+        }
+
+        .rp-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+        }
+
+        .rp-breadcrumb {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            color: #d5e0e9;
+            font-size: 13px;
+        }
+
+        .rp-breadcrumb a {
+            color: #e5c16b;
+        }
+
+        .rp-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 18px;
+            color: #e5c16b;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .rp-kicker::before {
+            content: "";
+            width: 27px;
+            height: 2px;
+            background: #c99a3d;
+        }
+
+        .rp-hero h1 {
+            max-width: 760px;
+            margin: 0 0 22px;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .rp-hero p {
+            max-width: 660px;
+            margin: 0;
+            color: #e0e8ef;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .rp-hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 38px;
+            margin-top: 38px;
+        }
+
+        .rp-hero-stat strong {
+            display: block;
+            color: #e5c16b;
+            font-size: 27px;
+        }
+
+        .rp-hero-stat span {
+            display: block;
+            margin-top: 4px;
+            color: #e0e8ef;
+            font-size: 12px;
+        }
+
+        /* Main content */
+
+        .rp-main {
+            padding: 70px 0 90px;
+        }
+
+        .rp-section-heading {
+            margin-bottom: 28px;
+        }
+
+        .rp-section-heading h2 {
+            margin: 0 0 12px;
+            color: var(--ink, #142536);
+            font-family: "Playfair Display", serif;
+            font-size: clamp(28px, 4vw, 38px);
+        }
+
+        .rp-section-heading p {
+            max-width: 720px;
+            margin: 0;
+            color: #687787;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* Search and filters */
+
+        .rp-tools {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 32px 0;
+        }
+
+        .rp-search {
+            flex: 1 1 260px;
+            position: relative;
+            max-width: 430px;
+        }
+
+        .rp-search i {
+            position: absolute;
+            top: 50%;
+            left: 17px;
+            transform: translateY(-50%);
+            color: #7c8996;
+        }
+
+        html[dir="rtl"] .rp-search i {
+            left: auto;
+            right: 17px;
+        }
+
+        .rp-search input {
+            width: 100%;
+            min-height: 49px;
+            padding: 12px 45px 12px 15px;
+            border: 1px solid #dce2e7;
+            border-radius: 10px;
+            background: white;
+            color: #142536;
+            font: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        html[dir="rtl"] .rp-search input {
+            padding: 12px 45px 12px 15px;
+        }
+
+        .rp-search input:focus {
+            border-color: #c99a3d;
+            box-shadow: 0 0 0 3px rgba(201, 154, 61, 0.13);
+        }
+
+        .rp-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .rp-filter {
+            padding: 10px 15px;
+            border: 1px solid #dce2e7;
+            border-radius: 9px;
+            background: white;
+            color: #425466;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .rp-filter:hover,
+        .rp-filter.active {
+            color: white;
+            background: #142536;
+            border-color: #142536;
+        }
+
+        /* Project cards */
+
+        .rp-project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .rp-project-card {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #e5e7e8;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 7px 22px rgba(20, 37, 54, 0.045);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .rp-project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 35px rgba(20, 37, 54, 0.1);
+        }
+
+        .rp-project-card[hidden] {
+            display: none !important;
+        }
+
+        .rp-card-top {
+            min-height: 165px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #edf2f5, #dce6ec);
+        }
+
+        .rp-card-top i {
+            color: #245c7c;
+            font-size: 57px;
+        }
+
+        .rp-card-number {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #142536;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        html[dir="rtl"] .rp-card-number {
+            left: auto;
+            right: 14px;
+        }
+
+        .rp-card-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 22px;
+        }
+
+        .rp-category {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: #f7f0df;
+            color: #87651e;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .rp-card-content h3 {
+            margin: 15px 0 10px;
+            color: #142536;
+            font-size: 19px;
+            line-height: 1.5;
+        }
+
+        .rp-card-content p {
+            margin: 0 0 18px;
+            color: #687787;
+            font-size: 13px;
+            line-height: 1.85;
+        }
+
+        .rp-project-meta {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 15px;
+            margin-top: auto;
+            border-top: 1px solid #edf0f2;
+        }
+
+        .rp-project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #586879;
+            font-size: 12px;
+        }
+
+        .rp-project-meta i {
+            color: #b1842e;
+        }
+
+        .rp-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 17px;
+            color: #26734d;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .rp-status::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #35a56f;
+        }
+
+        .rp-status.completed {
+            color: #245c7c;
+        }
+
+        .rp-status.completed::before {
+            background: #245c7c;
+        }
+
+        .rp-empty {
+            display: none;
+            padding: 45px 20px;
+            text-align: center;
+            border: 1px dashed #cdd5dc;
+            border-radius: 14px;
+            background: white;
+            color: #687787;
+        }
+
+        .rp-empty.show {
+            display: block;
+        }
+
+        .rp-empty i {
+            display: block;
+            margin-bottom: 12px;
+            color: #c99a3d;
+            font-size: 35px;
+        }
+
+        /* Research callout */
+
+        .rp-callout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 65px;
+            padding: 35px;
+            border-radius: 16px;
+            color: white;
+            background: linear-gradient(120deg, #142536, #245c7c);
+        }
+
+        .rp-callout h2 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .rp-callout p {
+            max-width: 650px;
+            margin: 0;
+            color: #e0e8ef;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .rp-callout a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 18px;
+            border-radius: 9px;
+            background: #e5c16b;
+            color: #142536;
+            font-size: 13px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .rp-callout a:hover {
+            background: #f0d58d;
+        }
+
+        /* Footer */
+
+        .rp-footer {
+            padding: 28px 0;
+            color: #d9e2e9;
+            background: #101e2b;
+        }
+
+        .rp-footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 12px;
+        }
+
+        .rp-footer a {
+            color: #e5c16b;
+        }
+
+        /* Dark mode */
+
+        html.dark-mode .research-page {
+            background: #101923;
+            color: #edf2f6;
+        }
+
+        html.dark-mode .rp-header {
+            background: rgba(20, 37, 54, 0.97);
+            border-color: #314253;
+        }
+
+        html.dark-mode .rp-brand,
+        html.dark-mode .rp-nav-links a {
+            color: #edf2f6;
+        }
+
+        html.dark-mode .rp-brand small {
+            color: #bac6d0;
+        }
+
+        html.dark-mode .rp-control-btn,
+        html.dark-mode .rp-search input,
+        html.dark-mode .rp-filter,
+        html.dark-mode .rp-project-card,
+        html.dark-mode .rp-empty {
+            background: #1b2a39;
+            color: #edf2f6;
+            border-color: #354656;
+        }
+
+        html.dark-mode .rp-filter.active,
+        html.dark-mode .rp-filter:hover {
+            background: #c99a3d;
+            border-color: #c99a3d;
+            color: #142536;
+        }
+
+        html.dark-mode .rp-section-heading h2,
+        html.dark-mode .rp-card-content h3 {
+            color: #edf2f6;
+        }
+
+        html.dark-mode .rp-section-heading p,
+        html.dark-mode .rp-card-content p,
+        html.dark-mode .rp-project-meta span {
+            color: #bac6d0;
+        }
+
+        html.dark-mode .rp-card-top {
+            background: linear-gradient(135deg, #25384a, #1c2b39);
+        }
+
+        html.dark-mode .rp-card-top i {
+            color: #e5c16b;
+        }
+
+        html.dark-mode .rp-project-meta {
+            border-color: #354656;
+        }
+
+        html.dark-mode .rp-category {
+            background: #413821;
+            color: #f0d58d;
+        }
+
+        html.dark-mode .rp-search input::placeholder {
+            color: #aebbc6;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 950px) {
+            .rp-project-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .rp-nav-links {
+                gap: 13px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .rp-nav {
+                min-height: 72px;
+                flex-wrap: wrap;
+                padding-block: 12px;
+            }
+
+            .rp-nav-links {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .rp-controls {
+                margin-inline-start: auto;
+            }
+
+            .rp-hero {
+                padding: 60px 0;
+            }
+
+            .rp-hero-stats {
+                gap: 22px;
+            }
+
+            .rp-tools {
+                align-items: stretch;
+            }
+
+            .rp-search {
+                max-width: none;
+                flex-basis: 100%;
+            }
+
+            .rp-project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rp-callout {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .rp-brand {
+                font-size: 16px;
+            }
+
+            .rp-crest {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+
+            .rp-control-btn {
+                min-height: 36px;
+                padding-inline: 9px;
+            }
+
+            .rp-hero h1 {
+                font-size: 37px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="research-page">
+
+    <!-- HEADER -->
+    <header class="rp-header">
+        <div class="rp-container rp-nav">
+
+             <a href="#" class="brand">
+
+                <div class="crest">
+                    B
+                </div>
+
+                <div class="brand-name">
+
+                    Bahar University
+
+                    <small data-en="Knowledge • Excellence • Future" data-fa="دانش • برتری • آینده">
+                        Knowledge • Excellence • Future
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <nav class="rp-nav-links" aria-label="Main navigation">
+                <a href="index.html" data-en="Home" data-fa="خانه">Home</a>
+                <a href="about.html" data-en="About" data-fa="درباره ما">About</a>
+                <a href="academic.html" data-en="Academics" data-fa="آموزش">Academics</a>
+                <a href="index.html#programs" data-en="Programs" data-fa="برنامه‌ها">Programs</a>
+                <a href="research-projects.html" class="active"
+                   data-en="Research" data-fa="تحقیقات">Research</a>
+            </nav>
+
+            <div class="rp-controls">
+                <button class="rp-control-btn" id="rpLanguageBtn" type="button"
+                        aria-label="Change language">
+                    <i class="bi bi-translate"></i>
+                    <span id="rpLanguageLabel">EN</span>
+                </button>
+
+                <button class="rp-control-btn" id="rpThemeBtn" type="button"
+                        aria-label="Toggle dark mode">
+                    <i class="bi bi-moon-stars" id="rpThemeIcon"></i>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="rp-hero">
+        <div class="rp-container">
+            <div class="rp-hero-content">
+
+                <div class="rp-breadcrumb">
+                    <a href="index.html" data-en="Home" data-fa="خانه">Home</a>
+                    <i class="bi bi-chevron-right"></i>
+                    <a href="index.html#research" data-en="Research" data-fa="تحقیقات">Research</a>
+                    <i class="bi bi-chevron-right"></i>
+                    <span data-en="Research Projects" data-fa="پروژه‌های تحقیقاتی">
+                        Research Projects
+                    </span>
+                </div>
+
+                <div class="rp-kicker"
+                     data-en="Research & Innovation"
+                     data-fa="تحقیق و نوآوری">
+                    Research & Innovation
+                </div>
+
+                <h1 data-en="Research Projects"
+                    data-fa="پروژه‌های تحقیقاتی">
+                    Research Projects
+                </h1>
+
+                <p data-en="Discover research ideas, explore innovative work and learn how academic projects can contribute to solving real-world challenges."
+                   data-fa="ایده‌های پژوهشی را کشف کنید، با فعالیت‌های نوآورانه آشنا شوید و ببینید چگونه پروژه‌های علمی می‌توانند به حل چالش‌های واقعی کمک کنند.">
+                    Discover research ideas, explore innovative work and learn how
+                    academic projects can contribute to solving real-world challenges.
+                </p>
+
+                <div class="rp-hero-stats">
+                    <div class="rp-hero-stat">
+                        <strong>45+</strong>
+                        <span data-en="Research projects"
+                              data-fa="پروژه‌های تحقیقاتی">Research projects</span>
+                    </div>
+
+                    <div class="rp-hero-stat">
+                        <strong>6</strong>
+                        <span data-en="Research areas"
+                              data-fa="حوزه‌های تحقیقاتی">Research areas</span>
+                    </div>
+
+                    <div class="rp-hero-stat">
+                        <strong>30+</strong>
+                        <span data-en="Researchers"
+                              data-fa="پژوهشگران">Researchers</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <main class="rp-main">
+        <div class="rp-container">
+
+            <div class="rp-section-heading">
+                <div class="rp-kicker"
+                     style="color:#b1842e"
+                     data-en="Explore Our Work"
+                     data-fa="فعالیت‌های ما را کشف کنید">
+                    Explore Our Work
+                </div>
+
+                <h2 data-en="Projects & Discoveries"
+                    data-fa="پروژه‌ها و دستاوردها">
+                    Projects & Discoveries
+                </h2>
+
+                <p data-en="Browse the sample projects below by research area. Use the search box or select a category to find a project."
+                   data-fa="پروژه‌های نمونه زیر را بر اساس حوزه تحقیقاتی بررسی کنید. برای یافتن پروژه از جست‌وجو یا دسته‌بندی‌ها استفاده نمایید.">
+                    Browse the sample projects below by research area. Use the search
+                    box or select a category to find a project.
+                </p>
+            </div>
+
+            <!-- SEARCH -->
+            <div class="rp-tools">
+
+                <div class="rp-search">
+                    <i class="bi bi-search"></i>
+                    <input type="search" id="rpSearch"
+                           placeholder="Search research projects..."
+                           data-placeholder-en="Search research projects..."
+                           data-placeholder-fa="جست‌وجوی پروژه‌های تحقیقاتی..."
+                           aria-label="Search research projects">
+                </div>
+
+                <div class="rp-filters" aria-label="Project categories">
+                    <button class="rp-filter active" type="button" data-filter="all"
+                            data-en="All Projects" data-fa="همه پروژه‌ها">
+                        All Projects
+                    </button>
+
+                    <button class="rp-filter" type="button" data-filter="technology"
+                            data-en="Technology" data-fa="فناوری">
+                        Technology
+                    </button>
+
+                    <button class="rp-filter" type="button" data-filter="engineering"
+                            data-en="Engineering" data-fa="انجنیری">
+                        Engineering
+                    </button>
+
+                    <button class="rp-filter" type="button" data-filter="health"
+                            data-en="Health" data-fa="علوم صحی">
+                        Health
+                    </button>
+
+                    <button class="rp-filter" type="button" data-filter="business"
+                            data-en="Business" data-fa="تجارت">
+                        Business
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- PROJECT CARDS
+                 These are example projects for the website design.
+                 Replace them with verified university project details. -->
+            <div class="rp-project-grid" id="rpProjectGrid">
+
+                <article class="rp-project-card"
+                         data-category="technology"
+                         data-search="artificial intelligence smart learning computer science technology">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 01</span>
+                        <i class="bi bi-cpu"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Technology"
+                              data-fa="فناوری">Technology</span>
+
+                        <h3 data-en="Artificial Intelligence for Smart Learning"
+                            data-fa="هوش مصنوعی برای یادگیری هوشمند">
+                            Artificial Intelligence for Smart Learning
+                        </h3>
+
+                        <p data-en="Exploring how intelligent digital tools can support personalized learning, improve access to educational resources and assist students with their studies."
+                           data-fa="بررسی چگونگی استفاده از ابزارهای دیجیتالی هوشمند برای یادگیری شخصی‌سازی‌شده، دسترسی بهتر به منابع آموزشی و کمک به دانشجویان.">
+                            Exploring how intelligent digital tools can support
+                            personalized learning and improve access to educational resources.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Computing"
+                                      data-fa="دانشکده علوم کامپیوتر">School of Computing</span>
+                            </span>
+                            <span><i class="bi bi-calendar3"></i>
+                                <span data-en="Research area: AI"
+                                      data-fa="حوزه تحقیق: هوش مصنوعی">Research area: AI</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="rp-project-card"
+                         data-category="engineering"
+                         data-search="sustainable buildings energy civil engineering environment">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 02</span>
+                        <i class="bi bi-buildings"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Engineering"
+                              data-fa="انجنیری">Engineering</span>
+
+                        <h3 data-en="Sustainable Building Design"
+                            data-fa="طراحی ساختمان‌های پایدار">
+                            Sustainable Building Design
+                        </h3>
+
+                        <p data-en="Investigating practical approaches to energy efficiency, responsible material use and environmentally conscious building design."
+                           data-fa="بررسی روش‌های عملی برای بهره‌وری انرژی، استفاده مسئولانه از مواد و طراحی ساختمان‌های سازگار با محیط زیست.">
+                            Investigating practical approaches to energy efficiency,
+                            responsible material use and environmentally conscious design.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Engineering"
+                                      data-fa="دانشکده انجنیری">School of Engineering</span>
+                            </span>
+                            <span><i class="bi bi-leaf"></i>
+                                <span data-en="Research area: Sustainability"
+                                      data-fa="حوزه تحقیق: پایداری">Research area: Sustainability</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="rp-project-card"
+                         data-category="health"
+                         data-search="public health community wellbeing healthcare awareness">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 03</span>
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Health"
+                              data-fa="علوم صحی">Health</span>
+
+                        <h3 data-en="Community Health Awareness"
+                            data-fa="آگاهی‌دهی صحی در جامعه">
+                            Community Health Awareness
+                        </h3>
+
+                        <p data-en="Studying educational approaches that can improve health awareness, encourage preventive practices and support community wellbeing."
+                           data-fa="بررسی روش‌های آموزشی برای افزایش آگاهی صحی، تشویق اقدامات پیشگیرانه و حمایت از سلامت جامعه.">
+                            Studying educational approaches that can improve health
+                            awareness and support community wellbeing.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Health"
+                                      data-fa="دانشکده علوم صحی">School of Health</span>
+                            </span>
+                            <span><i class="bi bi-people"></i>
+                                <span data-en="Research area: Community health"
+                                      data-fa="حوزه تحقیق: صحت جامعه">Research area: Community health</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="rp-project-card"
+                         data-category="business"
+                         data-search="entrepreneurship small business digital economy management">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 04</span>
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Business"
+                              data-fa="تجارت">Business</span>
+
+                        <h3 data-en="Entrepreneurship in the Digital Economy"
+                            data-fa="کارآفرینی در اقتصاد دیجیتال">
+                            Entrepreneurship in the Digital Economy
+                        </h3>
+
+                        <p data-en="Examining digital business models, entrepreneurial skills and opportunities for small businesses in a changing economy."
+                           data-fa="بررسی مدل‌های تجارت دیجیتال، مهارت‌های کارآفرینی و فرصت‌های کسب‌وکارهای کوچک در اقتصاد در حال تغییر.">
+                            Examining digital business models, entrepreneurial skills
+                            and opportunities for small businesses.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Business"
+                                      data-fa="دانشکده تجارت">School of Business</span>
+                            </span>
+                            <span><i class="bi bi-lightbulb"></i>
+                                <span data-en="Research area: Entrepreneurship"
+                                      data-fa="حوزه تحقیق: کارآفرینی">Research area: Entrepreneurship</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="rp-project-card"
+                         data-category="technology"
+                         data-search="cybersecurity data privacy digital safety information technology">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 05</span>
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Technology"
+                              data-fa="فناوری">Technology</span>
+
+                        <h3 data-en="Digital Safety and Data Privacy"
+                            data-fa="امنیت دیجیتالی و حریم خصوصی داده‌ها">
+                            Digital Safety and Data Privacy
+                        </h3>
+
+                        <p data-en="Exploring digital safety practices, privacy awareness and responsible handling of information in educational environments."
+                           data-fa="بررسی روش‌های امنیت دیجیتالی، آگاهی از حریم خصوصی و مدیریت مسئولانه اطلاعات در محیط‌های آموزشی.">
+                            Exploring digital safety practices, privacy awareness
+                            and responsible handling of information.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Computing"
+                                      data-fa="دانشکده علوم کامپیوتر">School of Computing</span>
+                            </span>
+                            <span><i class="bi bi-shield-check"></i>
+                                <span data-en="Research area: Cybersecurity"
+                                      data-fa="حوزه تحقیق: امنیت سایبری">Research area: Cybersecurity</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+                <article class="rp-project-card"
+                         data-category="engineering"
+                         data-search="water management environmental engineering resources">
+
+                    <div class="rp-card-top">
+                        <span class="rp-card-number">PROJECT 06</span>
+                        <i class="bi bi-droplet-half"></i>
+                    </div>
+
+                    <div class="rp-card-content">
+                        <span class="rp-category"
+                              data-en="Engineering"
+                              data-fa="انجنیری">Engineering</span>
+
+                        <h3 data-en="Water Resource Management"
+                            data-fa="مدیریت منابع آب">
+                            Water Resource Management
+                        </h3>
+
+                        <p data-en="Reviewing approaches to responsible water use, resource planning and practical environmental awareness."
+                           data-fa="بررسی روش‌های استفاده مسئولانه از آب، برنامه‌ریزی منابع و افزایش آگاهی محیط زیستی.">
+                            Reviewing approaches to responsible water use,
+                            resource planning and environmental awareness.
+                        </p>
+
+                        <div class="rp-project-meta">
+                            <span><i class="bi bi-building"></i>
+                                <span data-en="School of Engineering"
+                                      data-fa="دانشکده انجنیری">School of Engineering</span>
+                            </span>
+                            <span><i class="bi bi-globe"></i>
+                                <span data-en="Research area: Environment"
+                                      data-fa="حوزه تحقیق: محیط زیست">Research area: Environment</span>
+                            </span>
+                        </div>
+
+                        <span class="rp-status">
+                            <span data-en="Illustrative project"
+                                  data-fa="پروژه نمونه">Illustrative project</span>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="rp-empty" id="rpEmpty">
+                <i class="bi bi-search"></i>
+                <strong data-en="No projects found"
+                        data-fa="پروژه‌ای پیدا نشد">No projects found</strong>
+                <p data-en="Try another search term or choose a different category."
+                   data-fa="عبارت دیگری جست‌وجو کنید یا دسته‌بندی دیگری انتخاب نمایید.">
+                    Try another search term or choose a different category.
+                </p>
+            </div>
+
+            <!-- CALL TO ACTION -->
+            <section class="rp-callout">
+                <div>
+                    <h2 data-en="Interested in research?"
+                        data-fa="به تحقیق علاقه‌مند هستید؟">
+                        Interested in research?
+                    </h2>
+
+                    <p data-en="Explore the academic programs at Bahar University and discover opportunities to develop your research interests."
+                       data-fa="برنامه‌های آموزشی دانشگاه بهار را بررسی کنید و فرصت‌هایی برای توسعه علاقه‌مندی‌های تحقیقاتی خود بیابید.">
+                        Explore the academic programs at Bahar University and discover
+                        opportunities to develop your research interests.
+                    </p>
+                </div>
+
+                <a href="index.html#programs">
+                    <span data-en="Explore Programs"
+                          data-fa="مشاهده برنامه‌ها">Explore Programs</span>
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="rp-footer">
+        <div class="rp-container rp-footer-inner">
+            <span data-en="© 2026 Bahar University. All rights reserved."
+                  data-fa="© ۲۰۲۶ دانشگاه بهار. تمامی حقوق محفوظ است.">
+                © 2026 Bahar University. All rights reserved.
+            </span>
+
+            <span>
+                <a href="index.html" data-en="Back to Home" data-fa="بازگشت به خانه">
+                    Back to Home
+                </a>
+            </span>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const html = document.documentElement;
+
+        const languageButton = document.getElementById("rpLanguageBtn");
+        const languageLabel = document.getElementById("rpLanguageLabel");
+        const themeButton = document.getElementById("rpThemeBtn");
+        const themeIcon = document.getElementById("rpThemeIcon");
+
+        const searchInput = document.getElementById("rpSearch");
+        const filterButtons = document.querySelectorAll(".rp-filter");
+        const projectCards = document.querySelectorAll(".rp-project-card");
+        const emptyMessage = document.getElementById("rpEmpty");
+
+        let currentLanguage = localStorage.getItem("baharLanguage") || "en";
+        let currentFilter = "all";
+
+        /* LANGUAGE */
+
+        function setPageLanguage(language) {
+            currentLanguage = language;
+
+            html.lang = language === "fa" ? "fa" : "en";
+            html.dir = language === "fa" ? "rtl" : "ltr";
+
+            languageLabel.textContent = language.toUpperCase();
+
+            document.querySelectorAll("[data-en][data-fa]").forEach(function (element) {
+                element.textContent =
+                    language === "fa"
+                        ? element.dataset.fa
+                        : element.dataset.en;
+            });
+
+            document.querySelectorAll("[data-placeholder-en][data-placeholder-fa]")
+                .forEach(function (element) {
+                    element.placeholder =
+                        language === "fa"
+                            ? element.dataset.placeholderFa
+                            : element.dataset.placeholderEn;
+                });
+
+            document.querySelectorAll(".rp-filter").forEach(function (button) {
+                button.setAttribute(
+                    "aria-pressed",
+                    button.dataset.filter === currentFilter ? "true" : "false"
+                );
+            });
+
+            try {
+                localStorage.setItem("baharLanguage", language);
+            } catch (error) {
+                // The page still works if browser storage is unavailable.
+            }
+        }
+
+        languageButton.addEventListener("click", function () {
+            setPageLanguage(currentLanguage === "en" ? "fa" : "en");
+        });
+
+        /* DARK MODE */
+
+        function setPageTheme(theme) {
+            const dark = theme === "dark";
+
+            html.classList.toggle("dark-mode", dark);
+            themeIcon.className = dark
+                ? "bi bi-sun"
+                : "bi bi-moon-stars";
+
+            themeButton.setAttribute(
+                "aria-label",
+                dark ? "Switch to light mode" : "Switch to dark mode"
+            );
+
+            try {
+                localStorage.setItem("baharTheme", theme);
+            } catch (error) {
+                // The page still works if browser storage is unavailable.
+            }
+        }
+
+        themeButton.addEventListener("click", function () {
+            const isDark = html.classList.contains("dark-mode");
+            setPageTheme(isDark ? "light" : "dark");
+        });
+
+        /* SEARCH AND CATEGORY FILTER */
+
+        function filterProjects() {
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            projectCards.forEach(function (card) {
+                const category = card.dataset.category || "";
+                const searchableText =
+                    (card.dataset.search || "") + " " + card.textContent;
+
+                const matchesCategory =
+                    currentFilter === "all" || category === currentFilter;
+
+                const matchesSearch =
+                    searchableText.toLowerCase().includes(query);
+
+                const visible = matchesCategory && matchesSearch;
+
+                card.hidden = !visible;
+
+                if (visible) {
+                    visibleCount++;
+                }
+            });
+
+            emptyMessage.classList.toggle("show", visibleCount === 0);
+        }
+
+        searchInput.addEventListener("input", filterProjects);
+
+        filterButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                currentFilter = button.dataset.filter;
+
+                filterButtons.forEach(function (item) {
+                    item.classList.toggle("active", item === button);
+                    item.setAttribute(
+                        "aria-pressed",
+                        item === button ? "true" : "false"
+                    );
+                });
+
+                filterProjects();
+            });
+        });
+
+        /* RESTORE SAVED SETTINGS */
+
+        let savedTheme = "light";
+
+        try {
+            savedTheme = localStorage.getItem("baharTheme") || "light";
+        } catch (error) {
+            savedTheme = "light";
+        }
+
+        setPageTheme(savedTheme);
+        setPageLanguage(currentLanguage);
+        filterProjects();
+    });
+</script>
+
+</body>
+</html>

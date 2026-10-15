@@ -1,126 +1,323 @@
 
 /* =========================================================
-   BAHAR UNIVERSITY - MAIN JAVASCRIPT
-   Language + Dark Mode + Login + Sidebar + Programs
+   BAHAR UNIVERSITY
+   Main JavaScript
+   Language | Theme | Login | Dashboard | Programs | Faculty
 ========================================================= */
 
 "use strict";
 
 /* =========================================================
-   LANGUAGE
+   1. SAFE LOCAL STORAGE HELPERS
 ========================================================= */
 
-const languageBtn = document.getElementById("languageBtn");
-const languageMenu = document.getElementById("languageMenu");
-const currentLanguage = document.getElementById("currentLanguage");
+const Storage = {
+    get(key, fallback = null) {
+        try {
+            const value = localStorage.getItem(key);
+            return value === null ? fallback : value;
+        } catch (error) {
+            console.error("Storage read error:", error);
+            return fallback;
+        }
+    },
 
-function setLanguage(lang) {
-    document.querySelectorAll("[data-en][data-fa]").forEach(element => {
-        element.textContent =
-            lang === "fa" ? element.dataset.fa : element.dataset.en;
+    set(key, value) {
+        try {
+            localStorage.setItem(key, value);
+            return true;
+        } catch (error) {
+            console.error("Storage write error:", error);
+            return false;
+        }
+    },
+
+    remove(key) {
+        try {
+            localStorage.removeItem(key);
+            return true;
+        } catch (error) {
+            console.error("Storage remove error:", error);
+            return false;
+        }
+    }
+};
+
+function $(selector, parent = document) {
+    return parent.querySelector(selector);
+}
+
+function $$(selector, parent = document) {
+    return Array.from(parent.querySelectorAll(selector));
+}
+
+
+/* =========================================================
+   2. LANGUAGE: ENGLISH / DARI
+========================================================= */
+
+const languageBtn = $("#languageBtn");
+const languageMenu = $("#languageMenu");
+const currentLanguage = $("#currentLanguage");
+
+const translations = {
+    en: {
+        login: "Login",
+        dashboard: "My Dashboard",
+        openAccount: "Open your account",
+        lightMode: "Light Mode",
+        darkMode: "Dark Mode",
+        seeMore: "See More",
+        seeLess: "See Less",
+        qualification: "Qualification",
+        experience: "Teaching Experience",
+        email: "Email",
+        aboutProfessor: "About the Professor",
+        university: "BAHAR UNIVERSITY",
+        loginSuccess: "Login successful!",
+        fillFields: "Please fill in all fields.",
+        invalidEmail: "Please enter a valid email address.",
+        passwordLength: "Password must contain at least 6 characters.",
+        storageError: "Unable to save your account. Check browser storage.",
+        loginRequired: "Please log in to access your account.",
+        logoutSuccess: "You have logged out successfully.",
+        imageUnavailable: "Professor image unavailable",
+        noPrograms: "No programs found.",
+        noProfessors: "No professor information available."
+    },
+
+    fa: {
+        login: "ورود",
+        dashboard: "داشبورد من",
+        openAccount: "مشاهده حساب کاربری",
+        lightMode: "حالت روشن",
+        darkMode: "حالت تاریک",
+        seeMore: "استادان بیشتر",
+        seeLess: "نمایش کمتر",
+        qualification: "مدرک تحصیلی",
+        experience: "سابقه تدریس",
+        email: "ایمیل",
+        aboutProfessor: "درباره استاد",
+        university: "دانشگاه بهار",
+        loginSuccess: "ورود موفقیت‌آمیز بود!",
+        fillFields: "لطفاً تمام فیلدها را تکمیل کنید.",
+        invalidEmail: "لطفاً یک ایمیل معتبر وارد کنید.",
+        passwordLength: "رمز عبور باید حداقل ۶ کاراکتر باشد.",
+        storageError: "ذخیره حساب انجام نشد. فضای ذخیره‌سازی مرورگر را بررسی کنید.",
+        loginRequired: "برای دسترسی به حساب خود وارد شوید.",
+        logoutSuccess: "با موفقیت از حساب خارج شدید.",
+        imageUnavailable: "تصویر استاد در دسترس نیست",
+        noPrograms: "برنامه‌ای پیدا نشد.",
+        noProfessors: "اطلاعاتی درباره استاد در دسترس نیست."
+    }
+};
+
+let currentLang = "en";
+
+function t(key) {
+    return translations[currentLang]?.[key]
+        || translations.en[key]
+        || key;
+}
+
+function setLanguage(lang, save = true) {
+    currentLang = lang === "fa" ? "fa" : "en";
+
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir =
+        currentLang === "fa" ? "rtl" : "ltr";
+
+    $$("[data-en][data-fa]").forEach(element => {
+        const value = currentLang === "fa"
+            ? element.dataset.fa
+            : element.dataset.en;
+
+        // Preserve nested icons and markup.
+        if (element.children.length === 0) {
+            element.textContent = value;
+        } else {
+            const textNode = Array.from(element.childNodes)
+                .find(node => node.nodeType === Node.TEXT_NODE);
+
+            if (textNode) {
+                textNode.textContent = value;
+            }
+        }
     });
 
-    document.querySelectorAll(
-        "[data-placeholder-en][data-placeholder-fa]"
-    ).forEach(input => {
-        input.placeholder =
-            lang === "fa"
-                ? input.dataset.placeholderFa
-                : input.dataset.placeholderEn;
+    $$("[data-placeholder-en][data-placeholder-fa]").forEach(input => {
+        input.placeholder = currentLang === "fa"
+            ? input.dataset.placeholderFa
+            : input.dataset.placeholderEn;
     });
 
-    document.documentElement.lang = lang === "fa" ? "fa" : "en";
-    document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+    $$("[data-title-en][data-title-fa]").forEach(element => {
+        element.title = currentLang === "fa"
+            ? element.dataset.titleFa
+            : element.dataset.titleEn;
+    });
 
     if (currentLanguage) {
-        currentLanguage.textContent = lang === "fa" ? "دری" : "EN";
+        currentLanguage.textContent =
+            currentLang === "fa" ? "دری" : "EN";
     }
 
-    localStorage.setItem("baharLanguage", lang);
+    if (languageMenu) {
+        $$("[data-lang]", languageMenu).forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.lang === currentLang
+            );
+
+            button.setAttribute(
+                "aria-pressed",
+                String(button.dataset.lang === currentLang)
+            );
+        });
+    }
+
+    updateLoginButton();
+    updateFacultyButton();
+    updateProfessorModalLanguage();
+
+    if (save) {
+        Storage.set("baharLanguage", currentLang);
+    }
+
+    document.dispatchEvent(
+        new CustomEvent("bahar:languagechange", {
+            detail: { language: currentLang }
+        })
+    );
 }
 
 languageBtn?.addEventListener("click", event => {
     event.stopPropagation();
+
     languageMenu?.classList.toggle("show");
+
+    languageBtn.setAttribute(
+        "aria-expanded",
+        String(languageMenu?.classList.contains("show") || false)
+    );
 });
 
-document.addEventListener("click", () => {
-    languageMenu?.classList.remove("show");
-});
-
-document.querySelectorAll("[data-lang]").forEach(button => {
+$$("[data-lang]").forEach(button => {
     button.addEventListener("click", event => {
         event.stopPropagation();
+
         setLanguage(button.dataset.lang);
+
         languageMenu?.classList.remove("show");
+        languageBtn?.setAttribute("aria-expanded", "false");
     });
 });
 
+document.addEventListener("click", event => {
+    if (
+        languageMenu &&
+        !languageMenu.contains(event.target) &&
+        !languageBtn?.contains(event.target)
+    ) {
+        languageMenu.classList.remove("show");
+        languageBtn?.setAttribute("aria-expanded", "false");
+    }
+});
+
+
 /* =========================================================
-   DARK MODE
+   3. DARK MODE
 ========================================================= */
 
-const themeBtn = document.getElementById("themeBtn");
-const themeIcon = document.getElementById("themeIcon");
+const themeBtn = $("#themeBtn");
+const themeIcon = $("#themeIcon");
 
-function setTheme(theme) {
-    const dark = theme === "dark";
+function setTheme(theme, save = true) {
+    const isDark = theme === "dark";
 
-    document.documentElement.classList.toggle("dark-mode", dark);
+    document.documentElement.classList.toggle(
+        "dark-mode",
+        isDark
+    );
 
     if (themeIcon) {
-        themeIcon.className = dark
+        themeIcon.className = isDark
             ? "bi bi-sun"
             : "bi bi-moon-stars";
     }
 
     if (themeBtn) {
-        themeBtn.title = dark ? "Light Mode" : "Dark Mode";
+        themeBtn.title = isDark
+            ? t("lightMode")
+            : t("darkMode");
+
+        themeBtn.setAttribute(
+            "aria-label",
+            themeBtn.title
+        );
+
+        themeBtn.setAttribute(
+            "aria-pressed",
+            String(isDark)
+        );
     }
 
-    localStorage.setItem("baharTheme", theme);
+    if (save) {
+        Storage.set("baharTheme", isDark ? "dark" : "light");
+    }
+
+    document.dispatchEvent(
+        new CustomEvent("bahar:themechange", {
+            detail: { theme: isDark ? "dark" : "light" }
+        })
+    );
 }
 
 themeBtn?.addEventListener("click", () => {
-    const isDark =
-        document.documentElement.classList.contains("dark-mode");
+    const isDark = document.documentElement
+        .classList.contains("dark-mode");
 
     setTheme(isDark ? "light" : "dark");
 });
 
+
 /* =========================================================
-   LOGIN MODAL
+   4. LOGIN MODAL
 ========================================================= */
 
-const loginBtn = document.getElementById("loginBtn");
-const loginModal = document.getElementById("loginModal");
-const loginClose = document.getElementById("loginClose");
-const loginOverlay = document.getElementById("loginOverlay");
+const loginBtn = $("#loginBtn");
+const loginModal = $("#loginModal");
+const loginClose = $("#loginClose");
+const loginOverlay = $("#loginOverlay");
 
 function openLogin() {
     if (!loginModal) return;
 
     loginModal.classList.add("show");
+    loginModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+
+    $("#loginEmail")?.focus();
 }
 
 function closeLogin() {
     if (!loginModal) return;
 
     loginModal.classList.remove("show", "active", "open");
+    loginModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    document.body.classList.remove("modal-open");
 }
 
 loginClose?.addEventListener("click", closeLogin);
 loginOverlay?.addEventListener("click", closeLogin);
 
+
 /* =========================================================
-   SHOW / HIDE PASSWORD
+   5. SHOW / HIDE PASSWORD
 ========================================================= */
 
-const passwordToggle = document.getElementById("passwordToggle");
-const loginPassword = document.getElementById("loginPassword");
+const passwordToggle = $("#passwordToggle");
+const loginPassword = $("#loginPassword");
 
 passwordToggle?.addEventListener("click", function () {
     if (!loginPassword) return;
@@ -130,51 +327,62 @@ passwordToggle?.addEventListener("click", function () {
     loginPassword.type = showPassword ? "text" : "password";
 
     this.innerHTML = showPassword
-        ? '<i class="bi bi-eye-slash"></i>'
-        : '<i class="bi bi-eye"></i>';
+        ? '<i class="bi bi-eye-slash" aria-hidden="true"></i>'
+        : '<i class="bi bi-eye" aria-hidden="true"></i>';
+
+    this.setAttribute(
+        "aria-label",
+        showPassword ? "Hide password" : "Show password"
+    );
 });
 
+
 /* =========================================================
-   MOBILE MENU
+   6. MOBILE NAVIGATION
 ========================================================= */
 
-const hamburger = document.getElementById("hamburger");
-const mainNav = document.getElementById("mainNav");
+const hamburger = $("#hamburger");
+const mainNav = $("#mainNav");
 
 hamburger?.addEventListener("click", () => {
     if (!mainNav) return;
 
-    mainNav.classList.toggle("open");
-
-    const icon = hamburger.querySelector("i");
+    const isOpen = mainNav.classList.toggle("open");
+    const icon = $("i", hamburger);
 
     if (icon) {
-        icon.className = mainNav.classList.contains("open")
+        icon.className = isOpen
             ? "bi bi-x-lg"
             : "bi bi-list";
     }
+
+    hamburger.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
 });
 
-document.querySelectorAll("#mainNav a").forEach(link => {
+$$("#mainNav a").forEach(link => {
     link.addEventListener("click", () => {
         mainNav?.classList.remove("open");
 
         const icon = hamburger?.querySelector("i");
         if (icon) icon.className = "bi bi-list";
+
+        hamburger?.setAttribute("aria-expanded", "false");
     });
 });
 
+
 /* =========================================================
-   PROGRAMS: SEARCH + FILTER + LOAD MORE
+   7. PROGRAM SEARCH, FILTER AND LOAD MORE
 ========================================================= */
 
-const searchInput = document.getElementById("programSearch");
-const filterButtons = document.querySelectorAll(".filter-btn");
-const programCards = Array.from(
-    document.querySelectorAll(".program-card")
-);
-const noResults = document.getElementById("noResults");
-const loadMoreButton = document.getElementById("loadMore");
+const searchInput = $("#programSearch");
+const filterButtons = $$(".filter-btn");
+const programCards = $$(".program-card");
+const noResults = $("#noResults");
+const loadMoreButton = $("#loadMore");
 
 let activeFilter = "all";
 let visibleLimit = 6;
@@ -183,36 +391,51 @@ function updatePrograms() {
     if (!programCards.length) return;
 
     const searchValue = (searchInput?.value || "")
-        .toLowerCase()
+        .toLocaleLowerCase(currentLang)
         .trim();
 
     const matchedCards = programCards.filter(card => {
-        const category = card.dataset.category || "";
-        const searchableText = (
-            card.dataset.search || card.textContent || ""
-        ).toLowerCase();
+        const category = card.dataset.category || "all";
 
-        return (
-            searchableText.includes(searchValue) &&
-            (activeFilter === "all" || category === activeFilter)
-        );
+        const searchableText = (
+            (card.dataset.search || "") + " " +
+            card.textContent
+        ).toLocaleLowerCase(currentLang);
+
+        const matchesSearch =
+            searchableText.includes(searchValue);
+
+        const matchesFilter =
+            activeFilter === "all" ||
+            category === activeFilter;
+
+        return matchesSearch && matchesFilter;
     });
 
-    programCards.forEach(card => card.classList.add("hidden"));
+    programCards.forEach(card => {
+        card.classList.add("hidden");
+        card.setAttribute("aria-hidden", "true");
+    });
 
-    matchedCards.forEach((card, index) => {
-        if (index < visibleLimit) {
-            card.classList.remove("hidden");
-        }
+    matchedCards.slice(0, visibleLimit).forEach(card => {
+        card.classList.remove("hidden");
+        card.setAttribute("aria-hidden", "false");
     });
 
     if (noResults) {
-        noResults.classList.toggle("show", matchedCards.length === 0);
+        noResults.classList.toggle(
+            "show",
+            matchedCards.length === 0
+        );
+
+        noResults.textContent = t("noPrograms");
     }
 
     if (loadMoreButton) {
         loadMoreButton.style.display =
-            matchedCards.length > visibleLimit ? "inline-flex" : "none";
+            matchedCards.length > visibleLimit
+                ? "inline-flex"
+                : "none";
     }
 }
 
@@ -223,8 +446,13 @@ searchInput?.addEventListener("input", () => {
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
-        filterButtons.forEach(btn => btn.classList.remove("active"));
+        filterButtons.forEach(item => {
+            item.classList.remove("active");
+            item.setAttribute("aria-pressed", "false");
+        });
+
         button.classList.add("active");
+        button.setAttribute("aria-pressed", "true");
 
         activeFilter = button.dataset.filter || "all";
         visibleLimit = 6;
@@ -238,44 +466,78 @@ loadMoreButton?.addEventListener("click", () => {
     updatePrograms();
 });
 
+document.addEventListener("bahar:languagechange", updatePrograms);
+
+
 /* =========================================================
-   LOGIN + LOCAL STORAGE + SIDEBAR + LOGOUT
+   8. LOGIN, LOCAL STORAGE, SIDEBAR AND LOGOUT
 ========================================================= */
 
 (() => {
-    const KEY = "baharUser";
+    const USER_KEY = "baharUser";
 
-    const form = document.getElementById("loginForm");
-    const message = document.getElementById("loginMessage");
-    const emailInput = document.getElementById("loginEmail");
-    const passwordInput = document.getElementById("loginPassword");
-    const roleInput = document.getElementById("accountType");
-    const remember = document.getElementById("rememberMe");
+    const form = $("#loginForm");
+    const message = $("#loginMessage");
+    const emailInput = $("#loginEmail");
+    const passwordInput = $("#loginPassword");
+    const roleInput = $("#accountType");
+    const remember = $("#rememberMe");
 
-    const sidebar = document.getElementById("userSidebar");
-    const backdrop = document.getElementById("sidebarBackdrop");
-    const sidebarClose = document.getElementById("sidebarClose");
-    const sidebarLogout = document.getElementById("sidebarLogout");
-    const dashboardLogout = document.getElementById("dashboardLogout");
+    const sidebar = $("#userSidebar");
+    const backdrop = $("#sidebarBackdrop");
+    const sidebarClose = $("#sidebarClose");
+    const sidebarLogout = $("#sidebarLogout");
+    const dashboardLogout = $("#dashboardLogout");
 
     const roleNames = {
-        student: "Student",
-        faculty: "Faculty / Professor",
-        administrator: "Administrator",
-        applicant: "Applicant"
+        student: {
+            en: "Student",
+            fa: "دانشجو"
+        },
+        faculty: {
+            en: "Faculty / Professor",
+            fa: "استاد"
+        },
+        administrator: {
+            en: "Administrator",
+            fa: "مدیر"
+        },
+        applicant: {
+            en: "Applicant",
+            fa: "متقاضی"
+        }
     };
 
     function getUser() {
         try {
-            const user = JSON.parse(
-                localStorage.getItem(KEY) || "null"
-            );
+            const raw = Storage.get(USER_KEY);
 
-            return user?.isLoggedIn ? user : null;
+            if (!raw) return null;
+
+            const user = JSON.parse(raw);
+
+            if (
+                !user ||
+                user.isLoggedIn !== true ||
+                typeof user.email !== "string" ||
+                !roleNames[user.accountType]
+            ) {
+                return null;
+            }
+
+            return user;
         } catch (error) {
-            console.error("Unable to read user data:", error);
+            console.error("Unable to read user:", error);
             return null;
         }
+    }
+
+    function showMessage(text, kind = "error") {
+        if (!message) return;
+
+        message.textContent = text;
+        message.dataset.kind = kind;
+        message.setAttribute("role", "status");
     }
 
     function updateLoginButton() {
@@ -283,11 +545,15 @@ loadMoreButton?.addEventListener("click", () => {
         const label = loginBtn?.querySelector("span");
 
         if (label) {
-            label.textContent = user ? "My Dashboard" : "Login";
+            label.textContent = user
+                ? t("dashboard")
+                : t("login");
         }
 
         if (loginBtn) {
-            loginBtn.title = user ? "Open your account" : "Login";
+            loginBtn.title = user
+                ? t("openAccount")
+                : t("login");
         }
     }
 
@@ -296,9 +562,9 @@ loadMoreButton?.addEventListener("click", () => {
 
         if (!user || !sidebar || !backdrop) return;
 
-        const nameElement = document.getElementById("sidebarName");
-        const emailElement = document.getElementById("sidebarEmail");
-        const roleElement = document.getElementById("sidebarRole");
+        const nameElement = $("#sidebarName");
+        const emailElement = $("#sidebarEmail");
+        const roleElement = $("#sidebarRole");
 
         if (nameElement) {
             nameElement.textContent = user.name || "University User";
@@ -309,20 +575,42 @@ loadMoreButton?.addEventListener("click", () => {
         }
 
         if (roleElement) {
-            roleElement.textContent =
-                roleNames[user.accountType] || "User";
+            const role = roleNames[user.accountType];
+
+            roleElement.textContent = role
+                ? role[currentLang]
+                : "User";
         }
 
         sidebar.classList.add("open");
         backdrop.classList.add("show");
+
+        sidebar.setAttribute("aria-hidden", "false");
+        backdrop.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+        sidebarClose?.focus();
     }
 
     function closeSidebar() {
         sidebar?.classList.remove("open");
         backdrop?.classList.remove("show");
+
+        sidebar?.setAttribute("aria-hidden", "true");
+        backdrop?.setAttribute("aria-hidden", "true");
+
+        if (!loginModal?.classList.contains("show")) {
+            document.body.style.overflow = "";
+        }
     }
 
-    /* Login button */
+    function clearLoginMessage() {
+        if (!message) return;
+
+        message.textContent = "";
+        delete message.dataset.kind;
+    }
+
     loginBtn?.addEventListener("click", event => {
         event.preventDefault();
 
@@ -333,7 +621,6 @@ loadMoreButton?.addEventListener("click", () => {
         }
     });
 
-    /* Login form */
     form?.addEventListener("submit", event => {
         event.preventDefault();
 
@@ -345,37 +632,36 @@ loadMoreButton?.addEventListener("click", () => {
         const role = roleInput?.value || "";
 
         if (!email || !password || !role) {
-            if (message) {
-                message.textContent = "Please fill in all fields.";
-                message.dataset.kind = "error";
-            }
+            showMessage(t("fillFields"));
             return;
         }
 
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            if (message) {
-                message.textContent = "Please enter a valid email address.";
-                message.dataset.kind = "error";
-            }
+            showMessage(t("invalidEmail"));
             return;
         }
 
         if (password.length < 6) {
-            if (message) {
-                message.textContent =
-                    "Password must contain at least 6 characters.";
-                message.dataset.kind = "error";
-            }
+            showMessage(t("passwordLength"));
             return;
         }
 
-        const name = email.split("@")[0]
-            .replace(/[._-]+/g, " ")
-            .replace(/\b\w/g, letter => letter.toUpperCase());
+        if (!roleNames[role]) {
+            showMessage(t("fillFields"));
+            return;
+        }
 
-        // Never save the password in browser storage.
+        const name = email
+            .split("@")[0]
+            .replace(/[._-]+/g, " ")
+            .replace(/\s+/g, " ")
+            .trim()
+            .replace(/\b[a-z]/g, letter => letter.toUpperCase());
+
+        // This is a demo login, not real authentication.
+        // Never store passwords in localStorage or sessionStorage.
         const user = {
-            name,
+            name: name || "University User",
             email,
             accountType: role,
             isLoggedIn: true,
@@ -384,90 +670,81 @@ loadMoreButton?.addEventListener("click", () => {
         };
 
         try {
-            localStorage.setItem(KEY, JSON.stringify(user));
+            const serializedUser = JSON.stringify(user);
 
-            // Remove any old session-only login.
-            sessionStorage.removeItem(KEY);
-
-            // Verify that saving worked.
-            const savedUser = JSON.parse(
-                localStorage.getItem(KEY) || "null"
-            );
-
-            if (!savedUser || savedUser.email !== email) {
-                throw new Error("Saved user could not be verified.");
+            if (!Storage.set(USER_KEY, serializedUser)) {
+                throw new Error("Local storage is unavailable.");
             }
 
-            if (message) {
-                message.textContent = "Login successful!";
-                message.dataset.kind = "success";
+            const savedUser = JSON.parse(
+                localStorage.getItem(USER_KEY)
+            );
+
+            if (
+                !savedUser ||
+                savedUser.email !== email ||
+                savedUser.accountType !== role
+            ) {
+                throw new Error("Storage verification failed.");
             }
 
             if (passwordInput) {
                 passwordInput.value = "";
             }
 
-            closeLogin();
+            showMessage(t("loginSuccess"), "success");
+
             updateLoginButton();
+            closeLogin();
             openSidebar();
 
         } catch (error) {
-            console.error("Login storage error:", error);
-
-            if (message) {
-                message.textContent =
-                    "Could not save login information. Check browser storage.";
-                message.dataset.kind = "error";
-            }
+            console.error("Login error:", error);
+            showMessage(t("storageError"));
         }
     });
 
-    /* Close sidebar */
     sidebarClose?.addEventListener("click", closeSidebar);
     backdrop?.addEventListener("click", closeSidebar);
 
-    /* Close overlays with Escape */
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape") {
-            closeSidebar();
-            closeLogin();
-        }
-    });
-
-    /* Logout: remove user data from both storage locations */
     function logoutUser(event) {
         event?.preventDefault();
 
-        localStorage.removeItem(KEY);
-        sessionStorage.removeItem(KEY);
+        const removed = Storage.remove(USER_KEY);
+
+        if (!removed) {
+            console.error("Unable to remove saved user.");
+            return;
+        }
 
         closeSidebar();
         closeLogin();
 
-        document.getElementById("myDashboard")
-            ?.classList.remove("show", "active", "open");
-
-        updateLoginButton();
+        $("#myDashboard")?.classList.remove(
+            "show",
+            "active",
+            "open"
+        );
 
         form?.reset();
+        clearLoginMessage();
+        updateLoginButton();
 
-        if (message) {
-            message.textContent = "";
-            delete message.dataset.kind;
-        }
-
-        const storageMessage =
-            document.getElementById("loginStorageMessage");
+        const storageMessage = $("#loginStorageMessage");
 
         if (storageMessage) {
-            storageMessage.textContent = "";
+            storageMessage.textContent = t("logoutSuccess");
         }
+
+        document.dispatchEvent(
+            new CustomEvent("bahar:logout")
+        );
     }
 
     sidebarLogout?.addEventListener("click", logoutUser);
     dashboardLogout?.addEventListener("click", logoutUser);
 
-    /* Restore saved account */
+    // Restore saved account details, if available.
     const savedUser = getUser();
 
     if (savedUser) {
@@ -484,23 +761,564 @@ loadMoreButton?.addEventListener("click", () => {
         }
     }
 
-    // Optional helpers for other parts of the website.
+    // Public helpers for other scripts.
     window.getBaharUser = getUser;
     window.isBaharLoggedIn = () => !!getUser();
     window.baharLogout = logoutUser;
+    window.openBaharDashboard = openSidebar;
+
+    document.addEventListener("bahar:languagechange", () => {
+        updateLoginButton();
+
+        const user = getUser();
+        const roleElement = $("#sidebarRole");
+
+        if (user && roleElement) {
+            roleElement.textContent =
+                roleNames[user.accountType]?.[currentLang] || "User";
+        }
+    });
 
     updateLoginButton();
 })();
 
+
 /* =========================================================
-   RESTORE SAVED SETTINGS
+   9. PROFESSORS: DATA AND SEE MORE / SEE LESS
 ========================================================= */
 
-try {
-    setLanguage(localStorage.getItem("baharLanguage") || "en");
-    setTheme(localStorage.getItem("baharTheme") || "light");
-} catch (error) {
-    console.error("Unable to restore saved settings:", error);
+const professorDetails = [
+    {
+        name: "Dr. Hana Rahimi",
+        title: "Professor of Computer Science",
+        degree: "PhD in Computer Science",
+        experience: "12 years",
+        email: "hana.rahimi@baharuniversity.edu",
+        bio: "Specializes in computer science, software development, and modern computing technologies."
+    },
+    {
+        name: "Dr. Arian Ahmad",
+        title: "Professor of Engineering",
+        degree: "PhD in Engineering",
+        experience: "10 years",
+        email: "arian.ahmad@baharuniversity.edu",
+        bio: "Focuses on engineering education, technical problem-solving, and practical research."
+    },
+    {
+        name: "Dr. Sara Noor",
+        title: "Professor of Economics",
+        degree: "PhD in Economics",
+        experience: "9 years",
+        email: "sara.noor@baharuniversity.edu",
+        bio: "Teaches economics, financial analysis, and economic development."
+    },
+    {
+        name: "Dr. Kian Azimi",
+        title: "Professor of Business",
+        degree: "PhD in Business Administration",
+        experience: "11 years",
+        email: "kian.azimi@baharuniversity.edu",
+        bio: "Specializes in business administration, management, and organizational leadership."
+    }
+];
+
+const additionalProfessors = [
+    {
+        name: "Dr. Maryam Ahmadi",
+        title: "Professor of Information Technology",
+        image: "../university2/images/teacher5.jpg",
+        degree: "PhD in Information Technology",
+        experience: "8 years",
+        email: "maryam.ahmadi@baharuniversity.edu",
+        bio: "Teaches information technology, database systems, and digital solutions."
+    },
+    {
+        name: "Dr. Omar Khan",
+        title: "Professor of Mathematics",
+        image: "../university2/images/teacher6.jpg",
+        degree: "PhD in Mathematics",
+        experience: "10 years",
+        email: "omar.khan@baharuniversity.edu",
+        bio: "Focuses on applied mathematics, statistics, and analytical problem-solving."
+    },
+    {
+        name: "Dr. Layla Noor",
+        title: "Professor of Public Health",
+        image: "../university2/images/teacher7.jpg",
+        degree: "PhD in Public Health",
+        experience: "7 years",
+        email: "layla.noor@baharuniversity.edu",
+        bio: "Works in public health education, community health, and health promotion."
+    },
+    {
+        name: "Dr. Ahmad Zia",
+        title: "Professor of Civil Engineering",
+        image: "../university2/images/teacher8.jpg",
+        degree: "PhD in Civil Engineering",
+        experience: "13 years",
+        email: "ahmad.zia@baharuniversity.edu",
+        bio: "Specializes in civil engineering, construction, and infrastructure design."
+    },
+    {
+        name: "Dr. Farzana Ali",
+        title: "Professor of Humanities",
+        image: "../university2/images/teacher9.jpg",
+        degree: "PhD in Humanities",
+        experience: "8 years",
+        email: "farzana.ali@baharuniversity.edu",
+        bio: "Focuses on humanities, communication, and academic writing."
+    },
+    {
+        name: "Dr. Bilal Safi",
+        title: "Professor of Information Systems",
+        image: "../university2/images/teacher10.jpg",
+        degree: "PhD in Information Systems",
+        experience: "9 years",
+        email: "bilal.safi@baharuniversity.edu",
+        bio: "Teaches information systems, systems analysis, and digital transformation."
+    },
+    {
+        name: "Dr. Nadia Karim",
+        title: "Professor of Biology",
+        image: "../university2/images/teacher11.jpg",
+        degree: "PhD in Biology",
+        experience: "6 years",
+        email: "nadia.karim@baharuniversity.edu",
+        bio: "Specializes in biology, scientific research, and laboratory education."
+    },
+    {
+        name: "Dr. Faisal Rahman",
+        title: "Professor of Finance",
+        image: "../university2/images/teacher12.jpg",
+        degree: "PhD in Finance",
+        experience: "12 years",
+        email: "faisal.rahman@baharuniversity.edu",
+        bio: "Focuses on finance, investment analysis, and financial management."
+    }
+];
+
+let allProfessors = [];
+
+
+/* =========================================================
+   10. PROFESSOR MODAL
+========================================================= */
+
+let professorModal = null;
+
+function updateProfessorModalLanguage() {
+    if (!professorModal) return;
+
+    const labels = {
+        "#professorModalLabel": "university",
+        "#professorModalDegreeLabel": "qualification",
+        "#professorModalExperienceLabel": "experience",
+        "#professorModalEmailLabel": "email",
+        "#professorModalBioLabel": "aboutProfessor"
+    };
+
+    Object.entries(labels).forEach(([selector, key]) => {
+        const element = $(selector, professorModal);
+        if (element) element.textContent = t(key);
+    });
+
+    const closeButton = $(
+        "[data-close-professor]",
+        professorModal
+    );
+
+    if (closeButton) {
+        closeButton.setAttribute(
+            "aria-label",
+            currentLang === "fa" ? "بستن" : "Close"
+        );
+    }
 }
 
-updatePrograms();
+function openProfessor(index) {
+    const professor = allProfessors[index];
+
+    if (!professor || !professorModal) return;
+
+    $("#professorModalName", professorModal).textContent =
+        professor.name;
+
+    $("#professorModalTitle", professorModal).textContent =
+        professor.title;
+
+    $("#professorModalDegree", professorModal).textContent =
+        professor.degree || "Not specified";
+
+    $("#professorModalExperience", professorModal).textContent =
+        professor.experience || "Not specified";
+
+    $("#professorModalBio", professorModal).textContent =
+        professor.bio || "";
+
+    const image = $("#professorModalImage", professorModal);
+
+    if (image) {
+        image.src = professor.image || "";
+        image.alt = professor.name;
+        image.onerror = () => {
+            image.removeAttribute("src");
+            image.alt = t("imageUnavailable");
+        };
+    }
+
+    const email = $("#professorModalEmail", professorModal);
+
+    if (email) {
+        email.textContent = professor.email || "";
+        email.href = professor.email
+            ? `mailto:${professor.email}`
+            : "#";
+
+        email.hidden = !professor.email;
+    }
+
+    professorModal.classList.add("is-open");
+    professorModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("professor-modal-open");
+
+    $("[data-close-professor]", professorModal)?.focus();
+}
+
+function closeProfessorModal() {
+    if (!professorModal) return;
+
+    professorModal.classList.remove("is-open");
+    professorModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("professor-modal-open");
+}
+
+
+/* =========================================================
+   11. INITIALIZE FACULTY
+========================================================= */
+
+function initializeFaculty() {
+    const facultyGrid = $(".people-grid");
+
+    if (!facultyGrid) return;
+
+    // Avoid adding duplicate cards if initialization runs again.
+    if (facultyGrid.dataset.initialized === "true") return;
+
+    facultyGrid.dataset.initialized = "true";
+
+    const existingCards = $$(".person", facultyGrid);
+
+    // Map the existing HTML cards to the first four records.
+    const originalProfessors = existingCards.map((card, index) => {
+        const details = professorDetails[index] || {};
+
+        const heading = $("h3", card);
+        const description = $("p", card);
+        const image = $("img", card);
+
+        return {
+            ...details,
+            name: heading?.textContent.trim() || details.name || "Professor",
+            title: description?.textContent.trim() || details.title || "",
+            image: image?.getAttribute("src") || ""
+        };
+    });
+
+    allProfessors = [
+        ...originalProfessors,
+        ...additionalProfessors
+    ];
+
+    // Assign stable indexes to original cards.
+    existingCards.forEach((card, index) => {
+        card.dataset.professor = String(index);
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-haspopup", "dialog");
+    });
+
+    // Add additional cards.
+    additionalProfessors.forEach((professor, index) => {
+        const professorIndex = originalProfessors.length + index;
+
+        const card = document.createElement("article");
+        card.className = "person extra-professor";
+        card.dataset.professor = String(professorIndex);
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-haspopup", "dialog");
+
+        const img = document.createElement("img");
+        img.src = professor.image;
+        img.alt = professor.name;
+        img.loading = "lazy";
+
+        img.addEventListener("error", () => {
+            img.alt = `${professor.name} - ${t("imageUnavailable")}`;
+        }, { once: true });
+
+        const info = document.createElement("div");
+        info.className = "person-info";
+
+        const heading = document.createElement("h3");
+        heading.textContent = professor.name;
+
+        const description = document.createElement("p");
+        description.textContent = professor.title;
+
+        info.append(heading, description);
+        card.append(img, info);
+        facultyGrid.appendChild(card);
+    });
+
+    const extraCards = $$(".extra-professor", facultyGrid);
+
+    // Initially hide extra cards.
+    extraCards.forEach(card => {
+        card.classList.remove("is-visible");
+    });
+
+    // Create the More / Less button.
+    const wrapper = document.createElement("div");
+    wrapper.className = "faculty-more-wrapper";
+
+    const moreButton = document.createElement("button");
+    moreButton.type = "button";
+    moreButton.className = "faculty-more-btn";
+    moreButton.id = "facultyMoreBtn";
+    moreButton.setAttribute("aria-expanded", "false");
+
+    wrapper.appendChild(moreButton);
+    facultyGrid.insertAdjacentElement("afterend", wrapper);
+
+    let visibleCount = 0;
+    const perClick = 4;
+
+    function updateMoreButton() {
+        const allShown = visibleCount >= extraCards.length;
+
+        moreButton.textContent = allShown
+            ? t("seeLess")
+            : t("seeMore");
+
+        moreButton.setAttribute(
+            "aria-expanded",
+            String(visibleCount > 0)
+        );
+
+        moreButton.style.display =
+            extraCards.length === 0 ? "none" : "inline-flex";
+    }
+
+    moreButton.addEventListener("click", () => {
+        if (visibleCount >= extraCards.length) {
+            visibleCount = 0;
+
+            extraCards.forEach(card => {
+                card.classList.remove("is-visible");
+            });
+
+            updateMoreButton();
+            return;
+        }
+
+        const nextLimit = Math.min(
+            visibleCount + perClick,
+            extraCards.length
+        );
+
+        for (let i = visibleCount; i < nextLimit; i++) {
+            extraCards[i].classList.add("is-visible");
+        }
+
+        visibleCount = nextLimit;
+        updateMoreButton();
+    });
+
+    // Create the details modal.
+    professorModal = document.createElement("div");
+    professorModal.className = "professor-modal";
+    professorModal.id = "professorModal";
+    professorModal.setAttribute("aria-hidden", "true");
+
+    const modalDialog = document.createElement("div");
+    modalDialog.className = "professor-modal-dialog";
+    modalDialog.setAttribute("role", "dialog");
+    modalDialog.setAttribute("aria-modal", "true");
+    modalDialog.setAttribute("aria-labelledby", "professorModalName");
+
+    const modalBackdrop = document.createElement("div");
+    modalBackdrop.className = "professor-modal-backdrop";
+    modalBackdrop.dataset.closeProfessor = "";
+
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "professor-modal-close";
+    closeButton.dataset.closeProfessor = "";
+    closeButton.innerHTML = "&times;";
+
+    const image = document.createElement("img");
+    image.className = "professor-modal-image";
+    image.id = "professorModalImage";
+    image.alt = "";
+
+    const content = document.createElement("div");
+    content.className = "professor-modal-content";
+
+    const universityLabel = document.createElement("span");
+    universityLabel.className = "professor-modal-label";
+    universityLabel.id = "professorModalLabel";
+
+    const name = document.createElement("h2");
+    name.id = "professorModalName";
+
+    const title = document.createElement("p");
+    title.id = "professorModalTitle";
+    title.className = "professor-modal-title";
+
+    function createDetailRow(labelId, valueId) {
+        const row = document.createElement("div");
+        row.className = "professor-detail-row";
+
+        const label = document.createElement("strong");
+        label.id = labelId;
+
+        const value = document.createElement("span");
+        value.id = valueId;
+
+        row.append(label, value);
+        return row;
+    }
+
+    const degreeRow = createDetailRow(
+        "professorModalDegreeLabel",
+        "professorModalDegree"
+    );
+
+    const experienceRow = createDetailRow(
+        "professorModalExperienceLabel",
+        "professorModalExperience"
+    );
+
+    const emailRow = document.createElement("div");
+    emailRow.className = "professor-detail-row";
+
+    const emailLabel = document.createElement("strong");
+    emailLabel.id = "professorModalEmailLabel";
+
+    const email = document.createElement("a");
+    email.id = "professorModalEmail";
+
+    emailRow.append(emailLabel, email);
+
+    const bio = document.createElement("div");
+    bio.className = "professor-bio";
+
+    const bioHeading = document.createElement("h3");
+    bioHeading.id = "professorModalBioLabel";
+
+    const bioText = document.createElement("p");
+    bioText.id = "professorModalBio";
+
+    bio.append(bioHeading, bioText);
+
+    content.append(
+        universityLabel,
+        name,
+        title,
+        degreeRow,
+        experienceRow,
+        emailRow,
+        bio
+    );
+
+    modalDialog.append(closeButton, image, content);
+    professorModal.append(modalBackdrop, modalDialog);
+    document.body.appendChild(professorModal);
+
+    updateProfessorModalLanguage();
+
+    // Click on a professor card.
+    facultyGrid.addEventListener("click", event => {
+        const card = event.target.closest(".person");
+
+        if (!card || !facultyGrid.contains(card)) return;
+
+        openProfessor(Number(card.dataset.professor));
+    });
+
+    // Keyboard support.
+    facultyGrid.addEventListener("keydown", event => {
+        const card = event.target.closest(".person");
+
+        if (!card || !facultyGrid.contains(card)) return;
+
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openProfessor(Number(card.dataset.professor));
+        }
+    });
+
+    professorModal.addEventListener("click", event => {
+        if (event.target.closest("[data-close-professor]")) {
+            closeProfessorModal();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (
+            event.key === "Escape" &&
+            professorModal?.classList.contains("is-open")
+        ) {
+            closeProfessorModal();
+        }
+    });
+
+    updateMoreButton();
+}
+
+function updateFacultyButton() {
+    const button = $("#facultyMoreBtn");
+
+    if (!button) return;
+
+    // Preserve the button's current More / Less state.
+    const expanded = button.getAttribute("aria-expanded") === "true";
+
+    button.textContent = expanded
+        ? t("seeLess")
+        : t("seeMore");
+}
+
+document.addEventListener("bahar:languagechange", () => {
+    updateFacultyButton();
+    updateProfessorModalLanguage();
+});
+
+
+/* =========================================================
+   12. RESTORE SETTINGS AND START THE WEBSITE
+========================================================= */
+
+function initializeBaharUniversity() {
+    const savedLanguage = Storage.get("baharLanguage", "en");
+    const savedTheme = Storage.get("baharTheme", "light");
+
+    setLanguage(savedLanguage, false);
+    setTheme(savedTheme, false);
+
+    updatePrograms();
+    initializeFaculty();
+}
+
+// Run after the HTML has been parsed.
+if (document.readyState === "loading") {
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeBaharUniversity,
+        { once: true }
+    );
+} else {
+    initializeBaharUniversity();
+}
